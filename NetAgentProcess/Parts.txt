@@ -1,0 +1,40 @@
+INFO [main] (NetAgentProcess.java:70)- Browser Opened
+ INFO [main] (NetAgentProcess.java:72)- Url opened
+Test Started->Login
+Test Pass->Login
+Test Started->parts
+ INFO [main] (NetAgentProcess.java:1827)- Parts Screen: Parts screen opened.
+NetAgent : Parts
+ INFO [main] (NetAgentProcess.java:1834)- Parts Screen: Client selected
+ INFO [main] (NetAgentProcess.java:1839)- Parts Screen: Click on search button.
+ INFO [main] (NetAgentProcess.java:1843)- Parts Screen: Tick on Include zero qty checkbox.
+ INFO [main] (NetAgentProcess.java:1847)- Parts Screen: Click on search button.
+ INFO [main] (NetAgentProcess.java:1853)- Parts Screen: UnTick on Include zero qty checkbox.
+ INFO [main] (NetAgentProcess.java:1856)- Parts Screen: Click on search button.
+ INFO [main] (NetAgentProcess.java:1881)- Parts Screen: Click on part and go to part details screen.
+NetAgent : Part Details
+ INFO [main] (NetAgentProcess.java:1889)- Parts Screen: Return from part details screen.
+Field1 Search Compare is - PASS
+Field1 Search Compare is - PASS
+Field1 Search Compare is - PASS
+Field1 Search Compare is - PASS
+Field1 Search Compare is - PASS
+ INFO [main] (NetAgentProcess.java:2013)- Parts Screen: User has clicked on Bin dropdown box.
+ INFO [main] (NetAgentProcess.java:2017)- Parts Screen: User has tick All checkbox.
+ INFO [main] (NetAgentProcess.java:2023)- Parts Screen: User has click on search button.
+ INFO [main] (NetAgentProcess.java:2026)- Parts Screen: User has click Reset button.
+First : 72
+Second : 72
+Total Records Matched
+ INFO [main] (NetAgentProcess.java:2066)- Parts Screen: Go to stock details screen.
+NetAgent : Stock Details
+ INFO [main] (NetAgentProcess.java:2075)- Parts Screen: User has performed print label.
+ INFO [main] (NetAgentProcess.java:2127)- Parts Screen: User has click reset button.
+ INFO [main] (NetAgentProcess.java:2131)- Parts Screen: Going to main screen.
+Test Pass->parts
+END Of Execution(TEST)->NASmoke
+
+===============================================
+NASuite
+Total tests run: 2, Passes: 2, Failures: 0, Skips: 0
+===============================================

@@ -1,0 +1,99 @@
+Test Started->Login
+Test Pass->Login
+Test Started->OrderSearch
+Validation message:-Order Range From Required.
+Order Range To Required.
+No of Record found=Page 1 of 1 (1 items)
+No of Record found=Page 1 of 1 (1 items)
+Tue Feb 15 12:27:49 IST 2022
+Wed Jan 26 12:27:49 IST 2022
+01/26/2022
+Page 1 of 1 (2 items)
+Status : Order Search is Working after Search with Date Range.
+total No. of columns of the table is=14
+column name is=ORDER DATE Column
+Sorting for ORDER DATE Column is==none
+Clicked on column for sorting
+after Sorting value of sort for ORDER DATE Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for ORDER DATE Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=STATUS Column
+Sorting for STATUS Column is==none
+Clicked on column for sorting
+after Sorting value of sort for STATUS Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for STATUS Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=PICKUP # Column
+Sorting for PICKUP # Column is==none
+Clicked on column for sorting
+after Sorting value of sort for PICKUP # Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for PICKUP # Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=JOB # Column
+Sorting for JOB # Column is==none
+Clicked on column for sorting
+after Sorting value of sort for JOB # Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for JOB # Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=SVC Column
+Sorting for SVC Column is==none
+Clicked on column for sorting
+after Sorting value of sort for SVC Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for SVC Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=FROM Column
+Sorting for FROM Column is==none
+Clicked on column for sorting
+after Sorting value of sort for FROM Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for FROM Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=TO Column
+Sorting for TO Column is==none
+Clicked on column for sorting
+after Sorting value of sort for TO Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for TO Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=PCS#/WT Column
+Sorting for PCS#/WT Column is==none
+Clicked on column for sorting
+after Sorting value of sort for PCS#/WT Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for PCS#/WT Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=POD Column
+Sorting for POD Column is==none
+Clicked on column for sorting
+after Sorting value of sort for POD Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for POD Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=POD Signature Column
+Sorting for POD Signature Column is==none
+Clicked on column for sorting
+after Sorting value of sort for POD Signature Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for POD Signature Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+Test Pass->OrderSearch
+END Of Execution(TEST)->NASmoke
+
+===============================================
+NASuite
+Total tests run: 2, Passes: 2, Failures: 0, Skips: 0

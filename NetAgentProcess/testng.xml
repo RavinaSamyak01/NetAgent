@@ -1,0 +1,36 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="NASuite">
+  <test thread-count="5" name="NASmoke">
+    <classes>
+      <class name="NetAgentSmoke.NetAgentProcess">
+      <methods>
+        <include name="Login" />
+        <exclude name="Courier" /> 
+        <exclude name="OrderSearch" />
+        <exclude name="replenish" />
+        <exclude name="CycleCount" />    
+        <exclude name="CycleCountProd" />
+        <exclude name="Userprofile" />
+        <exclude name="Userlist" />
+        <exclude name="parts" />
+        <include name="FSLStorage" />
+        <exclude name="FSLSetup" />
+        <exclude name="NetlinkInv" />
+        <exclude name="AgentActivityReport" />
+        <exclude name="AgentActivityChartReport" />
+        <exclude name="RejectQty" />
+        <exclude name="AgentActivityDetailReport" />
+        <exclude name="ReceiptReport" />
+        <exclude name="PullReport" />
+        <exclude name="TransactionReport" />
+        <exclude name="OnHandReport" />
+        <exclude name="AgentConsole" />
+        <exclude name="NGLDoc" />
+        <exclude name="MileageCalc" />
+        <exclude name="UserPreference" />
+        <exclude name="SendEmail" />
+      </methods>
+      </class>
+    </classes>
+  </test> <!-- NASmoke -->
+</suite> <!-- NASuite -->
