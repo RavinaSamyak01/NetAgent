@@ -231,3 +231,197 @@
 2022-02-16 11:36:51,144 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has performed print label.
 2022-02-16 11:37:34,832 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click reset button.
 2022-02-16 11:37:35,608 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Going to main screen.
+2022-02-16 12:41:34,829 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 12:41:36,207 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 12:41:52,107 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 13:27:51,621 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:27:55,265 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:28:06,738 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 13:39:32,696 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:39:33,904 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:39:51,239 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 13:42:06,234 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:42:07,451 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:42:15,619 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 13:43:51,782 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:43:52,997 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 13:43:59,340 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 16:15:24,204 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:15:26,578 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:15:35,296 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 16:16:19,563 - NetAgentSmoke.NetAgentProcess -ERROR - com.sun.mail.util.MailConnectException: Couldn't connect to host, port: 10.100.112.80, 25; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection refused: connect
+2022-02-16 16:23:02,727 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:23:03,905 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:23:11,022 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 16:23:34,201 - NetAgentSmoke.NetAgentProcess -ERROR - javax.mail.AuthenticationFailedException: 535 Invalid Username or Password
+
+2022-02-16 16:28:13,285 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:28:14,546 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:28:25,526 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 16:28:59,287 - NetAgentSmoke.NetAgentProcess -ERROR - javax.mail.AuthenticationFailedException: 535 Invalid Username or Password
+
+2022-02-16 16:33:02,073 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:33:03,670 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:33:25,155 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 16:34:14,047 - NetAgentSmoke.NetAgentProcess -ERROR - javax.mail.AuthenticationFailedException: 535 Invalid Username or Password
+
+2022-02-16 16:46:26,929 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:46:28,412 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:46:38,633 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 16:47:08,378 - NetAgentSmoke.NetAgentProcess -ERROR - javax.mail.AuthenticationFailedException: 535 Invalid Username or Password
+
+2022-02-16 16:51:38,584 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:51:40,777 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 16:51:49,241 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 16:52:14,193 - NetAgentSmoke.NetAgentProcess -ERROR - javax.mail.AuthenticationFailedException: 535 Invalid Username or Password
+
+2022-02-16 17:04:09,965 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:04:11,574 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:04:22,161 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:04:22,799 - NetAgentSmoke.NetAgentProcess -ERROR - javax.mail.AuthenticationFailedException: 535 Invalid Username or Password
+
+2022-02-16 17:10:11,069 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:10:13,498 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:10:31,336 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:10:53,025 - NetAgentSmoke.NetAgentProcess -ERROR - com.sun.mail.util.MailConnectException: Couldn't connect to host, port: outlook.office365.com, 25; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection timed out: connect
+2022-02-16 17:13:17,006 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:13:19,420 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:13:38,131 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:13:38,792 - NetAgentSmoke.NetAgentProcess -ERROR - javax.mail.AuthenticationFailedException: 535 Invalid Username or Password
+
+2022-02-16 17:28:00,489 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:28:01,649 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:28:12,961 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:37:51,679 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:37:52,880 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:38:02,685 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:41:00,329 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:41:01,526 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:41:12,111 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:45:08,454 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:45:09,736 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:45:17,910 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:50:31,679 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:50:32,944 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:50:38,769 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 17:56:34,858 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:56:36,046 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 17:56:46,713 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 18:05:29,619 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 18:05:30,808 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 18:05:40,559 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 18:23:44,510 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 18:23:46,439 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 18:24:05,396 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-16 18:29:15,964 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 18:29:17,111 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-16 18:29:28,517 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 09:32:53,439 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:32:57,115 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:33:07,202 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 09:37:03,314 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:37:06,000 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:37:14,004 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 09:40:07,983 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:40:10,151 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:40:16,420 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 09:43:46,410 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:43:48,744 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:43:54,459 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 09:55:23,221 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:55:25,768 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:55:33,196 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 09:57:17,427 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:57:19,809 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:57:25,540 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 09:59:38,275 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:59:40,936 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 09:59:46,225 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 10:02:13,309 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:02:15,365 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:02:22,083 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 10:05:30,929 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:05:33,378 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:05:39,292 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 10:08:18,948 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:08:21,521 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:08:28,792 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 10:47:34,821 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:47:37,471 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:47:50,052 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 10:52:01,382 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:52:02,635 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 10:52:15,394 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 11:11:36,374 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 11:11:37,596 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 11:11:43,963 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 11:37:05,966 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 11:37:07,305 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 11:37:14,551 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 11:52:47,298 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 11:52:48,489 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 11:53:00,766 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 12:09:22,823 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:09:24,049 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:09:30,874 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 12:11:54,364 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:11:55,526 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:12:11,383 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 12:22:44,732 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:22:47,212 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:22:59,363 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 12:28:39,191 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:28:41,559 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:28:53,959 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 12:43:09,358 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:43:10,534 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:43:24,224 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 12:45:27,427 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:45:30,210 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 12:45:45,433 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 13:03:09,560 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 13:03:11,945 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 13:03:19,805 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 13:08:22,681 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 13:08:25,142 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 13:08:38,737 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 16:01:26,446 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:01:29,669 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:01:40,698 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 16:08:29,276 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:08:31,703 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:08:41,356 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 16:12:15,396 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:12:18,031 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:12:37,289 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 16:15:59,469 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:16:01,248 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 16:16:19,341 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 17:27:43,932 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:27:46,441 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:28:05,060 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 17:32:00,553 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:32:01,848 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:32:08,662 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 17:34:27,136 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:34:28,342 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:34:35,490 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 17:40:05,149 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:40:06,787 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:40:15,678 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 17:42:56,839 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:42:58,120 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:43:04,028 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 17:45:34,118 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:45:35,370 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 17:45:43,806 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 18:00:40,830 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 18:00:42,111 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 18:02:45,659 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-17 18:04:35,482 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 18:04:36,759 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-17 18:04:50,549 - NetAgentSmoke.NetAgentProcess -INFO - Url opened

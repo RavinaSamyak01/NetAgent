@@ -29,6 +29,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -726,6 +729,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idOrder")).click();
 
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("ordersearch")));
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch")));
 		Driver.findElement(By.id("btnSearch")).click();
 
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("idValidation")));
@@ -791,6 +795,7 @@ public class NetAgentProcess {
 		 * window Driver.switchTo().window(parentWindow); // cntrl to parent window } }
 		 */
 		String pagecntOS = "";
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dx-info")));
 		pagecntOS = Driver.findElement(By.className("dx-info")).getText();
 		System.out.println(pagecntOS);
 		Thread.sleep(10000);
@@ -1169,7 +1174,8 @@ public class NetAgentProcess {
 		Thread.sleep(10000);
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
@@ -1177,64 +1183,65 @@ public class NetAgentProcess {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
 		// Go to CycleCount screen
-		Thread.sleep(10000);
-
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idOperations")));
 		Driver.findElement(By.id("idOperations")).click();
 
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idCycle")));
 		Driver.findElement(By.id("idCycle")).click();
-
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Start Cycle
 
-		if (!Driver.findElements(By.xpath(
-				"/html/body/div[2]/section/div[2]/div/div/div[2]/div/div[2]/gridcontrol-controller/div/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[9]/a"))
-				.isEmpty()) {
+		// --if Action column is not empty for 1st row
+		if (!Driver.findElements(By.xpath("//a[@class=\"dx-link\"]")).isEmpty()) {
 			// System.out.println("Click on Start");
-			Driver.findElement(By.xpath(
-					"/html/body/div[2]/section/div[2]/div/div/div[2]/div/div[2]/gridcontrol-controller/div/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[9]/a"))
-					.click();
-			Thread.sleep(10000);
+			// --Click on start button of first row
+			Driver.findElement(By.xpath("//a[@class=\"dx-link\"]")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		}
 
-		if (!Driver.findElements(By.xpath(
-				"/html/body/div[2]/section/div[2]/div/div/div[2]/div/div[3]/gridcontrol-controller/div/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[9]/a"))
-				.isEmpty()) {
+		// --if Reset button is exist
+		if (!Driver.findElements(By.xpath("//a[@class='dx-link' and text()='Reset']")).isEmpty()) {
 			// System.out.println("Click on Reset");
-			Driver.findElement(By.xpath(
-					"/html/body/div[2]/section/div[2]/div/div/div[2]/div/div[3]/gridcontrol-controller/div/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[9]/a"))
-					.click();
-			Thread.sleep(10000);
+			// --Click on Reset button
+			Driver.findElement(By.xpath("//a[@class='dx-link' and text()='Reset']")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			String CCWO = Driver.findElement(By.id("woid")).getText();
 			System.out.println(CCWO);
-			Thread.sleep(10000);
+			Thread.sleep(2000);
 		}
 
 		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File("D:\\Automation\\NA_Screenshot\\Cycle Count.png"));
+		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\Cycle Count.png"));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
-	@Test
-	public void CourierInfo() throws Exception {
-		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		Thread.sleep(5000);
-
-		Driver.findElement(By.id("idOperations")).click();
-		Driver.findElement(By.id("idCourier")).click();
-		Thread.sleep(5000);
-
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File("D:\\Automation\\NA_Screenshot\\CourierInfo.png"));
-
-		Driver.findElement(By.id("imgNGLLogo")).click();
-
-	}
-
+	// --Already covered in Courier method
+	/*
+	 * @Test public void CourierInfo() throws Exception { WebDriverWait wait = new
+	 * WebDriverWait(Driver, 50);
+	 * 
+	 * Thread.sleep(5000);
+	 * 
+	 * Driver.findElement(By.id("idOperations")).click();
+	 * Driver.findElement(By.id("idCourier")).click(); Thread.sleep(5000);
+	 * 
+	 * File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
+	 * FileUtils.copyFile(scrFile1, new
+	 * File("D:\\Automation\\NA_Screenshot\\CourierInfo.png"));
+	 * 
+	 * Driver.findElement(By.id("imgNGLLogo")).click();
+	 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+	 * "//*[@class=\"ajax-loadernew\"]")));
+	 * wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className(
+	 * "welcomecontent")));
+	 * 
+	 * }
+	 */
 	@Test
 	public void Userprofile() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
@@ -2141,17 +2148,17 @@ public class NetAgentProcess {
 	public void FSLStorage() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		//--Click on Inventory
+		// --Click on Inventory
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
 
-		//--Click on FSL Storage
+		// --Click on FSL Storage
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idFSLStorage")));
 		Driver.findElement(By.id("idFSLStorage")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		System.out.println(Driver.getTitle());
 
-		//--Month dropdown
+		// --Month dropdown
 		Select monthname = new Select(Driver.findElement(By.id("ddlmonth")));
 		String selectedComboValue = monthname.getFirstSelectedOption().getText();
 		System.out.println("Default Current Month Displayed in Combo : " + selectedComboValue);
@@ -2160,8 +2167,7 @@ public class NetAgentProcess {
 		Select opt = new Select(month);
 		opt.selectByVisibleText("August");
 		Driver.findElement(By.id("idSearchFsl")).click();
-
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Year dropdown
 		Select yrname = new Select(Driver.findElement(By.id("ddlyear")));
@@ -2169,75 +2175,70 @@ public class NetAgentProcess {
 		System.out.println("Default Current Year Displayed in Combo : " + selectedComboValue1);
 
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\FSLStorage.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\FSLStorage.png"));
 
 		WebElement year = Driver.findElement(By.id("ddlyear"));
 		Select opt1 = new Select(year);
 		opt1.selectByVisibleText("2019");
 		Driver.findElement(By.id("idSearchFsl")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		Driver.findElement(By.xpath("//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]"))
-				.click();
-		Driver.findElement(
-				By.xpath("//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]/div/div/input"))
-				.clear();
-		Thread.sleep(5000);
-		Driver.findElement(By.xpath("//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]"))
-				.click();
-		Driver.findElement(
-				By.xpath("//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]/div/div/input"))
-				.sendKeys("21");
-		Thread.sleep(5000);
-		Driver.findElement(By.id("idSaveFSlStorage")).click();
-		Thread.sleep(5000);
-
-		Driver.findElement(By.id("success")).getText();
-		Thread.sleep(5000);
+		// --nothing to edit and save in the screen
+		/*
+		 * Driver.findElement(By.xpath(
+		 * "//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]"
+		 * )) .click(); Driver.findElement( By.xpath(
+		 * "//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]/div/div/input"
+		 * )) .clear(); Thread.sleep(5000); Driver.findElement(By.xpath(
+		 * "//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]"
+		 * )) .click(); Driver.findElement( By.xpath(
+		 * "//*[@id=\"gridFSLStorage\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]/div/div/input"
+		 * )) .sendKeys("21"); Thread.sleep(5000);
+		 * Driver.findElement(By.id("idSaveFSlStorage")).click(); Thread.sleep(5000);
+		 * 
+		 * Driver.findElement(By.id("success")).getText(); Thread.sleep(5000);
+		 */
 
 		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File("D:\\Automation\\NA_Screenshot\\FSLStorage1.png"));
+		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\FSLStorage1.png"));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
+
 	}
 
 	@Test
 	public void FSLSetup() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		Thread.sleep(15000);
-
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
 
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idFSLSetup")));
 		Driver.findElement(By.id("idFSLSetup")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Location Code Search
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("DEFAULTBIN");
-		Thread.sleep(10000);
-
 		Driver.findElement(By.id("idbtnsearch")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search Compare
 		String exp = Driver.findElement(By.id("txtFSLbinSearch")).getText();
-		String act = Driver
-				.findElement(By.xpath("//*[@id=\"gridFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[1]"))
+		String act = Driver.findElement(By.xpath("//*[@id=\"gridFSLSetup\"]//div[1]/div/table/tbody/tr[1]/td[1]"))
 				.getText();
 		System.out.println(act);
 		System.out.println(exp);
 
 		if (exp.contentEquals(act)) {
 			System.out.println("Search text comparison is PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search text comparison is FAIL");
-			Thread.sleep(3000);
 		}
 
 		// Select DefaultBin and Try to edit
 		Driver.findElement(By.id("hrfAct")).click();
-		Thread.sleep(3000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Boolean locationcode = Driver.findElement(By.id("txtLocationCode")).isEnabled();
 
@@ -2246,34 +2247,31 @@ public class NetAgentProcess {
 		}
 
 		Driver.findElement(By.id("idiconsave")).click();
-		Thread.sleep(3000);
 
 		Driver.findElement(By.id("errorid")).getText();
-		Thread.sleep(5000);
 
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\FSLSetup.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\FSSetup.png"));
 
 		// Driver.findElement(By.cssSelector(".btn.btn-primary.no-radius")).click();
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Refresh
 		Driver.findElement(By.id("hlkCancleContactsDtls")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Paging
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("1");
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String pagecnt = Driver.findElement(By.xpath(
 				"/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/gridcontrol-controller/div/div/div[9]/div/div[1]"))
 				.getText();
 		System.out.println(pagecnt);
-		Thread.sleep(10000);
 
 		if (pagecnt.contains("Page 1 of 1")) {
 			Driver.findElement(By.id("idbtnreset")).click();
@@ -2291,19 +2289,15 @@ public class NetAgentProcess {
 		}
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("Test1234");
-		Thread.sleep(5000);
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(5000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.xpath("//*[@id=\"gridFSLSetup\"]/div/div[6]/span")).getText();
-		Thread.sleep(5000);
-
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(5000);
 
 		// Edit and Save
 
-		File src0 = new File("D:\\Netlink_AJ\\TestAutomation\\NetAgentAutomation\\NetAgentProcess\\NA_STG.xls");
+		File src0 = new File(".\\NA_STG.xls");
 		FileInputStream fis0 = new FileInputStream(src0);
 		Workbook workbook = WorkbookFactory.create(fis0);
 		Sheet sh0 = workbook.getSheet("Sheet1");
@@ -2312,12 +2306,12 @@ public class NetAgentProcess {
 		DataFormatter formatter = new DataFormatter();
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(27)));
-		Thread.sleep(10000);
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("hrfAct")));
 		Driver.findElement(By.id("hrfAct")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtLength")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 		Driver.findElement(By.id("txtLength")).sendKeys("10");
@@ -2327,32 +2321,30 @@ public class NetAgentProcess {
 
 		Driver.findElement(By.id("txtHeight")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 		Driver.findElement(By.id("txtHeight")).sendKeys("5");
-		Thread.sleep(10000);
 
 		Driver.findElement(By.id("hlkSaveASN")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Manage FSL
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("DEFAULTBIN");
-		Thread.sleep(5000);
-
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'Manage')]")));
 		Driver.findElement(By.xpath("//a[contains(.,'Manage')]")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Refresh
 		Driver.findElement(By.id("idiconrefresh")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// basic search
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(28)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E1 = formatter.formatCellValue(sh0.getRow(2).getCell(28));
 		String A1 = Driver
@@ -2364,18 +2356,16 @@ public class NetAgentProcess {
 
 		if (A1.contentEquals(E1)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(29)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E2 = formatter.formatCellValue(sh0.getRow(2).getCell(29));
 		String A2 = Driver
@@ -2387,18 +2377,16 @@ public class NetAgentProcess {
 
 		if (A2.contains(E2)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(30)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E3 = formatter.formatCellValue(sh0.getRow(2).getCell(30));
 		String A3 = Driver
@@ -2410,18 +2398,16 @@ public class NetAgentProcess {
 
 		if (A3.contains(E3)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(31)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E4 = formatter.formatCellValue(sh0.getRow(2).getCell(31));
 		String A4 = Driver
@@ -2433,18 +2419,16 @@ public class NetAgentProcess {
 
 		if (A4.contains(E4)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(32)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E5 = formatter.formatCellValue(sh0.getRow(2).getCell(32));
 		String A5 = Driver
@@ -2456,18 +2440,16 @@ public class NetAgentProcess {
 
 		if (A5.contains(E5)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(33)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E6 = formatter.formatCellValue(sh0.getRow(2).getCell(33));
 		String A6 = Driver
@@ -2479,18 +2461,16 @@ public class NetAgentProcess {
 
 		if (A6.contains(E6)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(34)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E7 = formatter.formatCellValue(sh0.getRow(2).getCell(34));
 		String A7 = Driver
@@ -2502,18 +2482,16 @@ public class NetAgentProcess {
 
 		if (A7.contains(E7)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(35)));
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E8 = formatter.formatCellValue(sh0.getRow(2).getCell(35));
 		String A8 = Driver
@@ -2525,32 +2503,30 @@ public class NetAgentProcess {
 
 		if (A8.contains(E8)) {
 			System.out.println("Search Compare PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Search Compare FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("Test1234");
 		Driver.findElement(By.id("idbtnsearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/span")).getText();
 
 		Driver.findElement(By.id("idbtnreset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// click save
 		Driver.findElement(By.id("hlkSaveASN")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("idValidation")).getText();
 
 		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File("D:\\Automation\\NA_Screenshot\\FSLSetup1.png"));
+		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\FSLSetup1.png"));
 
 		Driver.findElement(
 				By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[1]/div/div"))
@@ -2559,39 +2535,36 @@ public class NetAgentProcess {
 
 		// Select To Location
 		Driver.findElement(By.id("ddlToLocation")).sendKeys("DEFAULTBIN");
-		Thread.sleep(7000);
 
 		Driver.findElement(By.id("hlkSaveASN")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("iderrorcloseicon")).getText();
 
 		Driver.findElement(By.id("ddlToLocation")).clear();
-		Thread.sleep(5000);
 
 		Driver.findElement(By.id("ddlToLocation")).sendKeys("LAX");
 		Driver.findElement(By.id("idbtnAdd")).click();
-		Thread.sleep(7000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		System.out.println(Driver.findElement(By.id("idsuccesscloseicon")).getText());
-		Thread.sleep(5000);
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\FSLSetup_Location add.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\FSLSetup_Location add.png"));
 
 		Driver.findElement(By.id("idbtnAdd")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		System.out.println(Driver.findElement(By.id("errorid")).getText());
-		Thread.sleep(7000);
 
 		// Click Back
 		Driver.findElement(By.id("idBack")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Add New
 
 		// Click on add
 		Driver.findElement(By.id("hlkCreateASN")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Random rand = new Random();
 		int num1 = rand.nextInt(20);
@@ -2613,73 +2586,75 @@ public class NetAgentProcess {
 
 		Driver.findElement(By.id("txtHeight")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 		Driver.findElement(By.id("txtHeight")).sendKeys("33.33");
-		Thread.sleep(10000);
 
 		// click on save
 		Driver.findElement(By.id("hlkSaveASN")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		File scrFile3 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile3, new File("D:\\Automation\\NA_Screenshot\\FSLSetup_Save.png"));
+		FileUtils.copyFile(scrFile3, new File(".\\NA_Screenshot\\FSLSetup_Save.png"));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
 	public void CycleCountBIN() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(10000);
-
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
-		Thread.sleep(5000);
-		// Driver.findElement(By.id("idCycle")).click();
-		Driver.findElement(By.xpath("//*[@id=\"idCycle\"]")).click();
-		Thread.sleep(10000);
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Cycle Count BIN")));
+		Driver.findElement(By.linkText("Cycle Count BIN")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Select Client from dropdown
 		Driver.findElement(By.id("ddlClient")).click();
 		Select client = new Select(Driver.findElement(By.id("ddlClient")));
 		client.selectByVisibleText("TEST SPL CUST 950025");
-		Thread.sleep(10000);
 
 		// Select Bin name from dropdown list.
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn_cmbLocationBinclass=")));
 		Driver.findElement(By.id("btn_cmbLocationBinclass=")).click();
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idcheckboxInput")).click();
-		Thread.sleep(10000);
-
 		Driver.findElement(By.id("btn_cmbLocationBinclass=")).click();
 
 		// Click on Start button
-		Driver.findElement(By.xpath("//*[@id=\"ButtonGrid\"]/div/div/button[1]")).click();
-		Thread.sleep(7000);
+		Driver.findElement(By.id("btnstart")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		System.out.println((Driver.findElement(By.xpath("//*[@id=\"success\"]/label/span")).getText()));
-		Thread.sleep(7000);
+		System.out.println((Driver.findElement(By.id("lblSuccessMsg")).getText()));
 
 		File scrFile3 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile3, new File("D:\\Automation\\NA_Screenshot\\CycleCountBIN.png"));
+		FileUtils.copyFile(scrFile3, new File(".\\NA_Screenshot\\CycleCountBIN.png"));
 
-		Driver.findElement(By.xpath("//*[@id=\"ButtonGrid\"]/div/div/button[2]")).click();
-		Thread.sleep(9000);
+		Driver.findElement(By.id("btnreset")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
 	public void ASNLog() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
+		JavascriptExecutor js = (JavascriptExecutor) Driver;
+		Actions act = new Actions(Driver);
 
-		Thread.sleep(15000);
-
+		// --Inventory
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
+
+		// --ASN
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idASN")));
 		Driver.findElement(By.id("idASN")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		Thread.sleep(15000);
-
-		File src0 = new File("D:\\Netlink_AJ\\TestAutomation\\NetAgentAutomation\\NetAgentProcess\\NA_STG.xls");
+		File src0 = new File(".\\NA_STG.xls");
 		FileInputStream fis0 = new FileInputStream(src0);
 		Workbook workbook = WorkbookFactory.create(fis0);
 		Sheet sh0 = workbook.getSheet("Sheet1");
@@ -2689,151 +2664,138 @@ public class NetAgentProcess {
 
 		// Search with Tracking#
 		Driver.findElement(By.id("txtTracking")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(19)));
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String Trackexp = formatter.formatCellValue(sh0.getRow(2).getCell(19));
-		String Trackact = Driver
-				.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[10]"))
+		String Trackact = Driver.findElement(By.xpath("//td[@role=\"gridcell\" and contains(@aria-label,'Tracking')]"))
 				.getText();
 		System.out.println(Trackexp);
 		System.out.println(Trackact);
 
 		if (Trackexp.equals(Trackact)) {
 			System.out.println("Tracking Number search result is PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Tracking Number search result is FAIL");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("txtTracking")).clear();
-		Thread.sleep(5000);
 
 		// Search with ASN# and go to ASN Details screen
 		Driver.findElement(By.id("txtASN")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(20)));
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
-		System.out.println(Driver.getTitle());
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		System.out.println("Titale of the screen is" + Driver.getTitle());
 
 		String ASNexp = formatter.formatCellValue(sh0.getRow(2).getCell(20));
-		Thread.sleep(10000);
 		String ASNact = Driver.findElement(By.id("txtasnno")).getText();
-		Thread.sleep(10000);
 		System.out.println(ASNexp);
 		System.out.println(ASNact);
 
 		if (ASNexp.equals(ASNact)) {
 			System.out.println("ASN Number search result is PASS");
-			Thread.sleep(5000);
 		} else {
 			System.out.println("ASN Number search result is FAIL");
-			Thread.sleep(5000);
 		}
 
 		// Expand and Collapse in ASN details screen
 		Driver.findElement(By.id("expandId")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\ASN Log Details.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\ASN Log Details.png"));
 
 		Driver.findElement(By.id("collapseId")).click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 
 		// Go back to ASNLog screen
 		Driver.findElement(By.id("hlkBackToScreen")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		Driver.findElement(By.id("txtASN")).clear();
-		Thread.sleep(10000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with ASN Type
 		Driver.findElement(By.id("btn_cmbAsnTypeclass=")).click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnType")).click();
-		Thread.sleep(3000);
-		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
 		Driver.findElement(By.id("btn_cmbAsnTypeclass=")).click();
-		Thread.sleep(3000);
-		Driver.findElement(By.id("chkAllcmbAsnType")).click();
-		Thread.sleep(3000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		Driver.findElement(By.id("btn_cmbAsnTypeclass=")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("chkAllcmbAsnType")).click();
+		Driver.findElement(By.id("btn_cmbAsnTypeclass=")).click();
+		Driver.findElement(By.id("idbtnRunSearch")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with ASN Status
 		Driver.findElement(By.id("btn_cmbAsnStatusclass=")).click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnStatus")).click();
-		Thread.sleep(3000);
-		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
 		Driver.findElement(By.id("btn_cmbAsnStatusclass=")).click();
-		Thread.sleep(3000);
-		Driver.findElement(By.id("chkAllcmbAsnStatus")).click();
-		Thread.sleep(3000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		Driver.findElement(By.id("btn_cmbAsnStatusclass=")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("chkAllcmbAsnStatus")).click();
+		Driver.findElement(By.id("btn_cmbAsnStatusclass=")).click();
+		Driver.findElement(By.id("idbtnRunSearch")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with Carrier - Fedex
 		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
-		Thread.sleep(5000);
 		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Thread.sleep(5000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
 		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
-		Thread.sleep(3000);
 		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Thread.sleep(5000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with Location
 		Select Location = new Select(Driver.findElement(By.id("ddlFsl")));
 		Location.selectByIndex(1);
-		Thread.sleep(8000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String Locationexp = formatter.formatCellValue(sh0.getRow(2).getCell(39));
 		String Locationact = Driver
-				.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[8]"))
-				.getText();
+				.findElement(By.xpath("//td[@role=\"gridcell\" and contains(@aria-label,'Location')]")).getText();
 		System.out.println(Locationexp);
 		System.out.println(Locationact);
 
 		if (Locationexp.equals(Locationact)) {
 			System.out.println("Location search result is PASS");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Location search result is FAIL");
-			Thread.sleep(3000);
 		}
 
 		Select Account = new Select(Driver.findElement(By.id("drpAccount")));
 		Account.selectByIndex(1);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Select Location1 = new Select(Driver.findElement(By.id("ddlFsl")));
 		Location1.selectByIndex(0);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// From date and To date selection
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.DATE, -30);
 		String ValiFrom = getDate(cal);
-		Thread.sleep(5000);
 		System.out.println("Valid From Date :- " + ValiFrom);
 		String ValiTo = CuDate();
 		System.out.println("Valid To Date :- " + ValiTo);
@@ -2841,25 +2803,25 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtFromEstArrival")).sendKeys(ValiFrom);
 		Driver.findElement(By.id("txtToEstArrival")).sendKeys(ValiTo);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFromEstArrival")).clear();
 		Driver.findElement(By.id("txtToEstArrival")).clear();
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtAsnFromDate")).sendKeys(ValiFrom);
 		Driver.findElement(By.id("txtAsnToDate")).sendKeys(ValiTo);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtAsnFromDate")).clear();
 		Driver.findElement(By.id("txtAsnToDate")).clear();
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File("D:\\Automation\\NA_Screenshot\\ASN Log_1.png"));
+		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\ASN Log_1.png"));
 
 		Driver.findElement(By.id("txtTracking")).sendKeys("Test1234");
 		Driver.findElement(By.id("idbtnRunSearch")).click();
@@ -2870,178 +2832,200 @@ public class NetAgentProcess {
 
 		Driver.findElement(By.id("txtWorkOrder")).sendKeys("1234567890");
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[6]/span")).getText();
-		Thread.sleep(8000);
+		Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-nodata\"]")).getText();
 		Driver.findElement(By.id("txtWorkOrder")).clear();
-		Thread.sleep(3000);
 
 		Driver.findElement(By.id("txtASN")).sendKeys("1234567890");
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[6]/span")).getText();
-		Thread.sleep(8000);
+		Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-nodata\"]")).getText();
 		Driver.findElement(By.id("txtASN")).clear();
-		Thread.sleep(3000);
 
 		Driver.findElement(By.id("txtAsnRef")).sendKeys("Test1234");
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[6]/span")).getText();
-		Thread.sleep(8000);
+		Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-nodata\"]")).getText();
 		Driver.findElement(By.id("txtAsnRef")).clear();
-		Thread.sleep(3000);
 
 		Driver.findElement(By.id("idbtnRunSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Check paging
-		Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[9]/div/div[10]")).click();
-		Thread.sleep(7000);
+		List<WebElement> pagination = Driver
+				.findElements(By.xpath("//*[@class=\"dx-pages\"]//div[contains(@aria-label,'Page')]"));
+		System.out.println("size of pagination is==" + pagination.size());
 
-		Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[9]/div/div[2]")).click();
-		Thread.sleep(7000);
+		if (pagination.size() > 0) {
+			WebElement pageinfo = Driver.findElement(By.xpath("//*[@class=\"dx-info\"]"));
+			System.out.println("page info is==" + pageinfo.getText());
+			WebElement pagerdiv = Driver.findElement(By.className("dx-pages"));
+			WebElement secndpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 2\"]"));
+			WebElement prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
+			WebElement nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
+
+			// Scroll
+			js.executeScript("arguments[0].scrollIntoView();", pagerdiv);
+
+			if (pagination.size() > 1) {
+				// click on page 2
+				secndpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 2\"]"));
+				act.moveToElement(secndpage).click().perform();
+				System.out.println("Clicked on page 2");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+				// click on previous button
+				prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
+				prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
+				act.moveToElement(prevpage).click().perform();
+				System.out.println("clicked on previous page");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+				// click on next button
+				nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
+				nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
+				act.moveToElement(nextpage).click().perform();
+				System.out.println("clicked on next page");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			} else {
+				System.out.println("Only 1 page is exist");
+			}
+
+		} else {
+			System.out.println("pagination is not exist");
+		}
+		;
 
 		// Click on ASN No.
 		Driver.findElement(By.id("hrfAct")).click();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Boolean ASNNo = Driver.findElement(By.id("txtasnno")).getAttribute("readonly").equals("");
 		if (ASNNo == true) {
 			System.out.println("ASNNo. field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("ASNNo. field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean ASNType = Driver.findElement(By.id("txtASNType")).getAttribute("readonly").equals("");
 		if (ASNType == true) {
 			System.out.println("ASNType field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("ASNType field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean AccountNum = Driver.findElement(By.id("txtacc")).getAttribute("readonly").equals("");
 		if (AccountNum == true) {
 			System.out.println("Account Number field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Account Number field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean Locfield = Driver.findElement(By.id("txtfsl")).getAttribute("readonly").equals("");
 		if (Locfield == true) {
 			System.out.println("Location field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Location field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean ASNRef = Driver.findElement(By.id("txtasnref")).getAttribute("readonly").equals("");
 		if (ASNRef == true) {
 			System.out.println("ASN Reference field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("ASN Reference field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean CarrierName = Driver.findElement(By.id("txtcarriername")).getAttribute("readonly").equals("");
 		if (CarrierName == true) {
 			System.out.println("Carrier Name field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Carrier Name field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean TrackingNum = Driver.findElement(By.id("txttrackingno")).getAttribute("readonly").equals("");
 		if (TrackingNum == true) {
 			System.out.println("Tracking Number field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Tracking Number field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean RefURL = Driver.findElement(By.id("txtreferenceurl")).getAttribute("readonly").equals("");
 		if (RefURL == true) {
 			System.out.println("RefURL field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("RefURL field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Boolean Note = Driver.findElement(By.id("txtnotes")).getAttribute("readonly").equals("");
 		if (Note == true) {
 			System.out.println("Note field is Editable");
-			Thread.sleep(3000);
 		} else {
 			System.out.println("Note field is Non-editable");
-			Thread.sleep(3000);
 		}
 
 		Driver.findElement(By.id("hlkBackToScreen")).click();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[9]/div/div[10]")).click();
-		Thread.sleep(5000);
+		WebElement nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
+		act.moveToElement(nextpage).click().perform();
+		System.out.println("clicked on next page");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String P1 = Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[9]/div/div[1]")).getText();
+		String P1 = Driver.findElement(By.xpath("//*[@class=\"dx-info\"]")).getText();
 		System.out.println(P1);
 
-		Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[9]/div/div[2]")).click();
-		Thread.sleep(5000);
+		WebElement prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
+		act.moveToElement(prevpage).click().perform();
+		System.out.println("clicked on previous page");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String P2 = Driver.findElement(By.xpath("//*[@id=\"ASNLogGD\"]/div/div[9]/div/div[1]")).getText();
+		String P2 = Driver.findElement(By.xpath("//*[@class=\"dx-info\"]")).getText();
 		System.out.println(P2);
 
 		// Export Action
 		Driver.findElement(By.id("idbtnexport")).click();
-		Thread.sleep(20000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\ASN Log_2.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\ASN Log_2.png"));
 
 		// Go to main screen
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 	}
 
-	@Test
-	public void NetlinkInv() throws Exception {
-		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		Thread.sleep(10000);
-		Driver.findElement(By.partialLinkText("Inventory")).click();
-
-		Driver.findElement(By.linkText("Netlink Inventory")).click();
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/a/img")).click();
-		Thread.sleep(10000);
-	}
-
+	// --Not exist in new NetAgent app
+	/*
+	 * @Test public void NetlinkInv() throws Exception { WebDriverWait wait = new
+	 * WebDriverWait(Driver, 50);
+	 * 
+	 * Thread.sleep(10000);
+	 * Driver.findElement(By.partialLinkText("Inventory")).click();
+	 * 
+	 * Driver.findElement(By.linkText("Netlink Inventory")).click();
+	 * Thread.sleep(10000);
+	 * 
+	 * Driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/a/img")).click();
+	 * Thread.sleep(10000); }
+	 */
 	@Test
 	public void AgentActivityReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idReports")));
 		Driver.findElement(By.id("idReports")).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idAgent")));
 		Driver.findElement(By.id("idAgent")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select all agent
-		Driver.findElement(By.xpath("//button[contains(.,'Select')]")).click();
-
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + Agent + "')]")).click();
-		Thread.sleep(10000);
+		Driver.findElement(By.id("btn_ddlCourierclass=")).click();
+		//// button[contains(.,'Select')]
+		Thread.sleep(2000);
+		// --selected all courier
+		Driver.findElement(By.id("chkAllddlCourier")).click();
+		Driver.findElement(By.id("btn_ddlCourierclass=")).click();
 
 		// from date
 		DateFormat dateFormatAgAcRp = new SimpleDateFormat("MM/dd/yyyy");
@@ -3064,42 +3048,46 @@ public class NetAgentProcess {
 		AgAcRptdate.sendKeys(Keys.TAB);
 
 		// click on view report
-
 		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		boolean AvArRp = Driver
-				.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[3]/iframe"))
-				.isDisplayed();
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean AvArRp = Driver.findElement(By.xpath("//iframe[@id=\"myIframe\"]")).isDisplayed();
 
 		if (AvArRp == false) {
 			throw new Error("Error: Agent Activity Report grid not display");
 		}
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\AgentActivityReport.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\AgentActivityReport.png"));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
 	public void AgentActivityChartReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idReports")));
 		Driver.findElement(By.id("idReports")).click();
 
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Agent Activity Chart")));
 		Driver.findElement(By.linkText("Agent Activity Chart")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select all agent
-		Driver.findElement(By.xpath("//button[contains(.,'Select')]")).click();
-
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + Agent + "')]")).click();
-		Thread.sleep(10000);
+		Driver.findElement(By.id("btn_ddlCourierclass=")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("chkAllddlCourier")).click();
+		Driver.findElement(By.id("btn_ddlCourierclass=")).click();
 
 		// from date
 		DateFormat dateFormatAgAcChrtRp = new SimpleDateFormat("MM/dd/yyyy");
@@ -3124,85 +3112,91 @@ public class NetAgentProcess {
 		// click on view report
 
 		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		boolean AvArChrtRp = Driver
-				.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[3]/iframe"))
-				.isDisplayed();
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean AvArChrtRp = Driver.findElement(By.xpath("//iframe[@id=\"myIframe\"]")).isDisplayed();
 
 		if (AvArChrtRp == false) {
 			throw new Error("Error: Agent Activity Chart Report grid not display");
 		}
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\AgentActivityChartReport.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\AgentActivityChartReport.png"));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
-	@Test
-	public void RejectQty() throws Exception {
-		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		Thread.sleep(10000);
-		Driver.findElement(By.id("idReports")).click();
-
-		Driver.findElement(By.linkText("Rejected Qty")).click();
-		Thread.sleep(10000);
-
-		// Select Client
-		Select clnt = new Select(Driver.findElement(By.id("ddlClient")));
-		clnt.selectByVisibleText(Client);
-		Thread.sleep(10000);
-
-		// Select FSL
-		Select FSL = new Select(Driver.findElement(By.id("ddlfsl")));
-		FSL.selectByVisibleText(FSLName);
-		Thread.sleep(10000);
-
-		// view report
-
-		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(10000);
-
-		boolean RejectedQtyRp = Driver
-				.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[4]/iframe"))
-				.isDisplayed();
-
-		if (RejectedQtyRp == false) {
-			throw new Error("Error: Rejected Qty Report grid not display");
-		}
-		Thread.sleep(10000);
-
-		// Reset
-		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(10000);
-
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\RejectQty.png"));
-
-		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
-
-	}
+	// ---Not exist in NetAGent
+	/*
+	 * @Test public void RejectQty() throws Exception { WebDriverWait wait = new
+	 * WebDriverWait(Driver, 50);
+	 * 
+	 * wait.until(ExpectedConditions.elementToBeClickable(By.id("idReports")));
+	 * Driver.findElement(By.id("idReports")).click();
+	 * 
+	 * wait.until(ExpectedConditions.elementToBeClickable(By.id("Rejected Qty")));
+	 * Driver.findElement(By.linkText("Rejected Qty")).click();
+	 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+	 * "//*[@class=\"ajax-loadernew\"]")));
+	 * 
+	 * // Select Client Select clnt = new
+	 * Select(Driver.findElement(By.id("ddlClient")));
+	 * clnt.selectByVisibleText(Client); Thread.sleep(10000);
+	 * 
+	 * // Select FSL Select FSL = new Select(Driver.findElement(By.id("ddlfsl")));
+	 * FSL.selectByVisibleText(FSLName); Thread.sleep(10000);
+	 * 
+	 * // view report
+	 * 
+	 * Driver.findElement(By.id("btnView")).click(); Thread.sleep(10000);
+	 * 
+	 * boolean RejectedQtyRp = Driver .findElement(By.xpath(
+	 * "/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[4]/iframe"))
+	 * .isDisplayed();
+	 * 
+	 * if (RejectedQtyRp == false) { throw new
+	 * Error("Error: Rejected Qty Report grid not display"); } Thread.sleep(10000);
+	 * 
+	 * // Reset Driver.findElement(By.id("btnReset")).click(); Thread.sleep(10000);
+	 * 
+	 * File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
+	 * FileUtils.copyFile(scrFile2, new
+	 * File("D:\\Automation\\NA_Screenshot\\RejectQty.png"));
+	 * 
+	 * Driver.findElement(By.id("imgNGLLogo")).click();
+	 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+	 * "//*[@class=\"ajax-loadernew\"]")));
+	 * wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className(
+	 * "welcomecontent")));
+	 * 
+	 * }
+	 */
 
 	@Test
 	public void AgentActivityDetailReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idReports")));
 		Driver.findElement(By.id("idReports")).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Agent Activity Detail")));
 		Driver.findElement(By.linkText("Agent Activity Detail")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		// select agent
-		Driver.findElement(By.xpath("//button[contains(.,'Select')]")).click();
-
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + Agent + "')]")).click();
-		Thread.sleep(10000);
+		// --Select Agent
+		Driver.findElement(By.id("btn_ddlCourierclass=")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("chkAllddlCourier")).click();
+		Driver.findElement(By.id("btn_ddlCourierclass=")).click();
 
 		// from date
 		DateFormat dateFormatAgAcRp = new SimpleDateFormat("MM/dd/yyyy");
@@ -3225,44 +3219,45 @@ public class NetAgentProcess {
 		AgAcRptdate.sendKeys(Keys.TAB);
 
 		// click on view report
-
 		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		boolean AvArRp = Driver
-				.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[3]/iframe"))
-				.isDisplayed();
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean AvArRp = Driver.findElement(By.xpath("//iframe[@id=\"myIframe\"]")).isDisplayed();
 
 		if (AvArRp == false) {
 			throw new Error("Error: Agent Activity Report grid not display");
 		}
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\AgentActivityDetailReport.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\AgentActivityDetailReport.png"));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
 	public void ReceiptReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(10000);
-
 		Actions builder = new Actions(Driver);
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
-		Thread.sleep(5000);
 		ele.click();
-		Thread.sleep(10000);
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		ele1.click();
-		Thread.sleep(9000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idReceipt")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		/*
 		 * 
 		 * Driver.findElement(By.partialLinkText("Reports")).click();
@@ -3274,22 +3269,21 @@ public class NetAgentProcess {
 		// select FSL
 		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[1]/div[1]/div/div/button")).click();
 
+		// --Select FSL Name
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();
-
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + FSLName + "')]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//div[@id=\"ddlfsl\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("btn_ddlfslclass=")).click();
 
 		// select client
 		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[1]/div[2]/div/div/button")).click();
 
 		Driver.findElement(By.id("btn_ddlClientclass=")).click();
-
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + Client + "')]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//div[@id=\"ddlClient\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("btn_ddlClientclass=")).click();
 
 		// from date
 		DateFormat dateFormatRpln = new SimpleDateFormat("MM/dd/yyyy");
@@ -3311,35 +3305,39 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtValidTo")).sendKeys(ToDateRpln);
 		WebElement Rplntdate = Driver.findElement(By.id("txtValidTo"));
 		Rplntdate.sendKeys(Keys.TAB);
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		// part name
 		Driver.findElement(By.id("txtField1")).clear();
 		Driver.findElement(By.id("txtField1")).sendKeys(Part2);
-		Thread.sleep(10000);
 
 		// view report
 		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		boolean Replnsh = Driver
-				.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[4]/iframe"))
-				.isDisplayed();
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean Replnsh = Driver.findElement(By.xpath("//*[@id=\"myIframe\"]")).isDisplayed();
 
 		if (Replnsh == false) {
 			throw new Error("Error: Replenish Report grid not display");
 		}
-		Thread.sleep(10000);
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\ReceiptReport.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\ReceiptReport.png"));
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
@@ -3349,36 +3347,32 @@ public class NetAgentProcess {
 		Actions builder = new Actions(Driver);
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		ele.click();
-		Thread.sleep(10000);
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
-		Thread.sleep(15000);
+		Thread.sleep(2000);
 		ele1.click();
-		Thread.sleep(9000);
 		Driver.findElement(By.id("idPull")).click();
-		Thread.sleep(9000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select FSL
 		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[1]/div[1]/div/div/button")).click();
 
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();
-
-		Thread.sleep(9000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + FSLName + "')]")).click();
-		Thread.sleep(9000);
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//*[@id=\"ddlfsl\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("btn_ddlfslclass=")).click();
 
 		// select client
 		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[1]/div[2]/div/div/button")).click();
 
 		Driver.findElement(By.id("btn_ddlClientclass=")).click();
-
-		Thread.sleep(9000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + Client + "')]")).click();
-		Thread.sleep(9000);
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//*[@id=\"ddlClient\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("btn_ddlClientclass=")).click();
 
 		// from date
 		DateFormat dateFormatpull = new SimpleDateFormat("MM/dd/yyyy");
@@ -3400,20 +3394,24 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtValidTo")).sendKeys(ToDatepull);
 		WebElement pulltdate = Driver.findElement(By.id("txtValidTo"));
 		pulltdate.sendKeys(Keys.TAB);
-		Thread.sleep(9000);
+		Thread.sleep(2000);
 
 		// part name
 		Driver.findElement(By.id("txtField1")).clear();
 		Driver.findElement(By.id("txtField1")).sendKeys(Part2);
-		Thread.sleep(9000);
 
 		// view report
 		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(9000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		boolean Replnsh = Driver
-				.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[4]/iframe"))
-				.isDisplayed();
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean Replnsh = Driver.findElement(By.xpath("//*[@id=\"myIframe\"]")).isDisplayed();
 
 		if (Replnsh == false) {
 			throw new Error("Error: Pull Report grid not display");
@@ -3421,14 +3419,15 @@ public class NetAgentProcess {
 		Thread.sleep(9000);
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\PullReport.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\PullReport.png"));
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(9000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(9000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
@@ -3438,36 +3437,29 @@ public class NetAgentProcess {
 		Actions builder = new Actions(Driver);
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		ele.click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
-		Thread.sleep(10000);
 		ele1.click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idTransaction")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select FSL
-		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[1]/div[1]/div/div/button")).click();
-
+		Driver.findElement(By.id("btn_ddlfslclass=")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//*[@id=\"ddlfsl\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();
 
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + FSLName + "')]")).click();
-		Thread.sleep(10000);
-
 		// select client
-		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[2]/div[1]/div[2]/div/div/button")).click();
-
 		Driver.findElement(By.id("btn_ddlClientclass=")).click();
-
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//label[contains(.,'" + Client + "')]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//*[@id=\"ddlClient\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("btn_ddlClientclass=")).click();
 
 		// from date
 		DateFormat dateFormattrns = new SimpleDateFormat("MM/dd/yyyy");
@@ -3489,26 +3481,28 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtValidTo")).sendKeys(ToDatetrns);
 		WebElement trnstdate = Driver.findElement(By.id("txtValidTo"));
 		trnstdate.sendKeys(Keys.TAB);
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		// select WO type
 		Select clnt = new Select(Driver.findElement(By.id("ddlWOType")));
 		clnt.selectByVisibleText("Work Order In");
-		Thread.sleep(10000);
 
 		// view report
 		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		/*
-		 * boolean Replnsh = Driver.findElement(By.xpath(
-		 * "/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[4]/iframe")).
-		 * isDisplayed();
-		 * 
-		 * if(Replnsh == false) { throw new
-		 * Error("Error: Transaction Report grid not display"); }
-		 */
-		Thread.sleep(10000);
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean Replnsh = Driver.findElement(By.xpath("//*[@id=\"myIframe\"]")).isDisplayed();
+
+		if (Replnsh == false) {
+			throw new Error("Error: Transaction Report grid not display");
+		}
 
 		Driver.findElement(By.id("txtPart")).clear();
 		Driver.findElement(By.id("txtPart")).sendKeys(Part2);
@@ -3516,37 +3510,45 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtSerial")).clear();
 		Driver.findElement(By.id("txtSerial")).sendKeys(P2Field2);
 
-		Driver.findElement(By.id("txtTracking")).clear();
-		Driver.findElement(By.id("txtTracking")).sendKeys(P2Field3);
-
-		Driver.findElement(By.id("txtRevision")).clear();
-		Driver.findElement(By.id("txtRevision")).sendKeys(P2Field4);
-
-		Driver.findElement(By.id("txtField5")).clear();
-		Driver.findElement(By.id("txtField5")).sendKeys(P2Field5);
-
-		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(10000);
+		// --Fields are not exist
 
 		/*
-		 * boolean Replnsh1 = Driver.findElement(By.xpath(
-		 * "/html/body/div[2]/section/div[2]/div/div/div[2]/form/div[4]/iframe")).
-		 * isDisplayed();
+		 * Driver.findElement(By.id("txtTracking")).clear();
+		 * Driver.findElement(By.id("txtTracking")).sendKeys(P2Field3);
 		 * 
-		 * if(Replnsh1 == false) { throw new
-		 * Error("Error: Transaction Report grid not display when no record found"); }
+		 * Driver.findElement(By.id("txtRevision")).clear();
+		 * Driver.findElement(By.id("txtRevision")).sendKeys(P2Field4);
+		 * 
+		 * Driver.findElement(By.id("txtField5")).clear();
+		 * Driver.findElement(By.id("txtField5")).sendKeys(P2Field5);
 		 */
-		Thread.sleep(10000);
+
+		Driver.findElement(By.id("btnView")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean Replnsh1 = Driver.findElement(By.xpath("//*[@id=\"myIframe\"]")).isDisplayed();
+
+		if (Replnsh1 == false) {
+			throw new Error("Error: Transaction Report grid not display when no record found");
+		}
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\TransactionReport.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\TransactionReport.png"));
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 	}
 
@@ -3557,100 +3559,96 @@ public class NetAgentProcess {
 		Actions builder = new Actions(Driver);
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		ele.click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
-		Thread.sleep(10000);
 		ele1.click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		Driver.findElement(By.id("idOn")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select FSL
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//*[@id=\'idcheckboxInput\']")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//*[@id=\"ddlfsl\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("btn_ddlfslclass=")).click();
 
 		// select client
 		Driver.findElement(By.id("btn_ddlClientclass=")).click();
-		Thread.sleep(10000);
-
-		Driver.findElement(By.xpath("//*[@id=\'chkAllddlClient\']")).click();
-
-		// Driver.findElement(By.xpath("//label[contains(.,'" + Client +
-		// "')]")).click();
-		// Thread.sleep(10000);
+		Thread.sleep(2000);
+		Driver.findElement(By.xpath("//*[@id=\"ddlClient\"]//input[@id=\"idcheckboxInput\"]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("btn_ddlClientclass=")).click();
 
 		// part num
 		Driver.findElement(By.id("txtField1")).clear();
 		Driver.findElement(By.id("txtField1")).sendKeys(Part2);
-		Thread.sleep(10000);
 
 		// view report
 		Driver.findElement(By.id("btnView")).click();
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		/*
-		 * boolean Replnsh = Driver.findElement(By.xpath(
-		 * "/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div/form/div[3]/iframe"
-		 * )).isDisplayed();
-		 * 
-		 * if(Replnsh == false) { throw new
-		 * Error("Error: On Hand Report grid not display"); }
-		 */
-		Thread.sleep(10000);
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+
+		boolean Replnsh = Driver.findElement(By.xpath("//*[@id=\"myIframe\"]")).isDisplayed();
+
+		if (Replnsh == false) {
+			throw new Error("Error: On Hand Report grid not display");
+		}
 
 		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\OnHandReport.png"));
+		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\OnHandReport.png"));
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
 	public void AgentConsole() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(10000);
-
 		// Go to Tools - Agent Console screen
-
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idTools")));
 		Driver.findElement(By.id("idTools")).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idAgent")));
 		Driver.findElement(By.id("idAgent")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Select AirlineId
 		Driver.findElement(By.id("txtAirlineId")).clear();
 		Driver.findElement(By.id("txtAirlineId")).sendKeys("AA");
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		WebElement alid = Driver.findElement(By.id("txtAirlineId"));
 		alid.sendKeys(Keys.ENTER);
-		Thread.sleep(10000);
 
 		// enter FLight No
 		Driver.findElement(By.id("txtFlightNo")).clear();
 		Driver.findElement(By.id("txtFlightNo")).sendKeys("1993");
-		Thread.sleep(10000);
 
 		// Select Arriving Airport
 		Driver.findElement(By.id("txtAirportID")).clear();
 		Driver.findElement(By.id("txtAirportID")).sendKeys("CLT");
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		WebElement apid = Driver.findElement(By.id("txtAirportID"));
 		apid.sendKeys(Keys.ENTER);
-		Thread.sleep(10000);
 
 		// Click on Check Status
 		Driver.findElement(By.id("btCheckStatus")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		boolean map = Driver.findElement(By.id("collFlight")).isEnabled();
 
@@ -3724,60 +3722,56 @@ public class NetAgentProcess {
 //			Thread.sleep(10000);
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
 	public void ContactUs() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(10000);
-
 		// Go to Welcome - Contact Us screen
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/div/div")).click();
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/ul/li[5]/a")).click();
-		Thread.sleep(15000);
+		Driver.findElement(By.xpath("//div[contains(@class,'userthumb')]")).click();
+		Driver.findElement(By.linkText("Contact Us")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Contact Us screen and Add comment and submit.
 		System.out.println(Driver.getTitle());
 		Driver.findElement(By.name("txtComments")).clear();
 		Driver.findElement(By.name("txtComments")).sendKeys("Test Note");
 		Driver.findElement(By.id("btnSubmit")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Take screen-shot.
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\ContactUs.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\ContactUs.png"));
 
 		// Go to main screen.
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
 	public void AgentTSA() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		Thread.sleep(15000);
-
 		// Go to Welcome - AgentTSA Training screen
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/div/div")).click();
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/ul/li[6]/a")).click();
-		Thread.sleep(10000);
+		Driver.findElement(By.xpath("//div[contains(@class,'userthumb')]")).click();
+		Driver.findElement(By.linkText("Agent TSA Training")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// AgentTSA screen.
 		System.out.println(Driver.getTitle());
-		Thread.sleep(10000);
 
 		// Take screen-shot.
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\AgentTSA.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\AgentTSA.png"));
 
 		String strParentWindowHandle = Driver.getWindowHandle();
 
 		// CLick on link
 		Driver.findElement(By.linkText("Annual TSA Training Presentation(Authorized Representative Version)")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		for (String winHandle : Driver.getWindowHandles()) {
 			Driver.switchTo().window(winHandle);
@@ -3785,33 +3779,33 @@ public class NetAgentProcess {
 		// Close new window
 		Driver.close();
 
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		// Switch back to original browser (first window)
 		Driver.switchTo().window(strParentWindowHandle);
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Go to main screen.
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 		// Go to Welcome - AgentTSA Training screen
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/div/div")).click();
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/ul/li[6]/a")).click();
-		Thread.sleep(10000);
+		Driver.findElement(By.xpath("//div[contains(@class,'userthumb')]")).click();
+		Driver.findElement(By.linkText("Agent TSA Training")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// AgentTSA screen.
 		System.out.println(Driver.getTitle());
-		Thread.sleep(10000);
 
 		String strParentWindowHandle1 = Driver.getWindowHandle();
 
 		// CLick on link
 		Driver.findElement(By.linkText("Annual TSA Test(Authorized Representative Version)")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File("D:\\Automation\\NA_Screenshot\\AgentTSA1.png"));
+		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\AgentTSA1.png"));
 
 		for (String winHandle : Driver.getWindowHandles()) {
 			Driver.switchTo().window(winHandle);
@@ -3819,15 +3813,16 @@ public class NetAgentProcess {
 		// Close new window
 		Driver.close();
 
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		// Switch back to original browser (first window)
 		Driver.switchTo().window(strParentWindowHandle1);
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Go to main screen.
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 	}
 
 	@Test
@@ -3837,90 +3832,90 @@ public class NetAgentProcess {
 		Thread.sleep(15000);
 
 		// Go to Welcome - Agent Risk screen
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/div/div")).click();
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/ul/li[7]/a")).click();
-		Thread.sleep(10000);
+		Driver.findElement(By.xpath("//div[contains(@class,'userthumb')]")).click();
+		Driver.findElement(By.linkText("Agent Elevated Risk Training")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		System.out.println(Driver.getTitle());
-		Thread.sleep(10000);
 
 		// Take screen-shot.
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\AgentRisk.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\AgentRisk.png"));
 
 		String strParentWindowHandle = Driver.getWindowHandle();
 
 		// CLick on link
 		Driver.findElement(By.linkText("Elevated Risk Physical Search 2.0A Training Presentation")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		for (String winHandle : Driver.getWindowHandles()) {
 			Driver.switchTo().window(winHandle);
 		}
 		// Close new window
 		Driver.close();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		// Switch back to original browser window
 		Driver.switchTo().window(strParentWindowHandle);
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Go to main screen.
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 		// Go to Welcome - Agent Risk screen
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/div/div")).click();
-		Driver.findElement(By.xpath("//*[@id=\"headerDiv\"]/div/div[3]/ul/li[7]/a")).click();
-		Thread.sleep(10000);
+		Driver.findElement(By.xpath("//div[contains(@class,'userthumb')]")).click();
+		Driver.findElement(By.linkText("Agent Elevated Risk Training")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		System.out.println(Driver.getTitle());
-		Thread.sleep(10000);
 
 		String strParentWindowHandle1 = Driver.getWindowHandle();
 
 		// CLick on link
 		Driver.findElement(By.linkText("Elevated Risk Physical Search 2.0A Test")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		for (String winHandle : Driver.getWindowHandles()) {
 			Driver.switchTo().window(winHandle);
 		}
 		// Close new window
 		Driver.close();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		// Switch back to original browser window
 		Driver.switchTo().window(strParentWindowHandle1);
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Go to main screen.
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 	}
 
 	@Test
-	public void NGLDoc() throws Exception {
+	public void MNXDoc() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(5000);
-
 		// Go to Tools - NGL Doc screen
-
+		wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Tools")));
 		Driver.findElement(By.partialLinkText("Tools")).click();
-		Driver.findElement(By.linkText("NGL Documents")).click();
-		Thread.sleep(10000);
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("MNX Documents")));
+		Driver.findElement(By.linkText("MNX Documents")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\NGLDoc.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\MNXDoc.png"));
 
 //			//Click on First Doc
 		String winHandleBefore1 = Driver.getWindowHandle();
 
 //			//CLick on doc link
-		Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div/div/ul/li[1]/a")).click();
-		Thread.sleep(10000);
+		Driver.findElement(By.xpath("//a[@ng-click=\"NglDocData(doc)\"]")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		for (String winHandle : Driver.getWindowHandles()) {
 			Driver.switchTo().window(winHandle);
@@ -3932,126 +3927,25 @@ public class NetAgentProcess {
 
 		// Switch back to original browser (first window)
 		Driver.switchTo().window(winHandleBefore1);
-		Thread.sleep(5000);
-		/*
-		 * boolean doc1 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'Aviation Known Shipper Verification')]")).isEnabled();
-		 * 
-		 * if(doc1 == false) { throw new
-		 * Error("Error: Aviation Known Shipper Verification Link not found"); }
-		 * 
-		 * boolean doc2 =
-		 * Driver.findElement(By.xpath("//a[contains(.,'Supply Request')]")).isEnabled()
-		 * ;
-		 * 
-		 * if(doc2 == false) { throw new Error("Error: Supply Request Link not found");
-		 * }
-		 * 
-		 * boolean doc3 =
-		 * Driver.findElement(By.xpath("//a[contains(.,'Square FootPrint Form')]")).
-		 * isEnabled();
-		 * 
-		 * if(doc3 == false) { throw new
-		 * Error("Error: Square FootPrint Form Link not found"); }
-		 * 
-		 * boolean doc4 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'FedEx Cargo Transfer Certificate')]")).isEnabled();
-		 * 
-		 * if(doc4 == false) { throw new
-		 * Error("Error: FedEx Cargo Transfer Certificate Link not found"); }
-		 * 
-		 * boolean doc5 =
-		 * Driver.findElement(By.xpath("//a[contains(.,'NGL FSL OPS Manual')]")).
-		 * isEnabled();
-		 * 
-		 * if(doc5 == false) { throw new
-		 * Error("Error: NGL FSL OPS Manual  Link not found"); }
-		 * 
-		 * boolean doc6 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'Agent Appearance Expectations 8DEC15')]")).isEnabled()
-		 * ;
-		 * 
-		 * if(doc6 == false) { throw new
-		 * Error("Error: Agent Appearance Expectations 8DEC15 Link not found"); }
-		 * 
-		 * boolean doc7 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'Agent Fuel Surcharge Calculation Update Effective')]")
-		 * ).isEnabled();
-		 * 
-		 * if(doc7 == false) { throw new
-		 * Error("Error: Agent Fuel Surcharge Calculation Update Effective Link not found"
-		 * ); }
-		 * 
-		 * boolean doc8 =
-		 * Driver.findElement(By.xpath("//a[contains(.,'Airline Accounts 14OCT14')]")).
-		 * isEnabled();
-		 * 
-		 * if(doc8 == false) { throw new
-		 * Error("Error: Airline Accounts 14OCT14 Link not found"); }
-		 * 
-		 * boolean doc9 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'Cargo Acceptance Form_CAF - ID Check  1NOV12')]")).
-		 * isEnabled();
-		 * 
-		 * if(doc9 == false) { throw new
-		 * Error("Error: Cargo Acceptance Form_CAF - ID Check 1NOV12 Link not found"); }
-		 * 
-		 * boolean doc10 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'FedEx Authorized Representative TSA Instructions 2')]"
-		 * )).isEnabled();
-		 * 
-		 * if(doc10 == false) { throw new
-		 * Error("Error: FedEx Authorized Representative TSA Instructions 2 Link not found"
-		 * ); }
-		 * 
-		 * boolean doc11 =
-		 * Driver.findElement(By.xpath("//a[contains(.,'NGL IAC Security Form 5AUG15')]"
-		 * )).isEnabled();
-		 * 
-		 * if(doc11 == false) { throw new
-		 * Error("Error: NGL IAC Security Form 5AUG15 Link not found"); }
-		 * 
-		 * boolean doc12 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'NGL TSA Security Instructions 4DEC13')]")).isEnabled()
-		 * ;
-		 * 
-		 * if(doc12 == false) { throw new
-		 * Error("Error: NGL TSA Security Instructions 4DEC13 Link not found"); }
-		 * 
-		 * boolean doc13 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'Shipper Security Endorsement SSE 31JUL10')]")).
-		 * isEnabled();
-		 * 
-		 * if(doc13 == false) { throw new
-		 * Error("Error: Shipper Security Endorsement SSE 31JUL10 Link not found"); }
-		 * 
-		 * boolean doc14 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'Transportation Agent SOP 16DEC14')]")).isEnabled();
-		 * 
-		 * if(doc14 == false) { throw new
-		 * Error("Error: Transportation Agent SOP 16DEC14 Link not found"); }
-		 * 
-		 * boolean doc15 = Driver.findElement(By.
-		 * xpath("//a[contains(.,'StemCyte Courier Pickup Script')]")).isEnabled();
-		 * 
-		 * if(doc15 == false) { throw new
-		 * Error("Error: StemCyte Courier Pickup Script Link not found"); }
-		 * 
-		 * Thread.sleep(10000);
-		 */
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(7000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
+
 	}
 
 	@Test
 	public void MileageCalc() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Tools")));
 		Driver.findElement(By.partialLinkText("Tools")).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("MileageCalc")));
 		Driver.findElement(By.linkText("MileageCalc")).click();
-		System.out.println(Driver.getTitle());
-		Thread.sleep(8000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		System.out.println("Title of the screen is==" + Driver.getTitle());
 
 		// For Record not Found Testing.
 		// PUId = "1234567";
@@ -4063,49 +3957,43 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtpickupid")).sendKeys("1234567");
 
 		Driver.findElement(By.id("btngetdetails")).click();
-		Thread.sleep(7000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String RNF = Driver.findElement(By.id("errorid")).getText();
 		System.out.println("RNF : " + RNF);
 
-		String CalMsg = Driver.findElement(By.xpath(
-				"/html/body/div[2]/section/div[2]/div/div/div[2]/div[1]/form/div[2]/div/div[3]/div/div/label/strong"))
-				.getText();
+		String CalMsg = Driver.findElement(By.xpath("//label/strong")).getText();
+		/// html/body/div[2]/section/div[2]/div/div/div[2]/div[1]/form/div[2]/div/div[3]/div/div/label/strong
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with JobId
 		Driver.findElement(By.id("txtJobid")).clear();
 		Driver.findElement(By.id("txtJobid")).sendKeys(JobId);
 
 		Driver.findElement(By.id("btngetdetails")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String CalMsg2 = Driver.findElement(By.xpath(
-				"/html/body/div[2]/section/div[2]/div/div/div[2]/div[1]/form/div[2]/div/div[3]/div/div/label/strong"))
-				.getText();
+		String CalMsg2 = Driver.findElement(By.xpath("//label/strong")).getText();
 
 		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(7000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String RNF2 = Driver.findElement(By.id("errorid")).getText();
 		System.out.println("RNF2 : " + RNF2);
-		Thread.sleep(5000);
 
 		Driver.findElement(By.id("txtpickupid")).clear();
 		Driver.findElement(By.id("txtpickupid")).sendKeys(PUId);
 
 		Driver.findElement(By.id("btngetdetails")).click();
-		Thread.sleep(5000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String act = Driver.findElement(By.xpath(
-				"/html/body/div[2]/section/div[2]/div/div/div[2]/div[1]/form/div[2]/div/div[3]/div/div/label/strong/span"))
-				.getText();
+		String act = Driver.findElement(By.xpath("//label/strong/span")).getText();
 		System.out.println(act);
 
-		File src0 = new File("D:\\Netlink_AJ\\TestAutomation\\NetAgentAutomation\\NetAgentProcess\\NA_DEV.xls");
+		File src0 = new File(".\\NA_DEV.xls");
 		FileInputStream fis0 = new FileInputStream(src0);
 		Workbook workbook = WorkbookFactory.create(fis0);
 		Sheet sh0 = workbook.getSheet("Sheet1");
@@ -4114,16 +4002,13 @@ public class NetAgentProcess {
 		DataFormatter formatter = new DataFormatter();
 
 		String Exp = formatter.formatCellValue(sh0.getRow(2).getCell(21));
-		Thread.sleep(10000);
 
 		if (act.contains(Exp)) {
 			System.out.println("Miles Comparison is PASS");
-			Thread.sleep(3000);
 		}
 
 		else {
 			System.out.println("Miles Comparison is FAIL");
-			Thread.sleep(3000);
 		}
 
 		// Click on Calculate
@@ -4133,7 +4018,7 @@ public class NetAgentProcess {
 		System.out.println("Mileage Calculation : " + CalMsg2);
 		// Click on Get Direction
 		Driver.findElement(By.id("btnDirection")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		boolean mapcheck = Driver.findElement(By.xpath(".//*[@id='mapLoad']")).isDisplayed();
 
@@ -4141,24 +4026,24 @@ public class NetAgentProcess {
 			throw new Error("Error: Map Not Display on Get Direction");
 		}
 
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\MileageCalc.png"));
+		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\MileageCalc.png"));
 
 		// Expand and Collapse Note
 		Driver.findElement(By.id("imgData")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		Driver.findElement(By.id("imgData")).click();
-		Thread.sleep(10000);
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 	}
 
@@ -4259,8 +4144,10 @@ public class NetAgentProcess {
 
 	}
 
-	@Test
+	@AfterSuite
 	public void SendEmail() throws Exception {
+		Thread.sleep(60000);
+		System.out.println("====Sending Email=====");
 		// Send Details email
 		msg.append("********** Replenish Work Order **********" + "\n");
 		msg.append("Work Order Id : " + WOID + "\n");
@@ -4270,9 +4157,10 @@ public class NetAgentProcess {
 		msg.append("Process URL : " + baseUrl);
 
 		String subject = "Automation: NetAgent Portal";
+		String File = ".\\test-output\\emailable-report.html";
+
 		try {
-			SendEmail.sendMail("kbrahmbhatt@samyak.com", subject, msg.toString(),
-					"D:\\Netlink_AJ\\TestAutomation\\ConnectDetailTesting\\NewEclipse\\NetAgentProcess\\test-output\\emailable-report.html");
+			SendEmail.sendMail("ravina.prajapati@samyak.com", subject, msg.toString(), File);
 		} catch (Exception ex) {
 			logger.error(ex);
 		}

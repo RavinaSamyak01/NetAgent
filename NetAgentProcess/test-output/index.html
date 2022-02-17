@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-NASuite" class="navigator-link">
+              <span class="suite-name border-passed">NASuite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-NASuite" class="navigator-link ">
+                    <span>C:\Users\rprajapati\git\NetAgent\NetAgentProcess\testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-NASuite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-NASuite" class="navigator-link ">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-NASuite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-NASuite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-NASuite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-NASuite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">4 methods,   4 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-NASuite" class="hide-methods passed suite-NASuite"> (hide)</a> <!-- hide-methods passed suite-NASuite -->
+                      <a href="#" panel-name="suite-NASuite" class="show-methods passed suite-NASuite"> (show)</a> <!-- show-methods passed suite-NASuite -->
+                    </span>
+                    <div class="method-list-content passed suite-NASuite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentRisk">AgentRisk</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentTSA">AgentTSA</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ContactUs">ContactUs</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="Login">Login</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-NASuite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-NASuite" class="panel NASuite">
+          <div class="suite-NASuite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">NetAgentSmoke.NetAgentProcess</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="AgentRisk">
+                  </a> <!-- AgentRisk -->
+                  <span class="method-name">AgentRisk</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="AgentTSA">
+                  </a> <!-- AgentTSA -->
+                  <span class="method-name">AgentTSA</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="ContactUs">
+                  </a> <!-- ContactUs -->
+                  <span class="method-name">ContactUs</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Login">
+                  </a> <!-- Login -->
+                  <span class="method-name">Login</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-NASuite-class-passed -->
+        </div> <!-- panel NASuite -->
+        <div panel-name="test-xml-NASuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\rprajapati\git\NetAgent\NetAgentProcess\testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;NASuite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;NASmoke&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;NetAgentSmoke.NetAgentProcess&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;Login&quot;/&gt;
+          &lt;include name=&quot;ContactUs&quot;/&gt;
+          &lt;include name=&quot;AgentTSA&quot;/&gt;
+          &lt;include name=&quot;AgentRisk&quot;/&gt;
+          &lt;exclude name=&quot;Courier&quot;/&gt;
+          &lt;exclude name=&quot;OrderSearch&quot;/&gt;
+          &lt;exclude name=&quot;replenish&quot;/&gt;
+          &lt;exclude name=&quot;CycleCount&quot;/&gt;
+          &lt;exclude name=&quot;CycleCountBIN&quot;/&gt;
+          &lt;exclude name=&quot;Userprofile&quot;/&gt;
+          &lt;exclude name=&quot;Userlist&quot;/&gt;
+          &lt;exclude name=&quot;parts&quot;/&gt;
+          &lt;exclude name=&quot;FSLStorage&quot;/&gt;
+          &lt;exclude name=&quot;FSLSetup&quot;/&gt;
+          &lt;exclude name=&quot;ASNLog&quot;/&gt;
+          &lt;exclude name=&quot;AgentActivityReport&quot;/&gt;
+          &lt;exclude name=&quot;AgentActivityChartReport&quot;/&gt;
+          &lt;exclude name=&quot;AgentActivityDetailReport&quot;/&gt;
+          &lt;exclude name=&quot;ReceiptReport&quot;/&gt;
+          &lt;exclude name=&quot;PullReport&quot;/&gt;
+          &lt;exclude name=&quot;TransactionReport&quot;/&gt;
+          &lt;exclude name=&quot;OnHandReport&quot;/&gt;
+          &lt;exclude name=&quot;AgentConsole&quot;/&gt;
+          &lt;exclude name=&quot;MNXDoc&quot;/&gt;
+          &lt;exclude name=&quot;MileageCalc&quot;/&gt;
+          &lt;exclude name=&quot;UserPreference&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- NetAgentSmoke.NetAgentProcess --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- NASmoke --&gt;
+&lt;/suite&gt; &lt;!-- NASuite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-NASuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for NASuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">NASmoke (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-NASuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for NASuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-NASuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for NASuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_NASuite');
+function tableData_NASuite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(4);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'Login')
+data.setCell(0, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(0, 3, 28431);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'AgentRisk')
+data.setCell(1, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(1, 3, 25457);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'AgentTSA')
+data.setCell(2, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(2, 3, 8557);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'ContactUs')
+data.setCell(3, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(3, 3, 3504);
+window.suiteTableData['NASuite']= { tableData: data, tableDiv: 'times-div-NASuite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <div id="times-div-NASuite">
+              </div> <!-- times-div-NASuite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-NASuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for NASuite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-NASuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">22 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">NetAgentSmoke.NetAgentProcess</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">OrderSearch</span>
+                <br/>
+                <span class="ignored-method-name">AgentActivityDetailReport</span>
+                <br/>
+                <span class="ignored-method-name">Userlist</span>
+                <br/>
+                <span class="ignored-method-name">TransactionReport</span>
+                <br/>
+                <span class="ignored-method-name">AgentConsole</span>
+                <br/>
+                <span class="ignored-method-name">OnHandReport</span>
+                <br/>
+                <span class="ignored-method-name">CycleCount</span>
+                <br/>
+                <span class="ignored-method-name">AgentActivityChartReport</span>
+                <br/>
+                <span class="ignored-method-name">CycleCountBIN</span>
+                <br/>
+                <span class="ignored-method-name">ASNLog</span>
+                <br/>
+                <span class="ignored-method-name">parts</span>
+                <br/>
+                <span class="ignored-method-name">UserPreference</span>
+                <br/>
+                <span class="ignored-method-name">MNXDoc</span>
+                <br/>
+                <span class="ignored-method-name">ReceiptReport</span>
+                <br/>
+                <span class="ignored-method-name">FSLStorage</span>
+                <br/>
+                <span class="ignored-method-name">Userprofile</span>
+                <br/>
+                <span class="ignored-method-name">Courier</span>
+                <br/>
+                <span class="ignored-method-name">replenish</span>
+                <br/>
+                <span class="ignored-method-name">MileageCalc</span>
+                <br/>
+                <span class="ignored-method-name">PullReport</span>
+                <br/>
+                <span class="ignored-method-name">FSLSetup</span>
+                <br/>
+                <span class="ignored-method-name">AgentActivityReport</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-NASuite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">NetAgentSmoke.NetAgentProcess</div> <!-- chronological-class-name -->
+              <div class="configuration-test before">
+                <span class="method-name">beforeMethod</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="test-method">
+                <span class="method-name">Login</span>
+                <span class="method-start">15335 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">ContactUs</span>
+                <span class="method-start">43777 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">AgentTSA</span>
+                <span class="method-start">47285 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">AgentRisk</span>
+                <span class="method-start">55845 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-test after">
+                <span class="method-name">Complete</span>
+                <span class="method-start">81309 ms</span>
+              </div> <!-- configuration-test after -->
+              <div class="configuration-suite after">
+                <span class="method-name">SendEmail</span>
+                <span class="method-start">81512 ms</span>
+              </div> <!-- configuration-suite after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

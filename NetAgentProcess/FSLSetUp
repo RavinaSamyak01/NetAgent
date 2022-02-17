@@ -1,0 +1,52 @@
+[RemoteTestNG] detected TestNG version 7.4.0
+Start Of Execution(TEST)->NASmoke
+ INFO [main] (NetAgentProcess.java:68)- Browser Opened
+Starting ChromeDriver 98.0.4758.80 (7f0488e8ba0d8e019187c6325a16c29d9b7f4989-refs/branch-heads/4758@{#972}) on port 17291
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Feb 16, 2022 1:43:52 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+ INFO [main] (NetAgentProcess.java:70)- Browser Opened
+ INFO [main] (NetAgentProcess.java:72)- Url opened
+Test Started->Login
+Test Pass->Login
+Test Started->FSLSetup
+DEFAULTBIN
+
+Search text comparison is FAIL
+Page 1 of 1 (9 items)
+PART 950025005
+PART 950025005
+Search Compare PASS
+ PART 9500250017
+
+Search Compare FAIL
+10003590
+
+Search Compare FAIL
+PART 9500250096
+
+Search Compare FAIL
+PART 9500250017
+
+Search Compare FAIL
+PART 9500250075
+
+Search Compare FAIL
+5
+1
+Search Compare FAIL
+04/30/2019
+
+Search Compare FAIL
+
+Duplicate Location Code.
+Test Pass->FSLSetup
+END Of Execution(TEST)->NASmoke
+
+===============================================
+NASuite
+Total tests run: 2, Passes: 2, Failures: 0, Skips: 0
+===============================================
+

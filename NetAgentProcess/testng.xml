@@ -5,30 +5,32 @@
       <class name="NetAgentSmoke.NetAgentProcess">
       <methods>
         <include name="Login" />
+        <include name="ContactUs" />
+        <include name="AgentTSA" />
+        <include name="AgentRisk" />
         <exclude name="Courier" /> 
         <exclude name="OrderSearch" />
         <exclude name="replenish" />
         <exclude name="CycleCount" />    
-        <exclude name="CycleCountProd" />
+        <exclude name="CycleCountBIN" />
         <exclude name="Userprofile" />
         <exclude name="Userlist" />
         <exclude name="parts" />
-        <include name="FSLStorage" />
+        <exclude name="FSLStorage" />
         <exclude name="FSLSetup" />
-        <exclude name="NetlinkInv" />
+        <exclude name="ASNLog" />
         <exclude name="AgentActivityReport" />
         <exclude name="AgentActivityChartReport" />
-        <exclude name="RejectQty" />
         <exclude name="AgentActivityDetailReport" />
         <exclude name="ReceiptReport" />
         <exclude name="PullReport" />
         <exclude name="TransactionReport" />
         <exclude name="OnHandReport" />
         <exclude name="AgentConsole" />
-        <exclude name="NGLDoc" />
+        <exclude name="MNXDoc" />
         <exclude name="MileageCalc" />
         <exclude name="UserPreference" />
-        <exclude name="SendEmail" />
+        <!--<include name="SendEmail" /> -->
       </methods>
       </class>
     </classes>

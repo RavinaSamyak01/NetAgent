@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="22" total="26" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-02-17T18:04:35 IST" name="NASuite" finished-at="2022-02-17T18:05:56 IST" duration-ms="81477">
+    <groups>
+    </groups>
+    <test started-at="2022-02-17T18:04:35 IST" name="NASmoke" finished-at="2022-02-17T18:05:56 IST" duration-ms="81477">
+      <class name="NetAgentSmoke.NetAgentProcess">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:NetAgentSmoke.NetAgentProcess@70e9c95d]" started-at="2022-02-17T18:04:35 IST" name="beforeMethod" finished-at="2022-02-17T18:04:50 IST" duration-ms="15299" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="Login()[pri:0, instance:NetAgentSmoke.NetAgentProcess@70e9c95d]" started-at="2022-02-17T18:04:50 IST" name="Login" finished-at="2022-02-17T18:05:19 IST" duration-ms="28431" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+        <test-method signature="ContactUs()[pri:0, instance:NetAgentSmoke.NetAgentProcess@70e9c95d]" started-at="2022-02-17T18:05:19 IST" name="ContactUs" finished-at="2022-02-17T18:05:22 IST" duration-ms="3504" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ContactUs -->
+        <test-method signature="AgentTSA()[pri:0, instance:NetAgentSmoke.NetAgentProcess@70e9c95d]" started-at="2022-02-17T18:05:22 IST" name="AgentTSA" finished-at="2022-02-17T18:05:31 IST" duration-ms="8557" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AgentTSA -->
+        <test-method signature="AgentRisk()[pri:0, instance:NetAgentSmoke.NetAgentProcess@70e9c95d]" started-at="2022-02-17T18:05:31 IST" name="AgentRisk" finished-at="2022-02-17T18:05:56 IST" duration-ms="25457" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AgentRisk -->
+        <test-method is-config="true" signature="Complete()[pri:0, instance:NetAgentSmoke.NetAgentProcess@70e9c95d]" started-at="2022-02-17T18:05:56 IST" name="Complete" finished-at="2022-02-17T18:05:56 IST" duration-ms="163" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Complete -->
+        <test-method is-config="true" signature="SendEmail()[pri:0, instance:NetAgentSmoke.NetAgentProcess@70e9c95d]" started-at="2022-02-17T18:05:56 IST" name="SendEmail" finished-at="2022-02-17T18:06:57 IST" duration-ms="60749" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SendEmail -->
+      </class> <!-- NetAgentSmoke.NetAgentProcess -->
+    </test> <!-- NASmoke -->
+  </suite> <!-- NASuite -->
+</testng-results>
