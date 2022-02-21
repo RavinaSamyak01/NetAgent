@@ -18,11 +18,11 @@
 					<exclude name="Courier" />
 
 					<!-- Inventory screens-->
-					<exclude name="parts" />
+					<include name="parts" />
 					<exclude name="FSLStorage" />
 					<exclude name="FSLSetup" />
 					<exclude name="CycleCountBIN" />
-					<include name="ASNLog" />
+					<exclude name="ASNLog" />
 
 					<!-- Reports screens-->
 					<exclude name="AgentActivityReport" />

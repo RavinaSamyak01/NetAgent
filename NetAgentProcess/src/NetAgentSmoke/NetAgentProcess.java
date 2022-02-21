@@ -1970,6 +1970,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idsearchbutton")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		Thread.sleep(2000);
 		String stock_partDetails = Driver.findElement(By.xpath(".//*[@id=\"PartMasterGD\"]//tr[1]/td[4]/a")).getText();
 		String[] list = stock_partDetails.split(" ");
 		String a = list[1].replaceAll("[^0-9]", "");
