@@ -1,0 +1,234 @@
+Start Of Execution(TEST)->NASmoke
+Test Started->OrderSearch
+Validation message:-Order Range From Required.
+Order Range To Required.
+No of Record found=Page 1 of 1 (1 items)
+No of Record found=Page 1 of 1 (1 items)
+Page 1 of 1 (1 items)
+Status : Order Search is Working after Search with Date Range.
+Fri Feb 18 10:55:49 IST 2022
+Sat Jan 29 10:55:49 IST 2022
+01/29/2022
+Page 1 of 1 (3 items)
+Status : Order Search is Working after Search with Date Range.
+total No. of columns of the table is=14
+column name is=ORDER DATE Column
+Sorting for ORDER DATE Column is==none
+Clicked on column for sorting
+after Sorting value of sort for ORDER DATE Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for ORDER DATE Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=STATUS Column
+Sorting for STATUS Column is==none
+Clicked on column for sorting
+after Sorting value of sort for STATUS Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for STATUS Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=PICKUP # Column
+Sorting for PICKUP # Column is==none
+Clicked on column for sorting
+after Sorting value of sort for PICKUP # Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for PICKUP # Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=JOB # Column
+Sorting for JOB # Column is==none
+Clicked on column for sorting
+after Sorting value of sort for JOB # Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for JOB # Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=SVC Column
+Sorting for SVC Column is==none
+Clicked on column for sorting
+after Sorting value of sort for SVC Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for SVC Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=FROM Column
+Sorting for FROM Column is==none
+Clicked on column for sorting
+after Sorting value of sort for FROM Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for FROM Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=TO Column
+Sorting for TO Column is==none
+Clicked on column for sorting
+after Sorting value of sort for TO Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for TO Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=PCS#/WT Column
+Sorting for PCS#/WT Column is==none
+Clicked on column for sorting
+after Sorting value of sort for PCS#/WT Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for PCS#/WT Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=POD Column
+Sorting for POD Column is==none
+Clicked on column for sorting
+after Sorting value of sort for POD Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for POD Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+column name is=POD Signature Column
+Sorting for POD Signature Column is==none
+Clicked on column for sorting
+after Sorting value of sort for POD Signature Column is==ascending
+Sorting is applied and sorting is applied on ascending Order
+Clicked on column for sorting
+after Sorting value of sort for POD Signature Column is==descending
+Sorting is applied and sorting is applied on ascending Order
+Test Pass->OrderSearch
+Test Started->CycleCount
+Test Pass->CycleCount
+Test Started->Courier
+34689
+Status : Agent Id is right.
+Status : AgentId field is display.
+Status : AgentCode field is display.
+Status : Vendor field is display.
+Status : Courier Name field is display.
+Status : Valid From  field is display.
+Status : Valid To field is display.
+Status : Country field is display.
+Status : Zipcode field is display.
+Status : City field is display.
+Status : State field is display.
+Status : Address Line 1 field is display.
+Status : Dept/Suite field is display.
+Status : Phone field is display.
+Status : Phone Extension field is display.
+Status : Fax field is display.
+Status : Email field is display.
+Status : After Hr FName field is display.
+Status : After Hr LName field is display.
+Status : After Hr Phone field is display.
+Status : After Hr Phone Extension field is display.
+Status : Emrg FName field is display.
+Status : Emrg LName field is display.
+Status : Emrg Phone field is display.
+Status : Emrg Phone Ext field is display.
+Status : A/P Acct No field is display.
+Status : A/P Dept No field is display.
+Status : Cash Acct No field is display.
+Status : Cash Dept No field is display.
+Status : Exp Acct No field is display.
+Status : Exp Dept No field is display.
+Status : Type field is display.
+Status : Billing POC field is display.
+Status : Operations POC field is display.
+Status : Management POC field is display.
+Status : Compliance POC field is display.
+Status : Driver Required check-box is display.
+Status : Alert Type field is display.
+Status : Received On 1 field is display.
+Status : Received On 2 field is display.
+Status : General Liability field is display.
+Status : Auto field is display.
+Status : WareHouse field is display.
+Status : Cargo field is display.
+Status : Worker Compensation field is display.
+Status : Received On 3 field is display.
+Status : Received On 4 field is display.
+Status : After Hr Start field is display.
+Status : After Hr End field is display.
+Status : Received Service Agreement check-box is display.
+Status : Received W9 check-box is display.
+Status : Received Proof of Insurance check-box is display.
+Status : Received TSA Roster check-box is display.
+Status : Received TSA Ackn check-box is display.
+Status : Note field is display.
+Status : Company Type field is display.
+Status : Ship Lable Key field is display.
+Status : FDX TSA check-box is display.
+Status : TSA Certified check-box is display.
+Status : HAZ Certified check-box is display.
+Status : CCFS Trans Certified check-box is display.
+Status : Elevated Risk Certified check-box is display.
+Status : 3P Courier check-box is display.
+Test Pass->Courier
+Test Started->FSLStorage
+NetAgent : FSL Storage
+Default Current Month Displayed in Combo : February
+Default Current Year Displayed in Combo : 2022
+Test Pass->FSLStorage
+Test Started->FSLSetup
+DEFAULTBIN
+
+Search text comparison is FAIL
+Page 1 of 1 (12 items)
+PART 950025005
+PART 950025005
+Search Compare PASS
+ PART 9500250017
+
+Search Compare FAIL
+10003590
+
+Search Compare FAIL
+PART 9500250096
+
+Search Compare FAIL
+PART 9500250017
+
+Search Compare FAIL
+PART 9500250075
+
+Search Compare FAIL
+5
+1
+Search Compare FAIL
+04/30/2019
+
+Search Compare FAIL
+
+Duplicate Location Code.
+Test Pass->FSLSetup
+Test Started->CycleCountBIN
+WorkOrder 1681546 is generated.
+Test Pass->CycleCountBIN
+Test Started->Userprofile
+Test Pass->Userprofile
+Test Started->Userlist
+
+FN USER 3468901
+First Name Search Compare is FAIL
+
+LN USER 3468901
+Last Name Search Compare is FAIL
+No Records found!
+No Records found!
+No Records found!
+
+3468901
+Login ID Search Compare is FAIL
+*****Validation message is matched*****
+Test Pass->Userlist
+Test Started->MNXDoc
+Test Pass->MNXDoc
+Test Started->MileageCalc
+Title of the screen is==NetAgent : Mileage Calc
+RNF : Record not found.
+RNF2 : 
+1 Mile(s)
+Miles Comparison is FAIL
+Mileage Calculation : 
+Mileage Calculation : The approved distance between above two addresses is 1 Mile(s) .
+Test Pass->MileageCalc
+Test Started->UserPreference
+Test Pass->UserPreference
+END Of Execution(TEST)->NASmoke

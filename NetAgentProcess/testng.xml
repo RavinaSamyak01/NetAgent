@@ -1,38 +1,55 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="NASuite">
-  <test thread-count="5" name="NASmoke">
-    <classes>
-      <class name="NetAgentSmoke.NetAgentProcess">
-      <methods>
-        <include name="Login" />
-        <include name="ContactUs" />
-        <include name="AgentTSA" />
-        <include name="AgentRisk" />
-        <exclude name="Courier" /> 
-        <exclude name="OrderSearch" />
-        <exclude name="replenish" />
-        <exclude name="CycleCount" />    
-        <exclude name="CycleCountBIN" />
-        <exclude name="Userprofile" />
-        <exclude name="Userlist" />
-        <exclude name="parts" />
-        <exclude name="FSLStorage" />
-        <exclude name="FSLSetup" />
-        <exclude name="ASNLog" />
-        <exclude name="AgentActivityReport" />
-        <exclude name="AgentActivityChartReport" />
-        <exclude name="AgentActivityDetailReport" />
-        <exclude name="ReceiptReport" />
-        <exclude name="PullReport" />
-        <exclude name="TransactionReport" />
-        <exclude name="OnHandReport" />
-        <exclude name="AgentConsole" />
-        <exclude name="MNXDoc" />
-        <exclude name="MileageCalc" />
-        <exclude name="UserPreference" />
-        <!--<include name="SendEmail" /> -->
-      </methods>
-      </class>
-    </classes>
-  </test> <!-- NASmoke -->
+	<test thread-count="5" name="NASmoke">
+		<classes>
+			<class name="NetAgentSmoke.NetAgentProcess">
+				<methods>
+					<!--<exclude name="Login" /> -->
+
+					<!-- Home screens-->
+					<exclude name="ContactUs" />
+					<exclude name="AgentTSA" />
+					<exclude name="AgentRisk" />
+
+					<!-- Operations screens-->
+					<exclude name="OrderSearch" />
+					<exclude name="replenish" />
+					<exclude name="CycleCount" />
+					<exclude name="Courier" />
+
+					<!-- Inventory screens-->
+					<exclude name="parts" />
+					<exclude name="FSLStorage" />
+					<exclude name="FSLSetup" />
+					<exclude name="CycleCountBIN" />
+					<include name="ASNLog" />
+
+					<!-- Reports screens-->
+					<exclude name="AgentActivityReport" />
+					<exclude name="AgentActivityChartReport" />
+					<exclude name="AgentActivityDetailReport" />
+					<exclude name="ReceiptReport" />
+					<exclude name="PullReport" />
+					<exclude name="TransactionReport" />
+					<exclude name="OnHandReport" />
+
+
+					<!-- Admin screens-->
+					<exclude name="Userprofile" />
+					<exclude name="Userlist" />
+
+					<!-- Tools screens-->
+					<exclude name="AgentConsole" />
+					<exclude name="MNXDoc" />
+					<exclude name="MileageCalc" />
+
+					<!-- Preference screens-->
+					<exclude name="UserPreference" />
+
+
+					<!--<exclude name="SendEmail" /> -->
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- NASmoke -->
 </suite> <!-- NASuite -->

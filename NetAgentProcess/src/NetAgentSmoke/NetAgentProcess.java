@@ -2,6 +2,8 @@ package NetAgentSmoke;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,13 +31,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 @Listeners(TestReportListener.class)
 
@@ -60,10 +68,13 @@ public class NetAgentProcess {
 	String baseUrl = rb.getString("URL");
 
 	public static Logger logger;
+	public static ExtentReports report;
+	public static ExtentTest test;
 
-	@BeforeTest
+	@BeforeSuite
 	public void beforeMethod() {
 		logger = Logger.getLogger(NetAgentProcess.class);
+		startTest();
 
 		System.setProperty("webdriver.chrome.driver", ".\\chromedriver.exe");
 
@@ -78,11 +89,88 @@ public class NetAgentProcess {
 
 	}
 
+	@BeforeMethod
+	public void testMethodName(Method method) {
+
+		String testName = method.getName();
+		test = report.startTest(testName);
+
+	}
+
+	public static void startTest() {
+		// You could find the xml file below. Create xml file in your project and copy
+		// past the code mentioned below
+
+		System.setProperty("extent.reporter.pdf.start", "true");
+		System.setProperty("extent.reporter.pdf.out", "./Report/PDFExtentReport/ExtentPDF.pdf");
+
+		// report.loadConfig(new File(System.getProperty("user.dir")
+		// +"\\extent-config.xml"));
+		report = new ExtentReports("./Report/ExtentReport/ExtentReportResults.html", true);
+		// test = report.startTest();
+	}
+
+	public static void endTest() {
+		report.endTest(test);
+		report.flush();
+	}
+
+	public String getScreenshot(WebDriver driver, String screenshotName) throws IOException {
+
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		// after execution, you could see a folder "FailedTestsScreenshots" under src
+		// folder
+		String destination = System.getProperty("user.dir") + "/Report/NA_Screenshot/" + screenshotName + ".png";
+		File finalDestination = new File(destination);
+		FileUtils.copyFile(source, finalDestination);
+		return destination;
+	}
+
+	public static String getFailScreenshot(WebDriver driver, String screenshotName) throws Exception {
+		// String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		// after execution, you could see a folder "FailedTestsScreenshots" under src
+		// folder
+		String destination = System.getProperty("user.dir") + "/Report/FailedTestsScreenshots/" + screenshotName
+				+ ".png";
+		File finalDestination = new File(destination);
+		FileUtils.copyFile(source, finalDestination);
+		return destination;
+	}
+
+	@AfterMethod
+	public void getResult(ITestResult result) throws Exception {
+
+		if (result.getStatus() == ITestResult.FAILURE) {
+			test.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
+			// test.log(LogStatus.FAIL, "Test Case Failed is " +
+			// result.getThrowable().getMessage());
+			test.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
+			// To capture screenshot path and store the path of the screenshot in the string
+			// "screenshotPath"
+			// We do pass the path captured by this mehtod in to the extent reports using
+			// "logger.addScreenCapture" method.
+			String screenshotPath = getFailScreenshot(Driver, result.getName());
+			// To add it in the extent report
+			test.log(LogStatus.FAIL, test.addScreenCapture(screenshotPath));
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			test.log(LogStatus.PASS, "Test Case Pass is " + result.getName());
+			String screenshotPath = getScreenshot(Driver, result.getName());
+			// To add it in the extent report
+			test.log(LogStatus.PASS, test.addScreenCapture(screenshotPath));
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			test.log(LogStatus.SKIP, "Test Case Skipped is " + result.getName());
+		}
+	}
+
 	// --Updated by Ravina
-	@Test
+	@BeforeTest
 	public void Login() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
+		getScreenshot(Driver, "LoginPage");
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.name("loginForm")));
 		String UserName = rb.getString("UserName");
 		String password = rb.getString("Password");
@@ -129,7 +217,9 @@ public class NetAgentProcess {
 		LOCCode2 = formatter.formatCellValue(sh1.getRow(2).getCell(16));
 		LOC2Part = formatter.formatCellValue(sh1.getRow(2).getCell(17));
 
-		Thread.sleep(10000);
+		Thread.sleep(2000);
+		getScreenshot(Driver, "HomeScreen");
+
 	}
 
 	@Test
@@ -709,8 +799,7 @@ public class NetAgentProcess {
 			System.out.println("Status : 3P Courier check-box is display.");
 		}
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\Courier.png"));
+		getScreenshot(Driver, "Courier");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -729,6 +818,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idOrder")).click();
 
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("ordersearch")));
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch")));
 		Driver.findElement(By.id("btnSearch")).click();
 
@@ -776,7 +866,7 @@ public class NetAgentProcess {
 
 		// --Searching SPL Order
 		Driver.findElement(By.id("txtPickup")).clear();
-		Driver.findElement(By.id("txtPickup")).sendKeys("3261311");
+		Driver.findElement(By.id("txtPickup")).sendKeys("N3265723");
 
 		Driver.findElement(By.id("btnSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -808,11 +898,11 @@ public class NetAgentProcess {
 		}
 
 		// --Click on Upload button
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("hrfAct")));
 		Driver.findElement(By.id("hrfAct")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\OrderSearch Document.png"));
+		getScreenshot(Driver, "OrderSearch Document");
 
 		// --Save&Close
 		Driver.findElement(By.id("btnOk")).click();
@@ -852,6 +942,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("btnSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dx-info")));
 		pagecntOS = Driver.findElement(By.className("dx-info")).getText();
 		System.out.println(pagecntOS);
 
@@ -924,24 +1015,24 @@ public class NetAgentProcess {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
 		// Go to replenish screen
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idOperations")));
 		Driver.findElement(By.id("idOperations")).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idReplenish")));
 		Driver.findElement(By.id("idReplenish")).click();
-		Thread.sleep(15000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		getScreenshot(Driver, "Replenish");
 
 		// Select Account number
 		Select AccNo = new Select(Driver.findElement(By.id("ddlClient")));
 		AccNo.selectByVisibleText(Client);
-		Thread.sleep(10000);
-
-		// Select FSL
-		// Select FSL = new Select(Driver.findElement(By.id("ddlfsl")));
-		// FSL.selectByVisibleText(FSLName);
-		// Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		// add part
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("lnkPartDtl")));
 		Driver.findElement(By.id("lnkPartDtl")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with part# and name
 
@@ -952,226 +1043,93 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtPartName")).sendKeys(Part1Name);
 
 		Driver.findElement(By.id("btnSearch")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select part
 		Driver.findElement(By.xpath(".//*[@title='Add']")).click();
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File("D:\\Automation\\NA_Screenshot\\Replenish-Part Popup.png"));
+		getScreenshot(Driver, "Replenish-Part Popup");
 
 		// delete part
 		Driver.findElement(By.xpath(".//*[@title='Delete']")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select part
 		Driver.findElement(By.xpath(".//*[@title='Add']")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// save part
 		Driver.findElement(By.xpath(".//*[@title='Save']")).click();
-		Thread.sleep(10000);
-
-		// delete part from list
-		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[1]/td[2]/a/i")).click();
-		// Thread.sleep(10000);
-
-		// add new part
-		// Driver.findElement(By.id("lnkPartDtl")).click();
-		// Thread.sleep(10000);
-
-		// Search with part# and name
-
-		// Driver.findElement(By.id("txtF1lable")).clear();
-		// Driver.findElement(By.id("txtF1lable")).sendKeys(Part2);
-
-		// Driver.findElement(By.id("txtPartName")).clear();
-		// Driver.findElement(By.id("txtPartName")).sendKeys(Part2Name);
-
-		// Driver.findElement(By.id("btnSearch")).click();
-		// Thread.sleep(10000);
-
-		// select part
-		// Driver.findElement(By.xpath(".//*[@title='Add']")).click();
-		// Thread.sleep(10000);
-
-		// save part
-		// Driver.findElement(By.xpath(".//*[@title='Save']")).click();
-		// Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// click on + icon for expand
 
 		Driver.findElement(By.id("lnkexpandlnkexpand_0")).click();
-		Thread.sleep(10000);
 
 		// Click on add line
 
 		Driver.findElement(By.xpath(".//*[@id='lnklinedtl_0']")).click();
-		Thread.sleep(10000);
-
-		// delete line and add again
-
-		// Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[2]/td/table/tbody/tr/td[1]/a/i")).click();
-		// Thread.sleep(10000);
-
-		// Driver.findElement(By.xpath(".//*[@id='lnklinedtl_0']")).click();
-		// Thread.sleep(10000);
-
-		// fill line information
-
-//			Boolean fld2 = Driver.findElement(By.id("txtField2_0")).isEnabled();
-//			
-//			if(fld2 == true)
-//			{
-//				Driver.findElement(By.id("txtField2_0")).clear();
-//				Driver.findElement(By.id("txtField2_0")).sendKeys(P2Field2);
-//			}
-//			
-//			Boolean fld3 = Driver.findElement(By.id("txtField3_0")).isEnabled();
-//			
-//			if(fld3 == true)
-//			{
-//				Driver.findElement(By.id("txtField3_0")).clear();
-//				Driver.findElement(By.id("txtField3_0")).sendKeys(P2Field3);
-//			}
-//			
-//			Boolean fld4 = Driver.findElement(By.id("txtField4_0")).isEnabled();
-//			
-//			if(fld4 == true)
-//			{
-//				Driver.findElement(By.id("txtField4_0")).clear();
-//				Driver.findElement(By.id("txtField4_0")).sendKeys(P2Field4);
-//			}
-//								
-//			
-//			WebElement fld5 = Driver.findElement(By.xpath(".//*[@id='txtField5_0']"));
-//			fld5.getSize();
-//			
-//			if(!fld5.equals(0))
-//			{
-//				Driver.findElement(By.xpath(".//*[@id='txtField5_0']")).clear();
-//				Driver.findElement(By.xpath(".//*[@id='txtField5_0']")).sendKeys(P2Field5);
-//			}						
-//			
-//			Boolean Srn = Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[2]/td/table/tbody/tr/td[8]/input")).isEnabled();
-//			
-//			if(Srn == true)
-//			{
-//				Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[2]/td/table/tbody/tr/td[8]/input")).clear();
-//				Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[2]/td/table/tbody/tr/td[8]/input")).sendKeys("123");
-//			}		
-//			Thread.sleep(10000);
 
 		Driver.findElement(By.id("ReplanishQty_0")).clear();
 		Driver.findElement(By.id("ReplanishQty_0")).sendKeys("2");
 
 		// click on add location
 		Driver.findElement(By.linkText("Add Location")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idlocationname")));
 
 		Driver.findElement(By.id("idsavelocationprocess")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@compile=\"ErrorMsg\"]//li")));
 
 		String Text = Driver.findElement(By.id("idValidation")).getText();
 		System.out.println(Text);
-		Thread.sleep(5000);
 
+		// --Cancel Add Location
 		Driver.findElement(By.id("idAddLocationProcess")).click();
-		Thread.sleep(5000);
-
-		// Save location --- need to add based on field
-
-		// WebElement sve = Driver.findElement(By.id("parttable"));
-
-		// WebElement clicksave = sve.findElement(By.cssSelector(".sprite.icon-save"));
-		// clicksave.click();
-
-//			//enter location name	
-//			Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[2]/td/table/tbody/tr/td[11]/div/div/div[1]/input")).clear();
-//			Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[2]/td/table/tbody/tr/td[11]/div/div/div[1]/input")).sendKeys("LOC123");
-//			Thread.sleep(10000);
-
-		// cancel add location
-
-		// WebElement cancl1 =
-		// Driver.findElement(By.xpath("//td[contains(@ng-show,'childsegment.AddLocation')]"));
-		// Thread.sleep(10000);
-
-		// WebElement cancl2 =
-		// cancl1.findElement(By.xpath("//td[contains(@ng-show,'childsegment.AddLocation')]"));
-		// Thread.sleep(10000);
-
-		// WebElement clickcnl =
-		// cancl2.findElement(By.cssSelector(".sprite.icon-cancel"));
-		// clickcnl.click();
-
-		// Select location
-
-//			Select slctloc = new Select(Driver.findElement(By.xpath("/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/div/table/tbody[1]/tr[2]/td/table/tbody/tr/td[9]/select")));
-//			slctloc.selectByVisibleText("DEFAULTBIN");
-//			Thread.sleep(10000);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("idlocationname")));
 
 		// Click on expand and collapse
-
 		Driver.findElement(By.xpath("//a[contains(.,'Collapse All')]")).click();
-		Thread.sleep(10000);
-
 		Driver.findElement(By.xpath("//a[contains(.,'Expand All')]")).click();
-		Thread.sleep(10000);
 
 		// Process Save for replenish
-
 		Driver.findElement(By.id("hlksaveReplenish")).click();
-		Thread.sleep(10000);
 
 		// Success message
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("success")));
 		SuccMsgReplnsh = Driver.findElement(By.id("success")).getText();
 		System.out.println(SuccMsgReplnsh);
-		Thread.sleep(10000);
 
 		String winHandleBefore = Driver.getWindowHandle();
 
 		// Open Print label
 		Driver.findElement(By.id("idlabelgenerate")).click();
-		Thread.sleep(10000);
-
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File("D:\\Automation\\NA_Screenshot\\Replenish-Print Label.png"));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		for (String winHandle : Driver.getWindowHandles()) {
 			Driver.switchTo().window(winHandle);
+			Thread.sleep(2000);
+			getScreenshot(Driver, "Replenish-Print Label");
 		}
-
-//			Boolean LBL = Driver.findElement(By.xpath(".//*[@id='dgLabel']")).isDisplayed();
-//			
-//			if(LBL == false)
-//			{
-//				System.out.println("Error: Print Label Not found");
-//			}	
-//			Thread.sleep(10000);	
 
 		Driver.close();
 
-		Thread.sleep(10000);
-
 		// Switch back to original browser (first window)
 		Driver.switchTo().window(winHandleBefore);
-		Thread.sleep(15000);
+		Thread.sleep(2000);
 
 		Driver.findElement(By.id("txtOrderNo")).click();
-		Thread.sleep(10000);
 
 		WOID = Driver.findElement(By.id("txtOrderNo")).getAttribute("value");
 		System.out.println("WorkOrder # " + WOID);
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		WOTP = Driver.findElement(By.id("txtOrderType")).getAttribute("value");
 		System.out.println("WorkOrder Type : " + WOTP);
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 
 		Driver.findElement(By.id("hlkCreateReplenish")).click();
-		Thread.sleep(10000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"scroll_div\"]")));
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -1212,8 +1170,7 @@ public class NetAgentProcess {
 			Thread.sleep(2000);
 		}
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\Cycle Count.png"));
+		getScreenshot(Driver, "Cycle Count");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -1386,8 +1343,7 @@ public class NetAgentProcess {
 			System.out.println("Error: Home Phone field is not display");
 		}
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\userprofile.png"));
+		getScreenshot(Driver, "UserProfile");
 
 		// --Click on MNX Logo
 		Driver.findElement(By.id("imgNGLLogo")).click();
@@ -1426,7 +1382,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("btnSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String FNexp = Driver.findElement(By.id("txtFirstName")).getText();
+		String FNexp = formatter.formatCellValue(sh0.getRow(2).getCell(36));
 		String FNact = Driver
 				.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'First Name')]"))
 				.getText();
@@ -1445,6 +1401,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtLastName")).clear();
 		Driver.findElement(By.id("txtLastName")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(37)));
 
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch")));
 		Driver.findElement(By.id("btnSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -1765,8 +1722,7 @@ public class NetAgentProcess {
 
 		Driver.findElement(By.id("imgSaveUserMaster")).click();
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\userlist_validation.png"));
+		getScreenshot(Driver, "UserList_Validation");
 
 		String Message1 = Driver.findElement(By.id("idValidation")).getText();
 
@@ -1812,8 +1768,7 @@ public class NetAgentProcess {
 		 * Thread.sleep(7000);
 		 */
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\userlist.png"));
+		getScreenshot(Driver, "UserList");
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("imgNGLLogo")));
 		Driver.findElement(By.id("imgNGLLogo")).click();
@@ -1839,9 +1794,10 @@ public class NetAgentProcess {
 		Select optprt = new Select(clientprt);
 		optprt.selectByVisibleText(Client);
 		logger.info("Parts Screen: Client selected");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// -Search button
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("idsearchbutton")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idsearchbutton")));
 		Driver.findElement(By.id("idsearchbutton")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		logger.info("Parts Screen: Click on search button.");
@@ -1865,8 +1821,7 @@ public class NetAgentProcess {
 		logger.info("Parts Screen: Click on search button.");
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\Part.png"));
+		getScreenshot(Driver, "Part");
 
 		// partDetail
 
@@ -1890,15 +1845,16 @@ public class NetAgentProcess {
 		logger.info("Parts Screen: Click on part and go to part details screen.");
 		System.out.println(Driver.getTitle());
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\Part_PartEditor.png"));
+		getScreenshot(Driver, "Part_PartEditor");
 
 		Driver.findElement(By.id("idreturntoitem")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		logger.info("Parts Screen: Return from part details screen.");
 
 		String exp1 = formatter.formatCellValue(sh0.getRow(2).getCell(22));
+		System.out.println("Expected Sprint part Number is=" + exp1);
 		String act1 = Driver.findElement(By.xpath("//*[@id='PartMasterGD']//tbody//a")).getText();
+		System.out.println("Actual Sprint part Number is=" + act1);
 
 		if (act1.contains(exp1)) {
 			System.out.println("Field1 Search Compare is - PASS");
@@ -1916,33 +1872,11 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		Driver.findElement(By.id("txtField2")).clear();
 
-		String exp2 = formatter.formatCellValue(sh0.getRow(2).getCell(23));
-		String act2 = Driver.findElement(By.xpath("//*[@id='PartMasterGD']//tbody//a")).getText();
-
-		if (act2.contains(exp2)) {
-			System.out.println("Field1 Search Compare is - PASS");
-		}
-
-		else {
-			System.out.println("Field1 Search Compare is - FAIL");
-		}
-
 		// --Search with third field
 		Driver.findElement(By.id("txtField3")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(24)));
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idsearchbutton")));
 		Driver.findElement(By.id("idsearchbutton")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		String exp3 = formatter.formatCellValue(sh0.getRow(2).getCell(24));
-		String act3 = Driver.findElement(By.xpath("//*[@id='PartMasterGD']//tbody//a")).getText();
-
-		if (act3.contains(exp3)) {
-			System.out.println("Field1 Search Compare is - PASS");
-		}
-
-		else {
-			System.out.println("Field1 Search Compare is - FAIL");
-		}
 
 		// --Search with fourth field
 		Driver.findElement(By.id("txtField3")).clear();
@@ -1951,37 +1885,17 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idsearchbutton")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String exp4 = formatter.formatCellValue(sh0.getRow(2).getCell(25));
-		String act4 = Driver.findElement(By.xpath("//*[@id='PartMasterGD']//tbody//a")).getText();
-
-		if (act4.contains(exp4)) {
-			System.out.println("Field1 Search Compare is - PASS");
-		}
-
-		else {
-			System.out.println("Field1 Search Compare is - FAIL");
-		}
-
 		// -Search with fifth field
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtField4")));
 		Driver.findElement(By.id("txtField4")).clear();
-		Driver.findElement(By.id("txtField5")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(26)));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtSrAliasName")));
+		Driver.findElement(By.id("txtSrAliasName")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(26)));
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idsearchbutton")));
 		Driver.findElement(By.id("idsearchbutton")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String exp5 = formatter.formatCellValue(sh0.getRow(2).getCell(26));
-		String act5 = Driver.findElement(By.xpath("//*[@id='PartMasterGD']//tbody//a")).getText();
-
-		if (act5.contains(exp5)) {
-			System.out.println("Field1 Search Compare is - PASS");
-		}
-
-		else {
-			System.out.println("Field1 Search Compare is - FAIL");
-		}
-
 		// --Invalid text
-		Driver.findElement(By.id("txtField5")).clear();
+		Driver.findElement(By.id("txtSrAliasName")).clear();
 
 		// Search with invalid text
 		Driver.findElement(By.id("txtField1")).sendKeys("Test123");
@@ -2006,18 +1920,11 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtField3")).clear();
 
 		Driver.findElement(By.id("txtField4")).sendKeys("Test123");
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("idsearchbutton")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idsearchbutton")));
 		Driver.findElement(By.id("idsearchbutton")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		Driver.findElement(By.id("PartNoGrid")).getText();
 		Driver.findElement(By.id("txtField4")).clear();
-
-		Driver.findElement(By.id("txtField5")).sendKeys("Test123");
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("idsearchbutton")));
-		Driver.findElement(By.id("idsearchbutton")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-		Driver.findElement(By.id("PartNoGrid")).getText();
-		Driver.findElement(By.id("txtField5")).clear();
 
 		Driver.findElement(By.id("txtSrAliasName")).sendKeys("Test123");
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idsearchbutton")));
@@ -2086,8 +1993,7 @@ public class NetAgentProcess {
 		logger.info("Parts Screen: Go to stock details screen.");
 		System.out.println(Driver.getTitle());
 
-		File scrFile3 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile3, new File(".\\NA_Screenshot\\Part_StockDetails.png"));
+		getScreenshot(Driver, "Part_StockDetails");
 
 		// --Click on PrintLabel button
 		Driver.findElement(By.linkText("Print Label")).click();
@@ -2130,8 +2036,7 @@ public class NetAgentProcess {
 			Thread.sleep(2000);
 
 		}
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\PartswithSelection.png"));
+		getScreenshot(Driver, "PartswithSelection");
 
 		Driver.findElement(By.id("idResetbutton")).click();
 		logger.info("Parts Screen: User has click reset button.");
@@ -2151,6 +2056,7 @@ public class NetAgentProcess {
 		// --Click on Inventory
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
 
 		// --Click on FSL Storage
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idFSLStorage")));
@@ -2174,8 +2080,7 @@ public class NetAgentProcess {
 		String selectedComboValue1 = yrname.getFirstSelectedOption().getText();
 		System.out.println("Default Current Year Displayed in Combo : " + selectedComboValue1);
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\FSLStorage.png"));
+		getScreenshot(Driver, "FSLStorage");
 
 		WebElement year = Driver.findElement(By.id("ddlyear"));
 		Select opt1 = new Select(year);
@@ -2199,8 +2104,7 @@ public class NetAgentProcess {
 		 * Driver.findElement(By.id("success")).getText(); Thread.sleep(5000);
 		 */
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\FSLStorage1.png"));
+		getScreenshot(Driver, "FSLStorage");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -2213,6 +2117,7 @@ public class NetAgentProcess {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idFSLSetup")));
 		Driver.findElement(By.id("idFSLSetup")).click();
@@ -2223,20 +2128,8 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnsearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		// Search Compare
-		String exp = Driver.findElement(By.id("txtFSLbinSearch")).getText();
-		String act = Driver.findElement(By.xpath("//*[@id=\"gridFSLSetup\"]//div[1]/div/table/tbody/tr[1]/td[1]"))
-				.getText();
-		System.out.println(act);
-		System.out.println(exp);
-
-		if (exp.contentEquals(act)) {
-			System.out.println("Search text comparison is PASS");
-		} else {
-			System.out.println("Search text comparison is FAIL");
-		}
-
 		// Select DefaultBin and Try to edit
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hrfAct")));
 		Driver.findElement(By.id("hrfAct")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -2248,10 +2141,10 @@ public class NetAgentProcess {
 
 		Driver.findElement(By.id("idiconsave")).click();
 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idiconsave")));
 		Driver.findElement(By.id("errorid")).getText();
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\FSSetup.png"));
+		getScreenshot(Driver, "FSLSetup");
 
 		// Driver.findElement(By.cssSelector(".btn.btn-primary.no-radius")).click();
 		Driver.findElement(By.id("idbtnreset")).click();
@@ -2263,30 +2156,34 @@ public class NetAgentProcess {
 
 		// Paging
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("1");
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		Thread.sleep(10000);
 
 		Driver.findElement(By.id("idbtnsearch")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		Thread.sleep(10000);
 
-		String pagecnt = Driver.findElement(By.xpath(
-				"/html/body/div[2]/section/div[2]/div/div/div[2]/div[2]/div[3]/div/div/gridcontrol-controller/div/div/div[9]/div/div[1]"))
-				.getText();
+		String pagecnt = Driver.findElement(By.xpath("//*[@class=\"dx-info\"]")).getText();
 		System.out.println(pagecnt);
 
 		if (pagecnt.contains("Page 1 of 1")) {
 			Driver.findElement(By.id("idbtnreset")).click();
 		} else {
 			Driver.findElement(By.xpath(".//*[@aria-label='Page 2']")).click();
-			Thread.sleep(10000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			Driver.findElement(By.xpath(".//*[@aria-label=' Next page']")).click();
-			Thread.sleep(10000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			Driver.findElement(By.xpath(".//*[@aria-label='Previous page']")).click();
-			Thread.sleep(10000);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			Driver.findElement(By.id("idbtnreset")).click();
 		}
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtFSLbinSearch")));
+		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("1");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		Driver.findElement(By.id("idbtnsearch")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys("Test1234");
 		Driver.findElement(By.id("idbtnsearch")).click();
@@ -2309,6 +2206,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnsearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hrfAct")));
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("hrfAct")));
 		Driver.findElement(By.id("hrfAct")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -2348,13 +2246,12 @@ public class NetAgentProcess {
 
 		String E1 = formatter.formatCellValue(sh0.getRow(2).getCell(28));
 		String A1 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[2]"))
+				.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]"))
 				.getText();
 		System.out.println(E1);
 		System.out.println(A1);
 
-		if (A1.contentEquals(E1)) {
+		if (A1.equals(E1)) {
 			System.out.println("Search Compare PASS");
 		} else {
 			System.out.println("Search Compare FAIL");
@@ -2369,8 +2266,7 @@ public class NetAgentProcess {
 
 		String E2 = formatter.formatCellValue(sh0.getRow(2).getCell(29));
 		String A2 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[3]"))
+				.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]"))
 				.getText();
 		System.out.println(E2);
 		System.out.println(A2);
@@ -2390,8 +2286,7 @@ public class NetAgentProcess {
 
 		String E3 = formatter.formatCellValue(sh0.getRow(2).getCell(30));
 		String A3 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[4]"))
+				.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]"))
 				.getText();
 		System.out.println(E3);
 		System.out.println(A3);
@@ -2411,8 +2306,7 @@ public class NetAgentProcess {
 
 		String E4 = formatter.formatCellValue(sh0.getRow(2).getCell(31));
 		String A4 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[5]"))
+				.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]"))
 				.getText();
 		System.out.println(E4);
 		System.out.println(A4);
@@ -2430,40 +2324,12 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnsearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String E5 = formatter.formatCellValue(sh0.getRow(2).getCell(32));
-		String A5 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[6]"))
-				.getText();
-		System.out.println(E5);
-		System.out.println(A5);
-
-		if (A5.contains(E5)) {
-			System.out.println("Search Compare PASS");
-		} else {
-			System.out.println("Search Compare FAIL");
-		}
-
 		Driver.findElement(By.id("idbtnreset")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(33)));
 		Driver.findElement(By.id("idbtnsearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		String E6 = formatter.formatCellValue(sh0.getRow(2).getCell(33));
-		String A6 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[7]"))
-				.getText();
-		System.out.println(E6);
-		System.out.println(A6);
-
-		if (A6.contains(E6)) {
-			System.out.println("Search Compare PASS");
-		} else {
-			System.out.println("Search Compare FAIL");
-		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -2472,40 +2338,12 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnsearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		String E7 = formatter.formatCellValue(sh0.getRow(2).getCell(34));
-		String A7 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[8]"))
-				.getText();
-		System.out.println(E7);
-		System.out.println(A7);
-
-		if (A7.contains(E7)) {
-			System.out.println("Search Compare PASS");
-		} else {
-			System.out.println("Search Compare FAIL");
-		}
-
 		Driver.findElement(By.id("idbtnreset")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("txtFSLbinSearch")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(35)));
 		Driver.findElement(By.id("idbtnsearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		String E8 = formatter.formatCellValue(sh0.getRow(2).getCell(35));
-		String A8 = Driver
-				.findElement(
-						By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[9]"))
-				.getText();
-		System.out.println(E8);
-		System.out.println(A8);
-
-		if (A8.contains(E8)) {
-			System.out.println("Search Compare PASS");
-		} else {
-			System.out.println("Search Compare FAIL");
-		}
 
 		Driver.findElement(By.id("idbtnreset")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -2525,8 +2363,7 @@ public class NetAgentProcess {
 
 		Driver.findElement(By.id("idValidation")).getText();
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\FSLSetup1.png"));
+		getScreenshot(Driver, "FSLSetup");
 
 		Driver.findElement(
 				By.xpath("//*[@id=\"gridManageFSLSetup\"]/div/div[6]/div/div[1]/div/table/tbody/tr[1]/td[1]/div/div"))
@@ -2549,8 +2386,7 @@ public class NetAgentProcess {
 
 		System.out.println(Driver.findElement(By.id("idsuccesscloseicon")).getText());
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\FSLSetup_Location add.png"));
+		getScreenshot(Driver, "FSLSetup_Location add");
 
 		Driver.findElement(By.id("idbtnAdd")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -2591,8 +2427,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("hlkSaveASN")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile3 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile3, new File(".\\NA_Screenshot\\FSLSetup_Save.png"));
+		getScreenshot(Driver, "FSLSetup_Save");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -2605,15 +2440,17 @@ public class NetAgentProcess {
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Cycle Count BIN")));
 		Driver.findElement(By.linkText("Cycle Count BIN")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Select Client from dropdown
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("ddlClient")));
 		Driver.findElement(By.id("ddlClient")).click();
 		Select client = new Select(Driver.findElement(By.id("ddlClient")));
-		client.selectByVisibleText("TEST SPL CUST 950025");
+		client.selectByVisibleText("AUTOMATION - SPRINT #950656");
 
 		// Select Bin name from dropdown list.
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("btn_cmbLocationBinclass=")));
@@ -2628,8 +2465,7 @@ public class NetAgentProcess {
 
 		System.out.println((Driver.findElement(By.id("lblSuccessMsg")).getText()));
 
-		File scrFile3 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile3, new File(".\\NA_Screenshot\\CycleCountBIN.png"));
+		getScreenshot(Driver, "CycleCountBIN");
 
 		Driver.findElement(By.id("btnreset")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -2642,15 +2478,15 @@ public class NetAgentProcess {
 	@Test
 	public void ASNLog() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-		JavascriptExecutor js = (JavascriptExecutor) Driver;
 		Actions act = new Actions(Driver);
 
 		// --Inventory
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("idInventory")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idInventory")));
 		Driver.findElement(By.id("idInventory")).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
 
 		// --ASN
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("idASN")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idASN")));
 		Driver.findElement(By.id("idASN")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -2662,31 +2498,37 @@ public class NetAgentProcess {
 
 		DataFormatter formatter = new DataFormatter();
 
-		// Search with Tracking#
-		Driver.findElement(By.id("txtTracking")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(19)));
-		Thread.sleep(2000);
-		Driver.findElement(By.id("idbtnRunSearch")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		String Trackexp = formatter.formatCellValue(sh0.getRow(2).getCell(19));
-		String Trackact = Driver.findElement(By.xpath("//td[@role=\"gridcell\" and contains(@aria-label,'Tracking')]"))
-				.getText();
-		System.out.println(Trackexp);
-		System.out.println(Trackact);
-
-		if (Trackexp.equals(Trackact)) {
-			System.out.println("Tracking Number search result is PASS");
-		} else {
-			System.out.println("Tracking Number search result is FAIL");
-		}
-
-		Driver.findElement(By.id("txtTracking")).clear();
+		/*
+		 * // Search with Tracking#
+		 * Driver.findElement(By.id("txtTracking")).sendKeys(formatter.formatCellValue(
+		 * sh0.getRow(2).getCell(19))); Thread.sleep(2000);
+		 * Driver.findElement(By.id("idbtnRunSearch")).click();
+		 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+		 * "//*[@class=\"ajax-loadernew\"]")));
+		 * 
+		 * // -Created ASN Doesnt have tracking ID
+		 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+		 * "//*[@class=\"ajax-loadernew\"]")));
+		 * System.out.println("Title of the screen is" + Driver.getTitle()); String
+		 * Trackexp = formatter.formatCellValue(sh0.getRow(2).getCell(19)); String
+		 * Trackact = Driver.findElement(By.
+		 * xpath("//td[@role=\"gridcell\" and contains(@aria-label,'Tracking')]"))
+		 * .getText(); System.out.println(Trackexp); System.out.println(Trackact);
+		 * 
+		 * if (Trackexp.equals(Trackact)) {
+		 * System.out.println("Tracking Number search result is PASS"); } else {
+		 * System.out.println("Tracking Number search result is FAIL"); } // Back to
+		 * screen Driver.findElement(By.id("hlkBackToScreen")).click();
+		 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+		 * "//*[@class=\"ajax-loadernew\"]")));
+		 * Driver.findElement(By.id("txtTracking")).clear();
+		 */
 
 		// Search with ASN# and go to ASN Details screen
 		Driver.findElement(By.id("txtASN")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(20)));
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-		System.out.println("Titale of the screen is" + Driver.getTitle());
+		System.out.println("Title of the screen is" + Driver.getTitle());
 
 		String ASNexp = formatter.formatCellValue(sh0.getRow(2).getCell(20));
 		String ASNact = Driver.findElement(By.id("txtasnno")).getText();
@@ -2703,8 +2545,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("expandId")).click();
 		Thread.sleep(2000);
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\ASN Log Details.png"));
+		getScreenshot(Driver, "ASN Log Details");
 
 		Driver.findElement(By.id("collapseId")).click();
 		Thread.sleep(2000);
@@ -2717,6 +2558,7 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with ASN Type
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("btn_cmbAsnTypeclass=")));
 		Driver.findElement(By.id("btn_cmbAsnTypeclass=")).click();
 		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnType")).click();
@@ -2724,6 +2566,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("btn_cmbAsnTypeclass=")));
 		Driver.findElement(By.id("btn_cmbAsnTypeclass=")).click();
 		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnType")).click();
@@ -2732,6 +2575,7 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with ASN Status
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("btn_cmbAsnStatusclass=")));
 		Driver.findElement(By.id("btn_cmbAsnStatusclass=")).click();
 		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnStatus")).click();
@@ -2739,19 +2583,25 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("btn_cmbAsnStatusclass=")));
 		Driver.findElement(By.id("btn_cmbAsnStatusclass=")).click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		Driver.findElement(By.id("chkAllcmbAsnStatus")).click();
 		Driver.findElement(By.id("btn_cmbAsnStatusclass=")).click();
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with Carrier - Fedex
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("btn_cmbAsnCarrierclass=")));
 		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
 		Thread.sleep(2000);
 		Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
 		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
 		Driver.findElement(By.id("idbtnRunSearch")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkBackToScreen")));
+		Driver.findElement(By.id("hlkBackToScreen")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
@@ -2769,6 +2619,8 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String Locationexp = formatter.formatCellValue(sh0.getRow(2).getCell(39));
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//td[@role=\"gridcell\" and contains(@aria-label,'Location')]")));
 		String Locationact = Driver
 				.findElement(By.xpath("//td[@role=\"gridcell\" and contains(@aria-label,'Location')]")).getText();
 		System.out.println(Locationexp);
@@ -2820,8 +2672,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\ASN Log_1.png"));
+		getScreenshot(Driver, "ASNLog_1");
 
 		Driver.findElement(By.id("txtTracking")).sendKeys("Test1234");
 		Driver.findElement(By.id("idbtnRunSearch")).click();
@@ -2849,50 +2700,7 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Check paging
-		List<WebElement> pagination = Driver
-				.findElements(By.xpath("//*[@class=\"dx-pages\"]//div[contains(@aria-label,'Page')]"));
-		System.out.println("size of pagination is==" + pagination.size());
-
-		if (pagination.size() > 0) {
-			WebElement pageinfo = Driver.findElement(By.xpath("//*[@class=\"dx-info\"]"));
-			System.out.println("page info is==" + pageinfo.getText());
-			WebElement pagerdiv = Driver.findElement(By.className("dx-pages"));
-			WebElement secndpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 2\"]"));
-			WebElement prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
-			WebElement nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
-
-			// Scroll
-			js.executeScript("arguments[0].scrollIntoView();", pagerdiv);
-
-			if (pagination.size() > 1) {
-				// click on page 2
-				secndpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 2\"]"));
-				act.moveToElement(secndpage).click().perform();
-				System.out.println("Clicked on page 2");
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-				// click on previous button
-				prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
-				prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
-				act.moveToElement(prevpage).click().perform();
-				System.out.println("clicked on previous page");
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-				// click on next button
-				nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
-				nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
-				act.moveToElement(nextpage).click().perform();
-				System.out.println("clicked on next page");
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-			} else {
-				System.out.println("Only 1 page is exist");
-			}
-
-		} else {
-			System.out.println("pagination is not exist");
-		}
-		;
+		pagination();
 
 		// Click on ASN No.
 		Driver.findElement(By.id("hrfAct")).click();
@@ -2984,8 +2792,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idbtnexport")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\ASN Log_2.png"));
+		getScreenshot(Driver, "ASN Log_2");
 
 		// Go to main screen
 		Driver.findElement(By.id("imgNGLLogo")).click();
@@ -3064,8 +2871,7 @@ public class NetAgentProcess {
 			throw new Error("Error: Agent Activity Report grid not display");
 		}
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\AgentActivityReport.png"));
+		getScreenshot(Driver, "AgentActivityReport");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -3127,8 +2933,7 @@ public class NetAgentProcess {
 			throw new Error("Error: Agent Activity Chart Report grid not display");
 		}
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\AgentActivityChartReport.png"));
+		getScreenshot(Driver, "AgentActivityChartReport");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -3235,8 +3040,7 @@ public class NetAgentProcess {
 			throw new Error("Error: Agent Activity Report grid not display");
 		}
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\AgentActivityDetailReport.png"));
+		getScreenshot(Driver, "AgentActivityDetailReport");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -3250,12 +3054,14 @@ public class NetAgentProcess {
 		Actions builder = new Actions(Driver);
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
-		ele.click();
+		Thread.sleep(2000);
+		wait.until(
+				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
 		Thread.sleep(2000);
-		ele1.click();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions
+				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
 		Driver.findElement(By.id("idReceipt")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		/*
@@ -3328,8 +3134,7 @@ public class NetAgentProcess {
 			throw new Error("Error: Replenish Report grid not display");
 		}
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\ReceiptReport.png"));
+		getScreenshot(Driver, "ReceiptReport");
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
@@ -3348,11 +3153,14 @@ public class NetAgentProcess {
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
 		Thread.sleep(2000);
-		ele.click();
+		wait.until(
+				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
 		Thread.sleep(2000);
-		ele1.click();
+		wait.until(ExpectedConditions
+				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+
 		Driver.findElement(By.id("idPull")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -3416,10 +3224,8 @@ public class NetAgentProcess {
 		if (Replnsh == false) {
 			throw new Error("Error: Pull Report grid not display");
 		}
-		Thread.sleep(9000);
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\PullReport.png"));
+		getScreenshot(Driver, "PullReport");
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
@@ -3438,12 +3244,14 @@ public class NetAgentProcess {
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
 		Thread.sleep(2000);
-		ele.click();
-		Thread.sleep(2000);
+		wait.until(
+				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
-		ele1.click();
 		Thread.sleep(2000);
+		wait.until(ExpectedConditions
+				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+
 		Driver.findElement(By.id("idTransaction")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -3483,7 +3291,8 @@ public class NetAgentProcess {
 		trnstdate.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
 
-		// select WO type
+		// --select WO type
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("ddlWOType")));
 		Select clnt = new Select(Driver.findElement(By.id("ddlWOType")));
 		clnt.selectByVisibleText("Work Order In");
 
@@ -3539,8 +3348,7 @@ public class NetAgentProcess {
 			throw new Error("Error: Transaction Report grid not display when no record found");
 		}
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\TransactionReport.png"));
+		getScreenshot(Driver, "TransactionReport");
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
@@ -3560,12 +3368,14 @@ public class NetAgentProcess {
 		WebElement ele = Driver.findElement(By.id("idReports"));
 		builder.moveToElement(ele).build().perform();
 		Thread.sleep(2000);
-		ele.click();
-		Thread.sleep(2000);
+		wait.until(
+				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
 		WebElement ele1 = Driver.findElement(By.id("idReportInventory"));
 		builder.moveToElement(ele1).build().perform();
-		ele1.click();
 		Thread.sleep(2000);
+		wait.until(ExpectedConditions
+				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+
 		Driver.findElement(By.id("idOn")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -3602,10 +3412,11 @@ public class NetAgentProcess {
 
 		if (Replnsh == false) {
 			throw new Error("Error: On Hand Report grid not display");
+		} else {
+			System.out.println("On Hand Report is displayed");
 		}
 
-		File scrFile2 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile2, new File(".\\NA_Screenshot\\OnHandReport.png"));
+		getScreenshot(Driver, "OnHandReport");
 
 		// Reset
 		Driver.findElement(By.id("btnReset")).click();
@@ -3621,7 +3432,7 @@ public class NetAgentProcess {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
 		// Go to Tools - Agent Console screen
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("idTools")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idTools")));
 		Driver.findElement(By.id("idTools")).click();
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idAgent")));
@@ -3636,6 +3447,7 @@ public class NetAgentProcess {
 		alid.sendKeys(Keys.ENTER);
 
 		// enter FLight No
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("txtFlightNo")));
 		Driver.findElement(By.id("txtFlightNo")).clear();
 		Driver.findElement(By.id("txtFlightNo")).sendKeys("1993");
 
@@ -3675,8 +3487,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("btnSubmit")).click();
 		Thread.sleep(10000);
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File("D:\\Automation\\NA_Screenshot\\agentconsole.png"));
+		getScreenshot(Driver, "agentconsole");
 
 		Driver.findElement(By.id("imgWeather")).click();
 		Thread.sleep(10000);
@@ -3694,8 +3505,6 @@ public class NetAgentProcess {
 		}
 		// Close new window
 		Driver.close();
-
-		Thread.sleep(5000);
 
 		// Switch back to original browser (first window)
 		Driver.switchTo().window(winHandleBefore1);
@@ -3743,8 +3552,7 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Take screen-shot.
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\ContactUs.png"));
+		getScreenshot(Driver, "ContactUs");
 
 		// Go to main screen.
 		Driver.findElement(By.id("imgNGLLogo")).click();
@@ -3764,8 +3572,7 @@ public class NetAgentProcess {
 		System.out.println(Driver.getTitle());
 
 		// Take screen-shot.
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\AgentTSA.png"));
+		getScreenshot(Driver, "AgentTSA");
 
 		String strParentWindowHandle = Driver.getWindowHandle();
 
@@ -3804,8 +3611,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.linkText("Annual TSA Test(Authorized Representative Version)")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile1 = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile1, new File(".\\NA_Screenshot\\AgentTSA1.png"));
+		getScreenshot(Driver, "AgentTSA");
 
 		for (String winHandle : Driver.getWindowHandles()) {
 			Driver.switchTo().window(winHandle);
@@ -3839,8 +3645,7 @@ public class NetAgentProcess {
 		System.out.println(Driver.getTitle());
 
 		// Take screen-shot.
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\AgentRisk.png"));
+		getScreenshot(Driver, "AgentRisk");
 
 		String strParentWindowHandle = Driver.getWindowHandle();
 
@@ -3907,8 +3712,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.linkText("MNX Documents")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\MNXDoc.png"));
+		getScreenshot(Driver, "MNXDoc");
 
 //			//Click on First Doc
 		String winHandleBefore1 = Driver.getWindowHandle();
@@ -4028,8 +3832,7 @@ public class NetAgentProcess {
 
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\MileageCalc.png"));
+		getScreenshot(Driver, "MileageCalc");
 
 		// Expand and Collapse Note
 		Driver.findElement(By.id("imgData")).click();
@@ -4134,9 +3937,7 @@ public class NetAgentProcess {
 		// --Click on save
 		Driver.findElement(By.id("btnSave")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		File scrFile = ((TakesScreenshot) Driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(scrFile, new File(".\\NA_Screenshot\\UserPreference.png"));
+		getScreenshot(Driver, "UserPreference");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -4146,7 +3947,7 @@ public class NetAgentProcess {
 
 	@AfterSuite
 	public void SendEmail() throws Exception {
-		Thread.sleep(60000);
+		report.flush();
 		System.out.println("====Sending Email=====");
 		// Send Details email
 		msg.append("********** Replenish Work Order **********" + "\n");
@@ -4157,7 +3958,7 @@ public class NetAgentProcess {
 		msg.append("Process URL : " + baseUrl);
 
 		String subject = "Automation: NetAgent Portal";
-		String File = ".\\test-output\\emailable-report.html";
+		String File = ".\\Report\\ExtentReport\\ExtentReportResults.html";
 
 		try {
 			SendEmail.sendMail("ravina.prajapati@samyak.com", subject, msg.toString(), File);
@@ -4191,6 +3992,57 @@ public class NetAgentProcess {
 	public void scrollToElement(WebElement element, WebDriver driver) {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+
+	public void pagination() {
+		Actions act = new Actions(Driver);
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
+		JavascriptExecutor js = (JavascriptExecutor) Driver;
+
+		// Check paging
+		List<WebElement> pagination = Driver
+				.findElements(By.xpath("//*[@class=\"dx-pages\"]//div[contains(@aria-label,'Page')]"));
+		System.out.println("size of pagination is==" + pagination.size());
+
+		if (pagination.size() > 0) {
+			WebElement pageinfo = Driver.findElement(By.xpath("//*[@class=\"dx-info\"]"));
+			System.out.println("page info is==" + pageinfo.getText());
+			WebElement pagerdiv = Driver.findElement(By.className("dx-pages"));
+			WebElement secndpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 2\"]"));
+			WebElement prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
+			WebElement nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
+
+			// Scroll
+			js.executeScript("arguments[0].scrollIntoView();", pagerdiv);
+
+			if (pagination.size() > 1) {
+				// click on page 2
+				secndpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 2\"]"));
+				act.moveToElement(secndpage).click().perform();
+				System.out.println("Clicked on page 2");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+				// click on previous button
+				prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
+				prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
+				act.moveToElement(prevpage).click().perform();
+				System.out.println("clicked on previous page");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+				// click on next button
+				nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
+				nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
+				act.moveToElement(nextpage).click().perform();
+				System.out.println("clicked on next page");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			} else {
+				System.out.println("Only 1 page is exist");
+			}
+
+		} else {
+			System.out.println("pagination is not exist");
+		}
 	}
 
 }

@@ -5,9 +5,12 @@
     <classes>
       <class name="NetAgentSmoke.NetAgentProcess">
         <methods>
+          <include name="Login"/>
           <include name="SendEmail"/>
+          <include name="testMethodName"/>
           <include name="beforeMethod"/>
           <include name="ASNLog"/>
+          <include name="getResult"/>
           <include name="Complete"/>
         </methods>
       </class> <!-- NetAgentSmoke.NetAgentProcess -->

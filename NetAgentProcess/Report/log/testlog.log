@@ -1,0 +1,90 @@
+2022-02-21 15:48:27,479 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 15:48:30,982 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 15:48:45,262 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 15:51:04,914 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Parts screen opened.
+2022-02-21 15:51:05,098 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Client selected
+2022-02-21 15:51:10,611 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 15:51:10,782 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Tick on Include zero qty checkbox.
+2022-02-21 15:51:12,632 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 15:51:12,829 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: UnTick on Include zero qty checkbox.
+2022-02-21 15:51:13,071 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 15:51:18,450 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on part and go to part details screen.
+2022-02-21 15:51:24,603 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Return from part details screen.
+2022-02-21 15:51:43,018 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has clicked on Bin dropdown box.
+2022-02-21 15:51:45,158 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has tick All checkbox.
+2022-02-21 15:51:46,712 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click on search button.
+2022-02-21 15:51:46,862 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click Reset button.
+2022-02-21 15:51:52,306 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Go to stock details screen.
+2022-02-21 15:51:53,838 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has performed print label.
+2022-02-21 15:52:19,995 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click reset button.
+2022-02-21 15:52:20,622 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Going to main screen.
+2022-02-21 16:19:00,354 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 16:19:01,863 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 16:19:10,732 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 16:21:07,237 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Parts screen opened.
+2022-02-21 16:21:07,344 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Client selected
+2022-02-21 16:21:09,121 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 16:21:09,197 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Tick on Include zero qty checkbox.
+2022-02-21 16:21:09,839 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 16:21:09,988 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: UnTick on Include zero qty checkbox.
+2022-02-21 16:21:10,090 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 16:21:12,680 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on part and go to part details screen.
+2022-02-21 16:21:17,500 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Return from part details screen.
+2022-02-21 16:21:28,170 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has clicked on Bin dropdown box.
+2022-02-21 16:21:30,255 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has tick All checkbox.
+2022-02-21 16:21:32,127 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click on search button.
+2022-02-21 16:21:32,207 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click Reset button.
+2022-02-21 16:21:36,979 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Go to stock details screen.
+2022-02-21 16:21:38,315 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has performed print label.
+2022-02-21 16:22:02,644 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click reset button.
+2022-02-21 16:22:03,074 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Going to main screen.
+2022-02-21 16:43:06,938 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 16:43:08,472 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 16:43:16,103 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 16:45:17,137 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Parts screen opened.
+2022-02-21 16:45:17,249 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Client selected
+2022-02-21 16:45:19,022 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 16:45:19,100 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Tick on Include zero qty checkbox.
+2022-02-21 16:45:19,734 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 16:45:19,911 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: UnTick on Include zero qty checkbox.
+2022-02-21 16:45:20,023 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on search button.
+2022-02-21 16:45:23,699 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Click on part and go to part details screen.
+2022-02-21 16:45:27,788 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Return from part details screen.
+2022-02-21 16:45:37,739 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has clicked on Bin dropdown box.
+2022-02-21 16:45:39,803 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has tick All checkbox.
+2022-02-21 16:45:41,076 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click on search button.
+2022-02-21 16:45:41,164 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click Reset button.
+2022-02-21 16:45:47,020 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Go to stock details screen.
+2022-02-21 16:45:48,341 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has performed print label.
+2022-02-21 16:46:12,738 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: User has click reset button.
+2022-02-21 16:46:13,280 - NetAgentSmoke.NetAgentProcess -INFO - Parts Screen: Going to main screen.
+2022-02-21 16:58:52,309 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 16:58:53,583 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 16:59:00,064 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:01:11,198 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:01:13,777 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:01:21,495 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:06:27,085 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:06:28,442 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:06:34,916 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:18:42,594 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:18:43,897 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:18:50,382 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:20:27,226 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:20:28,416 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:20:35,100 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:22:34,359 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:22:35,640 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:22:42,232 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:24:47,197 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:24:48,438 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:24:59,998 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:27:39,372 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:27:40,592 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:27:47,441 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:30:10,089 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:30:11,344 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:30:18,030 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
+2022-02-21 17:32:04,842 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:32:06,175 - NetAgentSmoke.NetAgentProcess -INFO - Browser Opened
+2022-02-21 17:32:12,674 - NetAgentSmoke.NetAgentProcess -INFO - Url opened
