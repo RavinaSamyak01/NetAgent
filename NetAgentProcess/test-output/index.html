@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-NASuite" class="navigator-link">
-              <span class="suite-name border-failed">NASuite</span>
+              <span class="suite-name border-passed">NASuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-NASuite" class="hide-methods failed suite-NASuite"> (hide)</a> <!-- hide-methods failed suite-NASuite -->
-                      <a href="#" panel-name="suite-NASuite" class="show-methods failed suite-NASuite"> (show)</a> <!-- show-methods failed suite-NASuite -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-NASuite" class="hide-methods passed suite-NASuite"> (hide)</a> <!-- hide-methods passed suite-NASuite -->
+                      <a href="#" panel-name="suite-NASuite" class="show-methods passed suite-NASuite"> (show)</a> <!-- show-methods passed suite-NASuite -->
                     </span>
-                    <div class="method-list-content failed suite-NASuite">
+                    <div class="method-list-content passed suite-NASuite">
                       <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ASNLog">ASNLog</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="quarantineReport">quarantineReport</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-NASuite -->
+                    </div> <!-- method-list-content passed suite-NASuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -119,44 +119,21 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-NASuite" class="panel NASuite">
-          <div class="suite-NASuite-class-failed">
+          <div class="suite-NASuite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
+              <img src="passed.png"/>
               <span class="class-name">NetAgentSmoke.NetAgentProcess</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="ASNLog">
-                  </a> <!-- ASNLog -->
-                  <span class="method-name">ASNLog</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#ddlFsl&quot;}
-  (Session info: chrome=98.0.4758.102)
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
-System info: host: &apos;SIPL92&apos;, ip: &apos;192.168.113.38&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 98.0.4758.102, chrome: {chromedriverVersion: 98.0.4758.80 (7f0488e8ba0d8..., userDataDir: C:\Users\RPRAJA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:56946}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: b57ba3354e83ea4e7ad912be1181b84f
-*** Element info: {Using=id, value=ddlFsl}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:368)
-	at org.openqa.selenium.By$ById.findElement(By.java:188)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
-	at NetAgentSmoke.NetAgentProcess.ASNLog(NetAgentProcess.java:2615)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames
-</div> <!-- stack-trace -->
+                  <a name="quarantineReport">
+                  </a> <!-- quarantineReport -->
+                  <span class="method-name">quarantineReport</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-NASuite-class-failed -->
+          </div> <!-- suite-NASuite-class-passed -->
         </div> <!-- panel NASuite -->
         <div panel-name="test-xml-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -171,7 +148,7 @@ Session ID: b57ba3354e83ea4e7ad912be1181b84f
     &lt;classes&gt;
       &lt;class name=&quot;NetAgentSmoke.NetAgentProcess&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;ASNLog&quot;/&gt;
+          &lt;include name=&quot;quarantineReport&quot;/&gt;
           &lt;exclude name=&quot;ContactUs&quot;/&gt;
           &lt;exclude name=&quot;AgentTSA&quot;/&gt;
           &lt;exclude name=&quot;AgentRisk&quot;/&gt;
@@ -183,6 +160,7 @@ Session ID: b57ba3354e83ea4e7ad912be1181b84f
           &lt;exclude name=&quot;FSLStorage&quot;/&gt;
           &lt;exclude name=&quot;FSLSetup&quot;/&gt;
           &lt;exclude name=&quot;CycleCountBIN&quot;/&gt;
+          &lt;exclude name=&quot;ASNLog&quot;/&gt;
           &lt;exclude name=&quot;AgentActivityReport&quot;/&gt;
           &lt;exclude name=&quot;AgentActivityChartReport&quot;/&gt;
           &lt;exclude name=&quot;AgentActivityDetailReport&quot;/&gt;
@@ -239,14 +217,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'ASNLog')
+data.setCell(0, 1, 'quarantineReport')
 data.setCell(0, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(0, 3, 41744);
+data.setCell(0, 3, 11202);
 window.suiteTableData['NASuite']= { tableData: data, tableDiv: 'times-div-NASuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 41 seconds</span>
+              <span class="suite-total-time">Total running time: 11 seconds</span>
               <div id="times-div-NASuite">
               </div> <!-- times-div-NASuite -->
             </div> <!-- times-div -->
@@ -261,7 +239,7 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">24 ignored methods</span>
+            <span class="header-content">25 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
@@ -269,17 +247,11 @@ return data;
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">OrderSearch</span>
                 <br/>
-                <span class="ignored-method-name">AgentActivityDetailReport</span>
-                <br/>
                 <span class="ignored-method-name">Userlist</span>
-                <br/>
-                <span class="ignored-method-name">AgentConsole</span>
                 <br/>
                 <span class="ignored-method-name">TransactionReport</span>
                 <br/>
-                <span class="ignored-method-name">OnHandReport</span>
-                <br/>
-                <span class="ignored-method-name">CycleCount</span>
+                <span class="ignored-method-name">AgentConsole</span>
                 <br/>
                 <span class="ignored-method-name">ContactUs</span>
                 <br/>
@@ -291,10 +263,6 @@ return data;
                 <br/>
                 <span class="ignored-method-name">UserPreference</span>
                 <br/>
-                <span class="ignored-method-name">MNXDoc</span>
-                <br/>
-                <span class="ignored-method-name">ReceiptReport</span>
-                <br/>
                 <span class="ignored-method-name">AgentRisk</span>
                 <br/>
                 <span class="ignored-method-name">FSLStorage</span>
@@ -303,9 +271,21 @@ return data;
                 <br/>
                 <span class="ignored-method-name">Courier</span>
                 <br/>
-                <span class="ignored-method-name">replenish</span>
-                <br/>
                 <span class="ignored-method-name">MileageCalc</span>
+                <br/>
+                <span class="ignored-method-name">AgentActivityDetailReport</span>
+                <br/>
+                <span class="ignored-method-name">OnHandReport</span>
+                <br/>
+                <span class="ignored-method-name">CycleCount</span>
+                <br/>
+                <span class="ignored-method-name">ASNLog</span>
+                <br/>
+                <span class="ignored-method-name">MNXDoc</span>
+                <br/>
+                <span class="ignored-method-name">ReceiptReport</span>
+                <br/>
+                <span class="ignored-method-name">replenish</span>
                 <br/>
                 <span class="ignored-method-name">PullReport</span>
                 <br/>
@@ -332,29 +312,27 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">Login</span>
-                <span class="method-start">8201 ms</span>
+                <span class="method-start">11029 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-method before">
-                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.ASNLog() throws java.lang.Exception)</span>
-                <span class="method-start">16111 ms</span>
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.quarantineReport() throws java.lang.Exception)</span>
+                <span class="method-start">28870 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">ASNLog</span>
-                <span class="method-start">16117 ms</span>
+                <span class="method-name">quarantineReport</span>
+                <span class="method-start">28876 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">getResult([TestResult name=ASNLog status=FAILURE method=NetAgentProcess.ASNLog()[pri:0, instance:NetAgentSmoke...)</span>
-                <span class="method-start">57871 ms</span>
+                <span class="method-name">getResult([TestResult name=quarantineReport status=SUCCESS method=NetAgentProcess.quarantineReport()[pri:0, in...)</span>
+                <span class="method-start">40084 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-test after">
                 <span class="method-name">Complete</span>
-                <span class="method-start">58002 ms</span>
+                <span class="method-start">40202 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">SendEmail</span>
-                <span class="method-start">58110 ms</span>
+                <span class="method-start">40340 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

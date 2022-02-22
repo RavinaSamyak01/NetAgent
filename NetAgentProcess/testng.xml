@@ -18,7 +18,7 @@
 					<exclude name="Courier" />
 
 					<!-- Inventory screens-->
-					<include name="parts" />
+					<exclude name="parts" />
 					<exclude name="FSLStorage" />
 					<exclude name="FSLSetup" />
 					<exclude name="CycleCountBIN" />
@@ -27,6 +27,7 @@
 					<!-- Reports screens-->
 					<exclude name="AgentActivityReport" />
 					<exclude name="AgentActivityChartReport" />
+					<include name="quarantineReport" />
 					<exclude name="AgentActivityDetailReport" />
 					<exclude name="ReceiptReport" />
 					<exclude name="PullReport" />

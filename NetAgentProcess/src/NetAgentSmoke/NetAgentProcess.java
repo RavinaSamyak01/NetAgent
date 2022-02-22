@@ -223,6 +223,29 @@ public class NetAgentProcess {
 	}
 
 	@Test
+	public void taskLog() throws Exception {
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
+
+		// --Go to Courier screen
+		wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("Operations")));
+		Driver.findElement(By.partialLinkText("Operations")).click();
+
+		Driver.findElement(By.linkText("Task Log")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("panel-body")));
+
+		getScreenshot(Driver, "TaskLog_Operations");
+
+		// --Search with PickUP ID
+		Driver.findElement(By.id("txtBasicSearch2")).sendKeys("N3265723");
+		Driver.findElement(By.id("btnGXNLSearch2")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		//
+
+	}
+
+	@Test
 	public void Courier() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
@@ -1170,7 +1193,7 @@ public class NetAgentProcess {
 			Thread.sleep(2000);
 		}
 
-		getScreenshot(Driver, "Cycle Count");
+		getScreenshot(Driver, "CycleCount");
 
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -3046,6 +3069,59 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("imgNGLLogo")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
+	}
+
+	@Test
+	public void quarantineReport() throws Exception {
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idReports")));
+		Driver.findElement(By.id("idReports")).click();
+
+		wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Quarantine Report")));
+		Driver.findElement(By.linkText("Quarantine Report")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		getScreenshot(Driver, "QuarantineReportScreen");
+
+		// --client select
+		Select client = new Select(Driver.findElement(By.id("ddlClient")));
+		client.selectByVisibleText("AUTOMATION - SPRINT #950656");
+		System.out.println("Client selected");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		// --FSL Name select
+		Select fsl = new Select(Driver.findElement(By.id("ddlfsl")));
+		fsl.selectByVisibleText("AUTOMATION-FSL(F5386)");
+		System.out.println("FSL selected");
+
+		// click on view report
+		Driver.findElement(By.id("btnView")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		// --wait to get the notification message
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		String WaitMsg = Driver.findElement(By.xpath("//label[@id=\"idwait\"]")).getText();
+		System.out.println("Wait Message is==" + WaitMsg);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//label[@id=\"idwait\"]")));
+		getScreenshot(Driver, "QuarantineReport");
+
+		boolean AvArRp = Driver.findElement(By.xpath("//iframe[@id=\"myIframe\"]")).isDisplayed();
+
+		if (AvArRp == false) {
+			throw new Error("Error: Agent Activity Report grid not display");
+		}
+
+		// --click on Reset button
+		Driver.findElement(By.id("btnReset")).click();
+		System.out.println("Clicked on Reset button");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		Driver.findElement(By.id("imgNGLLogo")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
+
 	}
 
 	@Test
