@@ -18,7 +18,7 @@ public class SendEmail {
 		boolean success = false;
 
 		String fromAddress = "ravina.prajapati@samyak.com";
-		String bccAddresses = "ravina.prajapati@samyak.com";
+		String bccAddresses = "ravina.prajapati@samyak.com, asharma@samyak.com,kunjan.modi@samyak.com,pgandhi@samyak.com";
 		// "pdoshi@samyak.com,asharma@samyak.com,byagnik@samyak.com" ;
 		// String msg = " " ;
 

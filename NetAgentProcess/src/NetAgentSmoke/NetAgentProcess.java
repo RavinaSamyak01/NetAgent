@@ -1861,9 +1861,11 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("txtField1")).sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(22)));
 		Driver.findElement(By.id("idsearchbutton")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		Thread.sleep(2000);
 
 		Driver.findElement(By.xpath("//*[@id='PartMasterGD']//tbody//a")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		Thread.sleep(2000);
 
 		logger.info("Parts Screen: Click on part and go to part details screen.");
 		System.out.println(Driver.getTitle());
@@ -1873,6 +1875,7 @@ public class NetAgentProcess {
 		Driver.findElement(By.id("idreturntoitem")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		logger.info("Parts Screen: Return from part details screen.");
+		Thread.sleep(2000);
 
 		String exp1 = formatter.formatCellValue(sh0.getRow(2).getCell(22));
 		System.out.println("Expected Sprint part Number is=" + exp1);
@@ -2289,6 +2292,8 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E2 = formatter.formatCellValue(sh0.getRow(2).getCell(29));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]")));
 		String A2 = Driver
 				.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]"))
 				.getText();
@@ -2309,6 +2314,9 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		String E3 = formatter.formatCellValue(sh0.getRow(2).getCell(30));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]")));
+		Thread.sleep(2000);
 		String A3 = Driver
 				.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//td[contains(@aria-label,'Part')]"))
 				.getText();
@@ -2616,24 +2624,29 @@ public class NetAgentProcess {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// Search with Carrier - Fedex
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("btn_cmbAsnCarrierclass=")));
-		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Thread.sleep(2000);
-		Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
-		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Driver.findElement(By.id("idbtnRunSearch")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hlkBackToScreen")));
-		Driver.findElement(By.id("hlkBackToScreen")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Thread.sleep(2000);
-		Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
-		Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
-		Driver.findElement(By.id("idbtnRunSearch")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		/*
+		 * wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id(
+		 * "btn_cmbAsnCarrierclass=")));
+		 * Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
+		 * Thread.sleep(2000); Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
+		 * Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
+		 * Driver.findElement(By.id("idbtnRunSearch")).click();
+		 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+		 * "//*[@class=\"ajax-loadernew\"]")));
+		 * 
+		 * wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(
+		 * "hlkBackToScreen"))); Driver.findElement(By.id("hlkBackToScreen")).click();
+		 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+		 * "//*[@class=\"ajax-loadernew\"]")));
+		 * 
+		 * Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
+		 * Thread.sleep(2000); Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
+		 * Thread.sleep(2000); Driver.findElement(By.id("chkAllcmbAsnCarrier")).click();
+		 * Driver.findElement(By.id("btn_cmbAsnCarrierclass=")).click();
+		 * Driver.findElement(By.id("idbtnRunSearch")).click();
+		 * wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(
+		 * "//*[@class=\"ajax-loadernew\"]")));
+		 */
 
 		// Search with Location
 		Select Location = new Select(Driver.findElement(By.id("ddlFsl")));
@@ -2727,6 +2740,7 @@ public class NetAgentProcess {
 		pagination();
 
 		// Click on ASN No.
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("hrfAct")));
 		Driver.findElement(By.id("hrfAct")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -2815,6 +2829,7 @@ public class NetAgentProcess {
 		// Export Action
 		Driver.findElement(By.id("idbtnexport")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		Thread.sleep(5000);
 
 		getScreenshot(Driver, "ASN Log_2");
 
@@ -4035,10 +4050,17 @@ public class NetAgentProcess {
 		msg.append("Process URL : " + baseUrl);
 
 		String subject = "Automation: NetAgent Portal";
-		String File = ".\\Report\\ExtentReport\\ExtentReportResults.html";
+		String File = ".\\Report\\ExtentReport\\ExtentReportResults.html,.\\Report\\log\\application.html ";
 
 		try {
-			SendEmail.sendMail("ravina.prajapati@samyak.com", subject, msg.toString(), File);
+//			SendEmail.sendMail("ravina.prajapati@samyak.com", subject, msg.toString(), File);
+			
+//			/kunjan.modi@samyak.com, pgandhi@samyak.com
+
+			SendEmail.sendMail(
+					"ravina.prajapati@samyak.com, asharma@samyak.com,parth.doshi@samyak.com",
+					subject, msg.toString(), File);
+
 		} catch (Exception ex) {
 			logger.error(ex);
 		}
@@ -4088,7 +4110,7 @@ public class NetAgentProcess {
 			WebElement secndpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 2\"]"));
 			WebElement prevpage = Driver.findElement(By.xpath("//*[@aria-label=\"Previous page\"]"));
 			WebElement nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
-
+			WebElement firstpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 1\"]"));
 			// Scroll
 			js.executeScript("arguments[0].scrollIntoView();", pagerdiv);
 
@@ -4111,6 +4133,11 @@ public class NetAgentProcess {
 				nextpage = Driver.findElement(By.xpath("//*[@aria-label=\" Next page\"]"));
 				act.moveToElement(nextpage).click().perform();
 				System.out.println("clicked on next page");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+				firstpage = Driver.findElement(By.xpath("//*[@aria-label=\"Page 1\"]"));
+				act.moveToElement(firstpage).click().perform();
+				System.out.println("Clicked on page 1");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			} else {

@@ -1,51 +1,493 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="25" total="26" passed="1" failed="0" skipped="0">
+<testng-results ignored="9" total="27" passed="18" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-02-22T10:14:21 IST" name="NASuite" finished-at="2022-02-22T10:14:50 IST" duration-ms="29278">
+  <suite started-at="2022-02-22T12:58:05 IST" name="NASuite" finished-at="2022-02-22T13:06:20 IST" duration-ms="494947">
     <groups>
     </groups>
-    <test started-at="2022-02-22T10:14:21 IST" name="NASmoke" finished-at="2022-02-22T10:14:50 IST" duration-ms="29278">
+    <test started-at="2022-02-22T12:58:05 IST" name="NASmoke" finished-at="2022-02-22T13:06:20 IST" duration-ms="494947">
       <class name="NetAgentSmoke.NetAgentProcess">
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6]" started-at="2022-02-22T10:14:10 IST" name="beforeMethod" finished-at="2022-02-22T10:14:21 IST" duration-ms="11023" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:57:48 IST" name="beforeMethod" finished-at="2022-02-22T12:58:05 IST" duration-ms="16620" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method is-config="true" signature="Login()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6]" started-at="2022-02-22T10:14:21 IST" name="Login" finished-at="2022-02-22T10:14:39 IST" duration-ms="17815" status="PASS">
+        <test-method is-config="true" signature="Login()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:05 IST" name="Login" finished-at="2022-02-22T12:58:24 IST" duration-ms="19502" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6]" started-at="2022-02-22T10:14:39 IST" name="testMethodName" finished-at="2022-02-22T10:14:39 IST" duration-ms="5" status="PASS">
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:24 IST" name="testMethodName" finished-at="2022-02-22T12:58:24 IST" duration-ms="7" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void NetAgentSmoke.NetAgentProcess.quarantineReport() throws java.lang.Exception]]>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.ContactUs() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMethodName -->
-        <test-method signature="quarantineReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6]" started-at="2022-02-22T10:14:39 IST" name="quarantineReport" finished-at="2022-02-22T10:14:50 IST" duration-ms="11202" status="PASS">
+        <test-method signature="ContactUs()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:24 IST" name="ContactUs" finished-at="2022-02-22T12:58:29 IST" duration-ms="4332" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- quarantineReport -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6]" started-at="2022-02-22T10:14:50 IST" name="getResult" finished-at="2022-02-22T10:14:50 IST" duration-ms="116" status="PASS">
+        </test-method> <!-- ContactUs -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:29 IST" name="getResult" finished-at="2022-02-22T12:58:29 IST" duration-ms="273" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=quarantineReport status=SUCCESS method=NetAgentProcess.quarantineReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6] output={null}]]]>
+                <![CDATA[[TestResult name=ContactUs status=SUCCESS method=NetAgentProcess.ContactUs()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="Complete()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6]" started-at="2022-02-22T10:14:50 IST" name="Complete" finished-at="2022-02-22T10:14:50 IST" duration-ms="101" status="PASS">
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:29 IST" name="testMethodName" finished-at="2022-02-22T12:58:29 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.AgentTSA() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="AgentTSA()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:29 IST" name="AgentTSA" finished-at="2022-02-22T12:58:40 IST" duration-ms="11475" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AgentTSA -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:40 IST" name="getResult" finished-at="2022-02-22T12:58:41 IST" duration-ms="236" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=AgentTSA status=SUCCESS method=NetAgentProcess.AgentTSA()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:41 IST" name="testMethodName" finished-at="2022-02-22T12:58:41 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.AgentRisk() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="AgentRisk()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:58:41 IST" name="AgentRisk" finished-at="2022-02-22T12:59:07 IST" duration-ms="26231" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AgentRisk -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:59:07 IST" name="getResult" finished-at="2022-02-22T12:59:07 IST" duration-ms="300" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=AgentRisk status=SUCCESS method=NetAgentProcess.AgentRisk()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:59:07 IST" name="testMethodName" finished-at="2022-02-22T12:59:07 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.OrderSearch() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="OrderSearch()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:59:07 IST" name="OrderSearch" finished-at="2022-02-22T12:59:36 IST" duration-ms="28892" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- OrderSearch -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:59:36 IST" name="getResult" finished-at="2022-02-22T12:59:36 IST" duration-ms="263" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=OrderSearch status=SUCCESS method=NetAgentProcess.OrderSearch()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:59:36 IST" name="testMethodName" finished-at="2022-02-22T12:59:36 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.replenish() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="replenish()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T12:59:36 IST" name="replenish" finished-at="2022-02-22T13:00:04 IST" duration-ms="27527" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- replenish -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:04 IST" name="getResult" finished-at="2022-02-22T13:00:04 IST" duration-ms="218" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=replenish status=SUCCESS method=NetAgentProcess.replenish()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:04 IST" name="testMethodName" finished-at="2022-02-22T13:00:04 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.CycleCount() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="CycleCount()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:04 IST" name="CycleCount" finished-at="2022-02-22T13:00:08 IST" duration-ms="4384" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CycleCount -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:08 IST" name="getResult" finished-at="2022-02-22T13:00:09 IST" duration-ms="279" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CycleCount status=SUCCESS method=NetAgentProcess.CycleCount()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:09 IST" name="testMethodName" finished-at="2022-02-22T13:00:09 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.Courier() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="Courier()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:09 IST" name="Courier" finished-at="2022-02-22T13:00:17 IST" duration-ms="7765" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Courier -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:17 IST" name="getResult" finished-at="2022-02-22T13:00:17 IST" duration-ms="224" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Courier status=SUCCESS method=NetAgentProcess.Courier()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:17 IST" name="testMethodName" finished-at="2022-02-22T13:00:17 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.parts() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="parts()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:00:17 IST" name="parts" finished-at="2022-02-22T13:01:37 IST" duration-ms="79990" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- parts -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:01:37 IST" name="getResult" finished-at="2022-02-22T13:01:37 IST" duration-ms="195" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=parts status=SUCCESS method=NetAgentProcess.parts()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method signature="FSLStorage()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:01:37 IST" name="FSLStorage" finished-at="2022-02-22T13:01:43 IST" duration-ms="6269" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FSLStorage -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:01:37 IST" name="testMethodName" finished-at="2022-02-22T13:01:37 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.FSLStorage() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:01:43 IST" name="getResult" finished-at="2022-02-22T13:01:43 IST" duration-ms="263" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=FSLStorage status=SUCCESS method=NetAgentProcess.FSLStorage()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:01:43 IST" name="testMethodName" finished-at="2022-02-22T13:01:43 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.FSLSetup() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="FSLSetup()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:01:43 IST" name="FSLSetup" finished-at="2022-02-22T13:03:18 IST" duration-ms="94844" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FSLSetup -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:03:18 IST" name="getResult" finished-at="2022-02-22T13:03:19 IST" duration-ms="243" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=FSLSetup status=SUCCESS method=NetAgentProcess.FSLSetup()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method signature="CycleCountBIN()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:03:19 IST" name="CycleCountBIN" finished-at="2022-02-22T13:03:33 IST" duration-ms="14869" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CycleCountBIN -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:03:19 IST" name="testMethodName" finished-at="2022-02-22T13:03:19 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.CycleCountBIN() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:03:33 IST" name="getResult" finished-at="2022-02-22T13:03:34 IST" duration-ms="246" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CycleCountBIN status=SUCCESS method=NetAgentProcess.CycleCountBIN()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:03:34 IST" name="testMethodName" finished-at="2022-02-22T13:03:34 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.ASNLog() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="ASNLog()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:03:34 IST" name="ASNLog" finished-at="2022-02-22T13:05:02 IST" duration-ms="88750" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ASNLog -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:02 IST" name="getResult" finished-at="2022-02-22T13:05:03 IST" duration-ms="219" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ASNLog status=SUCCESS method=NetAgentProcess.ASNLog()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:03 IST" name="testMethodName" finished-at="2022-02-22T13:05:03 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.AgentActivityReport() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="AgentActivityReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:03 IST" name="AgentActivityReport" finished-at="2022-02-22T13:05:15 IST" duration-ms="12350" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AgentActivityReport -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:15 IST" name="getResult" finished-at="2022-02-22T13:05:15 IST" duration-ms="289" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=AgentActivityReport status=SUCCESS method=NetAgentProcess.AgentActivityReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:15 IST" name="testMethodName" finished-at="2022-02-22T13:05:15 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.Userprofile() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="Userprofile()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:15 IST" name="Userprofile" finished-at="2022-02-22T13:05:20 IST" duration-ms="5095" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Userprofile -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:20 IST" name="getResult" finished-at="2022-02-22T13:05:21 IST" duration-ms="218" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Userprofile status=SUCCESS method=NetAgentProcess.Userprofile()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method signature="Userlist()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:21 IST" name="Userlist" finished-at="2022-02-22T13:05:48 IST" duration-ms="27019" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Userlist -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:21 IST" name="testMethodName" finished-at="2022-02-22T13:05:21 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.Userlist() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:48 IST" name="getResult" finished-at="2022-02-22T13:05:48 IST" duration-ms="190" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Userlist status=SUCCESS method=NetAgentProcess.Userlist()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:48 IST" name="testMethodName" finished-at="2022-02-22T13:05:48 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.MNXDoc() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="MNXDoc()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:48 IST" name="MNXDoc" finished-at="2022-02-22T13:05:57 IST" duration-ms="9647" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- MNXDoc -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:57 IST" name="getResult" finished-at="2022-02-22T13:05:58 IST" duration-ms="182" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=MNXDoc status=SUCCESS method=NetAgentProcess.MNXDoc()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:58 IST" name="testMethodName" finished-at="2022-02-22T13:05:58 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.MileageCalc() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="MileageCalc()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:05:58 IST" name="MileageCalc" finished-at="2022-02-22T13:06:08 IST" duration-ms="10377" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- MileageCalc -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:06:08 IST" name="getResult" finished-at="2022-02-22T13:06:08 IST" duration-ms="227" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=MileageCalc status=SUCCESS method=NetAgentProcess.MileageCalc()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:06:08 IST" name="testMethodName" finished-at="2022-02-22T13:06:08 IST" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.UserPreference() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="UserPreference()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:06:08 IST" name="UserPreference" finished-at="2022-02-22T13:06:19 IST" duration-ms="11115" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- UserPreference -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:06:19 IST" name="getResult" finished-at="2022-02-22T13:06:20 IST" duration-ms="202" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=UserPreference status=SUCCESS method=NetAgentProcess.UserPreference()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method is-config="true" signature="Complete()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:06:20 IST" name="Complete" finished-at="2022-02-22T13:06:20 IST" duration-ms="113" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Complete -->
-        <test-method is-config="true" signature="SendEmail()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2794eab6]" started-at="2022-02-22T10:14:51 IST" name="SendEmail" finished-at="2022-02-22T10:14:51 IST" duration-ms="949" status="PASS">
+        <test-method is-config="true" signature="SendEmail()[pri:0, instance:NetAgentSmoke.NetAgentProcess@6340e5f0]" started-at="2022-02-22T13:06:20 IST" name="SendEmail" finished-at="2022-02-22T13:06:33 IST" duration-ms="12930" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SendEmail -->

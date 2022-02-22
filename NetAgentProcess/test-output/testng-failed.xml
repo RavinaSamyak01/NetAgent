@@ -9,9 +9,9 @@
           <include name="SendEmail"/>
           <include name="testMethodName"/>
           <include name="beforeMethod"/>
-          <include name="quarantineReport"/>
           <include name="getResult"/>
           <include name="Complete"/>
+          <include name="FSLSetup"/>
         </methods>
       </class> <!-- NetAgentSmoke.NetAgentProcess -->
     </classes>
