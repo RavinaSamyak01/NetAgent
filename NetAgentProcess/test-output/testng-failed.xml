@@ -5,13 +5,13 @@
     <classes>
       <class name="NetAgentSmoke.NetAgentProcess">
         <methods>
+          <include name="getResult"/>
+          <include name="Complete"/>
+          <include name="TaskLog"/>
+          <include name="beforeMethod"/>
           <include name="Login"/>
           <include name="SendEmail"/>
           <include name="testMethodName"/>
-          <include name="beforeMethod"/>
-          <include name="getResult"/>
-          <include name="Complete"/>
-          <include name="FSLSetup"/>
         </methods>
       </class> <!-- NetAgentSmoke.NetAgentProcess -->
     </classes>

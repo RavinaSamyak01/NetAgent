@@ -4,28 +4,28 @@
 		<classes>
 			<class name="NetAgentSmoke.NetAgentProcess">
 				<methods>
-					<!--<include name="Login" /> -->
+					<!--<exclude name="Login" /> -->
 
 					<!-- Home screens-->
-					<include name="ContactUs" />
-					<include name="AgentTSA" />
-					<include name="AgentRisk" />
+					<exclude name="ContactUs" />
+					<exclude name="AgentTSA" />
+					<exclude name="AgentRisk" />
 
 					<!-- Operations screens-->
-					<include name="OrderSearch" />
-					<include name="replenish" />
-					<include name="CycleCount" />
-					<include name="Courier" />
+					<exclude name="OrderSearch" />
+					<exclude name="replenish" />
+					<exclude name="CycleCount" />
+					<exclude name="Courier" />
 
 					<!-- Inventory screens-->
-					<include name="parts" />
-					<include name="FSLStorage" />
-					<include name="FSLSetup" />
-					<include name="CycleCountBIN" />
-					<include name="ASNLog" />
+					<exclude name="parts" />
+					<exclude name="FSLStorage" />
+					<exclude name="FSLSetup" />
+					<exclude name="CycleCountBIN" />
+					<exclude name="ASNLog" />
 
 					<!-- Reports screens-->
-					<include name="AgentActivityReport" />
+					<exclude name="AgentActivityReport" />
 					<exclude name="AgentActivityChartReport" />
 					<exclude name="quarantineReport" />
 					<exclude name="AgentActivityDetailReport" />
@@ -36,19 +36,22 @@
 
 
 					<!-- Admin screens-->
-					<include name="Userprofile" />
-					<include name="Userlist" />
+					<exclude name="Userprofile" />
+					<exclude name="Userlist" />
 
 					<!-- Tools screens-->
 					<exclude name="AgentConsole" />
-					<include name="MNXDoc" />
-					<include name="MileageCalc" />
+					<exclude name="MNXDoc" />
+					<exclude name="MileageCalc" />
 
 					<!-- Preference screens-->
-					<include name="UserPreference" />
+					<exclude name="UserPreference" />
+
+					<!--OrderProcessing-->
+					<include name="TaskLog" />
 
 
-					<!--<include name="SendEmail" /> -->
+					<!--<exclude name="SendEmail" /> -->
 				</methods>
 			</class>
 		</classes>
