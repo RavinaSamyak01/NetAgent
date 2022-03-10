@@ -53,7 +53,7 @@
 					<i class='mdi-hardware-desktop-windows'></i>
 				</li>
 				<li>
-					<span class='suite-started-time'>2022-03-09 16:44:10</span>
+					<span class='suite-started-time'>2022-03-10 18:59:33</span>
 				</li>
 				<li>
 					<span>v2.41.1</span>
@@ -83,25 +83,25 @@
 					<div class='col l2 m4 s12'>
 						<div class='card suite-total-time-current'> 
 							<span class='panel-name'>Total Time Taken (Current Run)</span> 
-							<span class='suite-total-time-current-value panel-lead'>0h 1m 46s+51ms</span> 
+							<span class='suite-total-time-current-value panel-lead'>0h 4m 25s+348ms</span> 
 						</div> 
 					</div>
 					<div class='col l2 m4 s12'>
 						<div class='card suite-total-time-overall'> 
 							<span class='panel-name'>Total Time Taken (Overall)</span> 
-							<span class='suite-total-time-overall-value panel-lead'>0h 1m 46s+51ms</span> 
+							<span class='suite-total-time-overall-value panel-lead'>0h 4m 25s+348ms</span> 
 						</div> 
 					</div>
 					<div class='col l2 m4 s6 suite-start-time'>
 						<div class='card accent green-accent'> 
 							<span class='panel-name'>Start</span> 
-							<span class='panel-lead suite-started-time'>2022-03-09 16:42:24</span> 
+							<span class='panel-lead suite-started-time'>2022-03-10 18:55:07</span> 
 						</div> 
 					</div>
 					<div class='col l2 m4 s6 suite-end-time'>
 						<div class='card accent pink-accent'> 
 							<span class='panel-name'>End</span> 
-							<span class='panel-lead suite-ended-time'>2022-03-09 16:44:10</span> 
+							<span class='panel-lead suite-ended-time'>2022-03-10 18:59:33</span> 
 						</div> 
 					</div>
 				</div>
@@ -237,15 +237,15 @@
 						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
 							<div class='wrapper'>
 								<ul id='test-collection' class='test-collection'>
-										<li class='collection-item test displayed active pass ' extentid='911fd435-002e-4758-9fa6-472b32fb7e08'>
+										<li class='collection-item test displayed active fail ' extentid='86e97355-987e-42f4-b1b9-73e5a531c418'>
 											<div class='test-head'>
 												<span class='test-name'>TaskLog </span>
-												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
 												<span class='category-assigned hide '></span>
 											</div>
 											<div class='test-body'>
 												<div class='test-info'>
-													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2022-03-09 16:42:51</span>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2022-03-10 18:55:37</span>
 													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
 													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
 												</div>
@@ -263,14 +263,25 @@
 														</thead>
 														<tbody>
 																<tr>
-																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
-																	<td class='timestamp'>16:44:10</td>
-																	<td class='step-details'>Test Case Pass is TaskLog</td>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>18:59:31</td>
+																	<td class='step-details'>Test Case Failed is TaskLog</td>
 																</tr>
 																<tr>
-																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
-																	<td class='timestamp'>16:44:10</td>
-																	<td class='step-details'><a href='C:\Users\rprajapati\git\NetAgent\NetAgentProcess/Report/NA_Screenshot/TaskLog.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\rprajapati\git\NetAgent\NetAgentProcess/Report/NA_Screenshot/TaskLog.png' /></a></td>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>18:59:31</td>
+																	<td class='step-details'>Test Case Failed is org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <button class="btn btn-primary" id="btnOk" ng-click="SaveAndCloseBtnClick(UploadParam, index)">...</button> is not clickable at point (1081, 375). Other element would receive the click: <div modal-render="true" tabindex="-1" role="dialog" class="modal fade ng-isolate-scope ui-draggable in" uib-modal-animation-class="fade" modal-in-class="in" ng-style="{'z-index': 1050 + index*10, display: 'block'}" uib-modal-window="modal-window" size="lg" index="2" animate="animate" modal-animation="true" style="position: absolute; display: block; width: 100%; overflow: hidden; z-index: 1070;">...</div>
+  (Session info: chrome=99.0.4844.51)
+Build info: version: '3.13.0', revision: '2f0d292', time: '2018-06-25T15:32:14.902Z'
+System info: host: 'SIPL92', ip: '10.212.130.46', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.51, chrome: {chromedriverVersion: 98.0.4758.80 (7f0488e8ba0d8..., userDataDir: C:\Users\RPRAJA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:64524}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 102a689740d707de6a80de4ec01744fe</td>
+																</tr>
+																<tr>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>18:59:32</td>
+																	<td class='step-details'><a href='C:\Users\rprajapati\git\NetAgent\NetAgentProcess/Report/FailedTestsScreenshots/TaskLog.png' data-featherlight='image'><img class='report-img' src='file:///C:\Users\rprajapati\git\NetAgent\NetAgentProcess/Report/FailedTestsScreenshots/TaskLog.png' /></a></td>
 																</tr>
 														</tbody>
 													</table>

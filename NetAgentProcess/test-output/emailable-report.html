@@ -9,10 +9,28 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">NASuite</th></tr>
-<tr><td><a href="#t0">NASmoke</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">95,716</td><td></td><td></td></tr>
+<tr><td><a href="#t0">NASmoke</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">254,835</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">NASuite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">NASmoke &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">NetAgentSmoke.NetAgentProcess</td><td><a href="#m0">TaskLog</a></td><td rowspan="1">1646824371829</td><td rowspan="1">78270</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">NASuite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">NASmoke &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">NetAgentSmoke.NetAgentProcess</td><td><a href="#m0">TaskLog</a></td><td rowspan="1">1646918737250</td><td rowspan="1">234652</td></tr></tbody>
 </table>
-<h2>NASmoke</h2><h3 id="m0">NetAgentSmoke.NetAgentProcess#TaskLog</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>NASmoke</h2><h3 id="m0">NetAgentSmoke.NetAgentProcess#TaskLog</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;button class=&quot;btn btn-primary&quot; id=&quot;btnOk&quot; ng-click=&quot;SaveAndCloseBtnClick(UploadParam, index)&quot;&gt;...&lt;/button&gt; is not clickable at point (1081, 375). Other element would receive the click: &lt;div modal-render=&quot;true&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; class=&quot;modal fade ng-isolate-scope ui-draggable in&quot; uib-modal-animation-class=&quot;fade&quot; modal-in-class=&quot;in&quot; ng-style=&quot;{&apos;z-index&apos;: 1050 + index*10, display: &apos;block&apos;}&quot; uib-modal-window=&quot;modal-window&quot; size=&quot;lg&quot; index=&quot;2&quot; animate=&quot;animate&quot; modal-animation=&quot;true&quot; style=&quot;position: absolute; display: block; width: 100%; overflow: hidden; z-index: 1070;&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=99.0.4844.51)
+Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
+System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.51, chrome: {chromedriverVersion: 98.0.4758.80 (7f0488e8ba0d8..., userDataDir: C:\Users\RPRAJA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:64524}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 102a689740d707de6a80de4ec01744fe
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at NetAgentSmoke.OrderProcessing.orderProcess(OrderProcessing.java:391)
+	at NetAgentSmoke.NetAgentProcess.TaskLog(NetAgentProcess.java:3828)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
