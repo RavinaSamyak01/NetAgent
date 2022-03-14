@@ -40,7 +40,7 @@
 					<exclude name="Userlist" />
 
 					<!-- Tools screens-->
-					<exclude name="AgentConsole" />
+					<!--<exclude name="AgentConsole" />-->
 					<exclude name="MNXDoc" />
 					<exclude name="MileageCalc" />
 
@@ -48,8 +48,8 @@
 					<exclude name="UserPreference" />
 
 					<!--OrderProcessing-->
-					<include name="TaskLog" />
-
+					<exclude name="TaskLog" />
+					<include name="orderProcessing" />
 
 					<!--<exclude name="SendEmail" /> -->
 				</methods>

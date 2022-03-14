@@ -317,8 +317,10 @@ public class BaseInit {
 
 		try {
 //			/kunjan.modi@samyak.com, pgandhi@samyak.com,parth.doshi@samyak.com
-
 			SendEmail.sendMail("ravina.prajapati@samyak.com", subject, msg.toString(), File);
+
+			// SendEmail.sendMail("ravina.prajapati@samyak.com, asharma@samyak.com
+			// ,parth.doshi@samyak.com", subject, msg.toString(), File);
 
 		} catch (Exception ex) {
 			logger.error(ex);

@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-NASuite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="TaskLog">TaskLog</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="orderProcessing">orderProcessing</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-NASuite -->
@@ -127,28 +127,39 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="TaskLog">
-                  </a> <!-- TaskLog -->
-                  <span class="method-name">TaskLog</span>
-                  <div class="stack-trace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;button class=&quot;btn btn-primary&quot; id=&quot;btnOk&quot; ng-click=&quot;SaveAndCloseBtnClick(UploadParam, index)&quot;&gt;...&lt;/button&gt; is not clickable at point (1081, 375). Other element would receive the click: &lt;div modal-render=&quot;true&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; class=&quot;modal fade ng-isolate-scope ui-draggable in&quot; uib-modal-animation-class=&quot;fade&quot; modal-in-class=&quot;in&quot; ng-style=&quot;{&apos;z-index&apos;: 1050 + index*10, display: &apos;block&apos;}&quot; uib-modal-window=&quot;modal-window&quot; size=&quot;lg&quot; index=&quot;2&quot; animate=&quot;animate&quot; modal-animation=&quot;true&quot; style=&quot;position: absolute; display: block; width: 100%; overflow: hidden; z-index: 1070;&quot;&gt;...&lt;/div&gt;
+                  <a name="orderProcessing">
+                  </a> <!-- orderProcessing -->
+                  <span class="method-name">orderProcessing</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.id: txtBasicSearch (tried for 50 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at NetAgentSmoke.OrderProcessing.orderProcess(OrderProcessing.java:59)
+	at NetAgentSmoke.NetAgentProcess.orderProcessing(NetAgentProcess.java:3874)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#txtBasicSearch&quot;}
   (Session info: chrome=99.0.4844.51)
-Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
-System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.46&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:48&apos;
+System info: host: &apos;SIPL92&apos;, ip: &apos;192.168.113.4&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;16.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.51, chrome: {chromedriverVersion: 98.0.4758.80 (7f0488e8ba0d8..., userDataDir: C:\Users\RPRAJA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:64524}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 102a689740d707de6a80de4ec01744fe
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.51, chrome: {chromedriverVersion: 98.0.4758.80 (7f0488e8ba0d8..., userDataDir: C:\Users\RPRAJA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:61888}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 21c0648cd22cc53748167d054fdaba21
+*** Element info: {Using=id, value=txtBasicSearch}
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
-	at NetAgentSmoke.OrderProcessing.orderProcess(OrderProcessing.java:391)
-	at NetAgentSmoke.NetAgentProcess.TaskLog(NetAgentProcess.java:3828)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 30 more
+... Removed 31 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -168,7 +179,7 @@ Session ID: 102a689740d707de6a80de4ec01744fe
     &lt;classes&gt;
       &lt;class name=&quot;NetAgentSmoke.NetAgentProcess&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;TaskLog&quot;/&gt;
+          &lt;include name=&quot;orderProcessing&quot;/&gt;
           &lt;exclude name=&quot;ContactUs&quot;/&gt;
           &lt;exclude name=&quot;AgentTSA&quot;/&gt;
           &lt;exclude name=&quot;AgentRisk&quot;/&gt;
@@ -191,10 +202,10 @@ Session ID: 102a689740d707de6a80de4ec01744fe
           &lt;exclude name=&quot;OnHandReport&quot;/&gt;
           &lt;exclude name=&quot;Userprofile&quot;/&gt;
           &lt;exclude name=&quot;Userlist&quot;/&gt;
-          &lt;exclude name=&quot;AgentConsole&quot;/&gt;
           &lt;exclude name=&quot;MNXDoc&quot;/&gt;
           &lt;exclude name=&quot;MileageCalc&quot;/&gt;
           &lt;exclude name=&quot;UserPreference&quot;/&gt;
+          &lt;exclude name=&quot;TaskLog&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- NetAgentSmoke.NetAgentProcess --&gt;
     &lt;/classes&gt;
@@ -238,14 +249,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'TaskLog')
+data.setCell(0, 1, 'orderProcessing')
 data.setCell(0, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(0, 3, 234652);
+data.setCell(0, 3, 65364);
 window.suiteTableData['NASuite']= { tableData: data, tableDiv: 'times-div-NASuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-NASuite">
               </div> <!-- times-div-NASuite -->
             </div> <!-- times-div -->
@@ -260,7 +271,7 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">26 ignored methods</span>
+            <span class="header-content">27 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
@@ -270,9 +281,11 @@ return data;
                 <br/>
                 <span class="ignored-method-name">Userlist</span>
                 <br/>
-                <span class="ignored-method-name">AgentConsole</span>
+                <span class="ignored-method-name">TaskLog</span>
                 <br/>
                 <span class="ignored-method-name">TransactionReport</span>
+                <br/>
+                <span class="ignored-method-name">AgentConsole</span>
                 <br/>
                 <span class="ignored-method-name">ContactUs</span>
                 <br/>
@@ -335,29 +348,29 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">Login</span>
-                <span class="method-start">10206 ms</span>
+                <span class="method-start">8920 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-method before">
-                <span class="method-name">testMethodName(public static void NetAgentSmoke.NetAgentProcess.TaskLog() throws org.apache.poi.EncryptedDocumentEx...)</span>
-                <span class="method-start">29733 ms</span>
+                <span class="method-name">testMethodName(public static void NetAgentSmoke.NetAgentProcess.orderProcessing() throws org.apache.poi.EncryptedDo...)</span>
+                <span class="method-start">18302 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">TaskLog</span>
-                <span class="method-start">29740 ms</span>
+                <span class="method-name">orderProcessing</span>
+                <span class="method-start">18309 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">getResult([TestResult name=TaskLog status=FAILURE method=NetAgentProcess.TaskLog()[pri:0, instance:NetAgentSmo...)</span>
-                <span class="method-start">264408 ms</span>
+                <span class="method-name">getResult([TestResult name=orderProcessing status=FAILURE method=NetAgentProcess.orderProcessing()[pri:0, inst...)</span>
+                <span class="method-start">83686 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-test after">
                 <span class="method-name">Complete</span>
-                <span class="method-start">264636 ms</span>
+                <span class="method-start">83922 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">SendEmail</span>
-                <span class="method-start">265103 ms</span>
+                <span class="method-start">84269 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

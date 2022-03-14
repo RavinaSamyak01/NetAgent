@@ -625,6 +625,7 @@ public class NetAgentProcess extends BaseInit {
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idOrder")));
 		Driver.findElement(By.id("idOrder")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("ordersearch")));
 		Thread.sleep(2000);
@@ -2480,12 +2481,13 @@ public class NetAgentProcess extends BaseInit {
 
 		// From date and To date selection
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, -30);
+		// cal.add(Calendar.DATE, -30);
 		String ValiFrom = getDate(cal);
 		System.out.println("Valid From Date :- " + ValiFrom);
-		String ValiTo = CuDate();
+		String ValiTo = getDate(cal);
 		System.out.println("Valid To Date :- " + ValiTo);
 
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtFromEstArrival")));
 		Driver.findElement(By.id("txtFromEstArrival")).sendKeys(ValiFrom);
 		Driver.findElement(By.id("txtToEstArrival")).sendKeys(ValiTo);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
@@ -2939,14 +2941,24 @@ public class NetAgentProcess extends BaseInit {
 	@Test
 	public void ReceiptReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
+		Actions act = new Actions(Driver);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idReports")));
-		Driver.findElement(By.id("idReports")).click();
+		/*
+		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
+		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReports\"]")));
+		 * Driver.findElement(By.id("idReportInventory")).click();
+		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
+		 * Driver.findElement(By.id("idReceipt")).click();
+		 */
+		WebElement Reports = Driver.findElement(By.id("idReports"));
+		act.moveToElement(Reports).build().perform();
 		Thread.sleep(2000);
 		wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		Driver.findElement(By.id("idReportInventory")).click();
-		Thread.sleep(2000);
+		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+		act.moveToElement(Inventory).build().perform();
 		wait.until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
 		Driver.findElement(By.id("idReceipt")).click();
@@ -3036,15 +3048,24 @@ public class NetAgentProcess extends BaseInit {
 	public void PullReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 
-		Driver.findElement(By.id("idReports")).click();
+		/*
+		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
+		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReports\"]")));
+		 * Driver.findElement(By.id("idReportInventory")).click();
+		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
+		 */
+		Actions act = new Actions(Driver);
+		WebElement Reports = Driver.findElement(By.id("idReports"));
+		act.moveToElement(Reports).build().perform();
 		Thread.sleep(2000);
 		wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		Driver.findElement(By.id("idReportInventory")).click();
-		Thread.sleep(2000);
+		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+		act.moveToElement(Inventory).build().perform();
 		wait.until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
-
 		Driver.findElement(By.id("idPull")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -3123,15 +3144,24 @@ public class NetAgentProcess extends BaseInit {
 	@Test
 	public void TransactionReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		Driver.findElement(By.id("idReports")).click();
+		Actions act = new Actions(Driver);
+		WebElement Reports = Driver.findElement(By.id("idReports"));
+		act.moveToElement(Reports).build().perform();
 		Thread.sleep(2000);
 		wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		Driver.findElement(By.id("idReportInventory")).click();
-		Thread.sleep(2000);
+		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+		act.moveToElement(Inventory).build().perform();
 		wait.until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+		/*
+		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
+		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReports\"]")));
+		 * Driver.findElement(By.id("idReportInventory")).click();
+		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
+		 */
 
 		Driver.findElement(By.id("idTransaction")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -3244,15 +3274,24 @@ public class NetAgentProcess extends BaseInit {
 	@Test
 	public void OnHandReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		Driver.findElement(By.id("idReports")).click();
+		Actions act = new Actions(Driver);
+		WebElement Reports = Driver.findElement(By.id("idReports"));
+		act.moveToElement(Reports).build().perform();
 		Thread.sleep(2000);
 		wait.until(
 				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		Driver.findElement(By.id("idReportInventory")).click();
-		Thread.sleep(2000);
+		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+		act.moveToElement(Inventory).build().perform();
 		wait.until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+		/*
+		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
+		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReports\"]")));
+		 * Driver.findElement(By.id("idReportInventory")).click();
+		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
+		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
+		 */
 
 		Driver.findElement(By.id("idOn")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
@@ -3822,9 +3861,16 @@ public class NetAgentProcess extends BaseInit {
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("welcomecontent")));
 
 	}
-	
+
 	@Test
-	public static void TaskLog() throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
+	public static void TaskLog()
+			throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
+		TaskLog.taskLog();
+	}
+
+	@Test
+	public static void orderProcessing()
+			throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		OrderProcessing.orderProcess();
 	}
 
