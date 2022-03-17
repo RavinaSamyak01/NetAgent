@@ -191,9 +191,10 @@ public class BaseInit {
 	@BeforeTest
 	public void Login() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		getScreenshot(Driver, "LoginPage");
+		Driver.get(baseUrl);
+		logger.info("Url opened");
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.name("loginForm")));
+		getScreenshot(Driver, "LoginPage");
 		String UserName = rb.getString("UserName");
 		String password = rb.getString("Password");
 
