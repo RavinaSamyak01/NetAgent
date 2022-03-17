@@ -77,15 +77,14 @@ public class BaseInit {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
-		// options.addArguments("headless");
-		options.addArguments("headless");
+		//options.addArguments("headless");
 		options.addArguments("--incognito");
 		options.addArguments("--test-type");
 		options.addArguments("--no-proxy-server");
 		options.addArguments("--proxy-bypass-list=*");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--no-sandbox");
-		options.addArguments("--headless");
+		//options.addArguments("--headless");
 		options.addArguments("window-size=1366x788");
 		capabilities.setPlatform(Platform.ANY);
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);

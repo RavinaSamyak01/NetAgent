@@ -2,10 +2,12 @@
 
 <html>
   <head>
+  <meta charset='utf-8'>
   <title>TestNG reports</title>
 
-    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
-    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -22,6 +24,7 @@
   <body>
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
       <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
@@ -37,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-NASuite" class="navigator-link">
-              <span class="suite-name border-skipped">NASuite</span>
+              <span class="suite-name border-passed">NASuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -90,146 +93,31 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">26 methods,  26 skipped,  </span>
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-NASuite" class="hide-methods skipped suite-NASuite"> (hide)</a> <!-- hide-methods skipped suite-NASuite -->
-                      <a href="#" panel-name="suite-NASuite" class="show-methods skipped suite-NASuite"> (show)</a> <!-- show-methods skipped suite-NASuite -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-NASuite" class="hide-methods passed suite-NASuite"> (hide)</a> <!-- hide-methods passed suite-NASuite -->
+                      <a href="#" panel-name="suite-NASuite" class="show-methods passed suite-NASuite"> (show)</a> <!-- show-methods passed suite-NASuite -->
                     </span>
-                    <div class="method-list-content skipped suite-NASuite">
+                    <div class="method-list-content passed suite-NASuite">
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ASNLog">ASNLog</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentActivityChartReport">AgentActivityChartReport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentActivityDetailReport">AgentActivityDetailReport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentActivityReport">AgentActivityReport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentRisk">AgentRisk</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentTSA">AgentTSA</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ContactUs">ContactUs</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="Courier">Courier</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="CycleCount">CycleCount</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="CycleCountBIN">CycleCountBIN</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="FSLSetup">FSLSetup</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="FSLStorage">FSLStorage</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="MNXDoc">MNXDoc</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="MileageCalc">MileageCalc</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="OnHandReport">OnHandReport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="OrderSearch">OrderSearch</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="PullReport">PullReport</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ReceiptReport">ReceiptReport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="TaskLog">TaskLog</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="TransactionReport">TransactionReport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="UserPreference">UserPreference</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="Userlist">Userlist</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="Userprofile">Userprofile</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="parts">parts</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="quarantineReport">quarantineReport</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="replenish">replenish</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content skipped suite-NASuite -->
+                    </div> <!-- method-list-content passed suite-NASuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -241,9 +129,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-NASuite" class="panel NASuite">
-          <div class="suite-NASuite-class-skipped">
+          <div class="suite-NASuite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="passed.png"/>
               <span class="class-name">NetAgentSmoke.NetAgentProcess</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -252,104 +140,6 @@
                   <a name="ASNLog">
                   </a> <!-- ASNLog -->
                   <span class="method-name">ASNLog</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="AgentActivityChartReport">
-                  </a> <!-- AgentActivityChartReport -->
-                  <span class="method-name">AgentActivityChartReport</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="AgentActivityDetailReport">
-                  </a> <!-- AgentActivityDetailReport -->
-                  <span class="method-name">AgentActivityDetailReport</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="AgentActivityReport">
-                  </a> <!-- AgentActivityReport -->
-                  <span class="method-name">AgentActivityReport</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="AgentRisk">
-                  </a> <!-- AgentRisk -->
-                  <span class="method-name">AgentRisk</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="AgentTSA">
-                  </a> <!-- AgentTSA -->
-                  <span class="method-name">AgentTSA</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="ContactUs">
-                  </a> <!-- ContactUs -->
-                  <span class="method-name">ContactUs</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="Courier">
-                  </a> <!-- Courier -->
-                  <span class="method-name">Courier</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="CycleCount">
-                  </a> <!-- CycleCount -->
-                  <span class="method-name">CycleCount</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="CycleCountBIN">
-                  </a> <!-- CycleCountBIN -->
-                  <span class="method-name">CycleCountBIN</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="FSLSetup">
-                  </a> <!-- FSLSetup -->
-                  <span class="method-name">FSLSetup</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="FSLStorage">
-                  </a> <!-- FSLStorage -->
-                  <span class="method-name">FSLStorage</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="MNXDoc">
-                  </a> <!-- MNXDoc -->
-                  <span class="method-name">MNXDoc</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="MileageCalc">
-                  </a> <!-- MileageCalc -->
-                  <span class="method-name">MileageCalc</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="OnHandReport">
-                  </a> <!-- OnHandReport -->
-                  <span class="method-name">OnHandReport</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -366,71 +156,8 @@
                   <span class="method-name">PullReport</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="ReceiptReport">
-                  </a> <!-- ReceiptReport -->
-                  <span class="method-name">ReceiptReport</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="TaskLog">
-                  </a> <!-- TaskLog -->
-                  <span class="method-name">TaskLog</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="TransactionReport">
-                  </a> <!-- TransactionReport -->
-                  <span class="method-name">TransactionReport</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="UserPreference">
-                  </a> <!-- UserPreference -->
-                  <span class="method-name">UserPreference</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="Userlist">
-                  </a> <!-- Userlist -->
-                  <span class="method-name">Userlist</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="Userprofile">
-                  </a> <!-- Userprofile -->
-                  <span class="method-name">Userprofile</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="parts">
-                  </a> <!-- parts -->
-                  <span class="method-name">parts</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="quarantineReport">
-                  </a> <!-- quarantineReport -->
-                  <span class="method-name">quarantineReport</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="replenish">
-                  </a> <!-- replenish -->
-                  <span class="method-name">replenish</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-NASuite-class-skipped -->
+          </div> <!-- suite-NASuite-class-passed -->
         </div> <!-- panel NASuite -->
         <div panel-name="test-xml-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -439,38 +166,38 @@
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite parallel=&quot;none&quot; name=&quot;NASuite&quot;&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;NASuite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;NASmoke&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;NetAgentSmoke.NetAgentProcess&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;ContactUs&quot;/&gt;
-          &lt;include name=&quot;AgentTSA&quot;/&gt;
-          &lt;include name=&quot;AgentRisk&quot;/&gt;
           &lt;include name=&quot;OrderSearch&quot;/&gt;
-          &lt;include name=&quot;replenish&quot;/&gt;
-          &lt;include name=&quot;CycleCount&quot;/&gt;
-          &lt;include name=&quot;Courier&quot;/&gt;
-          &lt;include name=&quot;parts&quot;/&gt;
-          &lt;include name=&quot;FSLStorage&quot;/&gt;
-          &lt;include name=&quot;FSLSetup&quot;/&gt;
-          &lt;include name=&quot;CycleCountBIN&quot;/&gt;
           &lt;include name=&quot;ASNLog&quot;/&gt;
-          &lt;include name=&quot;AgentActivityReport&quot;/&gt;
-          &lt;include name=&quot;AgentActivityChartReport&quot;/&gt;
-          &lt;include name=&quot;quarantineReport&quot;/&gt;
-          &lt;include name=&quot;AgentActivityDetailReport&quot;/&gt;
-          &lt;include name=&quot;ReceiptReport&quot;/&gt;
           &lt;include name=&quot;PullReport&quot;/&gt;
-          &lt;include name=&quot;TransactionReport&quot;/&gt;
-          &lt;include name=&quot;OnHandReport&quot;/&gt;
-          &lt;include name=&quot;Userprofile&quot;/&gt;
-          &lt;include name=&quot;Userlist&quot;/&gt;
-          &lt;include name=&quot;MNXDoc&quot;/&gt;
-          &lt;include name=&quot;MileageCalc&quot;/&gt;
-          &lt;include name=&quot;UserPreference&quot;/&gt;
-          &lt;include name=&quot;TaskLog&quot;/&gt;
+          &lt;exclude name=&quot;ContactUs&quot;/&gt;
+          &lt;exclude name=&quot;AgentTSA&quot;/&gt;
+          &lt;exclude name=&quot;AgentRisk&quot;/&gt;
+          &lt;exclude name=&quot;replenish&quot;/&gt;
+          &lt;exclude name=&quot;CycleCount&quot;/&gt;
+          &lt;exclude name=&quot;Courier&quot;/&gt;
+          &lt;exclude name=&quot;parts&quot;/&gt;
+          &lt;exclude name=&quot;FSLStorage&quot;/&gt;
+          &lt;exclude name=&quot;FSLSetup&quot;/&gt;
+          &lt;exclude name=&quot;CycleCountBIN&quot;/&gt;
+          &lt;exclude name=&quot;AgentActivityReport&quot;/&gt;
+          &lt;exclude name=&quot;AgentActivityChartReport&quot;/&gt;
+          &lt;exclude name=&quot;quarantineReport&quot;/&gt;
+          &lt;exclude name=&quot;AgentActivityDetailReport&quot;/&gt;
+          &lt;exclude name=&quot;ReceiptReport&quot;/&gt;
+          &lt;exclude name=&quot;TransactionReport&quot;/&gt;
+          &lt;exclude name=&quot;OnHandReport&quot;/&gt;
+          &lt;exclude name=&quot;Userprofile&quot;/&gt;
+          &lt;exclude name=&quot;Userlist&quot;/&gt;
+          &lt;exclude name=&quot;MNXDoc&quot;/&gt;
+          &lt;exclude name=&quot;MileageCalc&quot;/&gt;
+          &lt;exclude name=&quot;UserPreference&quot;/&gt;
+          &lt;exclude name=&quot;TaskLog&quot;/&gt;
           &lt;exclude name=&quot;orderProcessing&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- NetAgentSmoke.NetAgentProcess --&gt;
@@ -513,116 +240,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(26);
+data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'CycleCountBIN')
+data.setCell(0, 1, 'ASNLog')
 data.setCell(0, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(0, 3, 1);
+data.setCell(0, 3, 103423);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'PullReport')
 data.setCell(1, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(1, 3, 0);
+data.setCell(1, 3, 29339);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'AgentActivityChartReport')
+data.setCell(2, 1, 'OrderSearch')
 data.setCell(2, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(2, 3, 0);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'quarantineReport')
-data.setCell(3, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(3, 3, 0);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'OrderSearch')
-data.setCell(4, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(4, 3, 0);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'CycleCount')
-data.setCell(5, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(5, 3, 0);
-data.setCell(6, 0, 6)
-data.setCell(6, 1, 'Userlist')
-data.setCell(6, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(6, 3, 0);
-data.setCell(7, 0, 7)
-data.setCell(7, 1, 'AgentActivityDetailReport')
-data.setCell(7, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(7, 3, 0);
-data.setCell(8, 0, 8)
-data.setCell(8, 1, 'MNXDoc')
-data.setCell(8, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(8, 3, 0);
-data.setCell(9, 0, 9)
-data.setCell(9, 1, 'Courier')
-data.setCell(9, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(9, 3, 0);
-data.setCell(10, 0, 10)
-data.setCell(10, 1, 'AgentActivityReport')
-data.setCell(10, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(10, 3, 0);
-data.setCell(11, 0, 11)
-data.setCell(11, 1, 'MileageCalc')
-data.setCell(11, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(11, 3, 0);
-data.setCell(12, 0, 12)
-data.setCell(12, 1, 'ReceiptReport')
-data.setCell(12, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(12, 3, 0);
-data.setCell(13, 0, 13)
-data.setCell(13, 1, 'ASNLog')
-data.setCell(13, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(13, 3, 0);
-data.setCell(14, 0, 14)
-data.setCell(14, 1, 'AgentTSA')
-data.setCell(14, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(14, 3, 0);
-data.setCell(15, 0, 15)
-data.setCell(15, 1, 'Userprofile')
-data.setCell(15, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(15, 3, 0);
-data.setCell(16, 0, 16)
-data.setCell(16, 1, 'TransactionReport')
-data.setCell(16, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(16, 3, 0);
-data.setCell(17, 0, 17)
-data.setCell(17, 1, 'ContactUs')
-data.setCell(17, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(17, 3, 0);
-data.setCell(18, 0, 18)
-data.setCell(18, 1, 'AgentRisk')
-data.setCell(18, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(18, 3, 0);
-data.setCell(19, 0, 19)
-data.setCell(19, 1, 'TaskLog')
-data.setCell(19, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(19, 3, 0);
-data.setCell(20, 0, 20)
-data.setCell(20, 1, 'UserPreference')
-data.setCell(20, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(20, 3, 0);
-data.setCell(21, 0, 21)
-data.setCell(21, 1, 'FSLSetup')
-data.setCell(21, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(21, 3, 0);
-data.setCell(22, 0, 22)
-data.setCell(22, 1, 'parts')
-data.setCell(22, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(22, 3, 0);
-data.setCell(23, 0, 23)
-data.setCell(23, 1, 'FSLStorage')
-data.setCell(23, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(23, 3, 0);
-data.setCell(24, 0, 24)
-data.setCell(24, 1, 'replenish')
-data.setCell(24, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(24, 3, 0);
-data.setCell(25, 0, 25)
-data.setCell(25, 1, 'OnHandReport')
-data.setCell(25, 2, 'NetAgentSmoke.NetAgentProcess')
-data.setCell(25, 3, 0);
+data.setCell(2, 3, 19508);
 window.suiteTableData['NASuite']= { tableData: data, tableDiv: 'times-div-NASuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 ms</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-NASuite">
               </div> <!-- times-div-NASuite -->
             </div> <!-- times-div -->
@@ -637,15 +272,61 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">2 ignored methods</span>
+            <span class="header-content">25 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
               <span class="ignored-class-name">NetAgentSmoke.NetAgentProcess</span>
               <div class="ignored-methods-div">
+                <span class="ignored-method-name">Userlist</span>
+                <br/>
+                <span class="ignored-method-name">TaskLog</span>
+                <br/>
+                <span class="ignored-method-name">TransactionReport</span>
+                <br/>
                 <span class="ignored-method-name">AgentConsole</span>
                 <br/>
+                <span class="ignored-method-name">ContactUs</span>
+                <br/>
+                <span class="ignored-method-name">AgentActivityChartReport</span>
+                <br/>
+                <span class="ignored-method-name">quarantineReport</span>
+                <br/>
+                <span class="ignored-method-name">CycleCountBIN</span>
+                <br/>
+                <span class="ignored-method-name">parts</span>
+                <br/>
+                <span class="ignored-method-name">UserPreference</span>
+                <br/>
+                <span class="ignored-method-name">AgentRisk</span>
+                <br/>
+                <span class="ignored-method-name">FSLStorage</span>
+                <br/>
+                <span class="ignored-method-name">Userprofile</span>
+                <br/>
+                <span class="ignored-method-name">Courier</span>
+                <br/>
+                <span class="ignored-method-name">MileageCalc</span>
+                <br/>
+                <span class="ignored-method-name">AgentActivityDetailReport</span>
+                <br/>
+                <span class="ignored-method-name">OnHandReport</span>
+                <br/>
+                <span class="ignored-method-name">CycleCount</span>
+                <br/>
+                <span class="ignored-method-name">MNXDoc</span>
+                <br/>
+                <span class="ignored-method-name">ReceiptReport</span>
+                <br/>
                 <span class="ignored-method-name">orderProcessing</span>
+                <br/>
+                <span class="ignored-method-name">replenish</span>
+                <br/>
+                <span class="ignored-method-name">AgentTSA</span>
+                <br/>
+                <span class="ignored-method-name">FSLSetup</span>
+                <br/>
+                <span class="ignored-method-name">AgentActivityReport</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -659,118 +340,61 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">NetAgentSmoke.NetAgentProcess</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">beforeMethod</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
-              <div class="test-method">
-                <span class="method-name">ContactUs</span>
-                <span class="method-start">175 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">AgentRisk</span>
-                <span class="method-start">176 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">AgentTSA</span>
-                <span class="method-start">176 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-test before">
+                <span class="method-name">Login</span>
+                <span class="method-start">2550 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.OrderSearch() throws java.lang.Exception)</span>
+                <span class="method-start">29947 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">OrderSearch</span>
-                <span class="method-start">177 ms</span>
+                <span class="method-start">29955 ms</span>
               </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">replenish</span>
-                <span class="method-start">177 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">Courier</span>
-                <span class="method-start">178 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">CycleCount</span>
-                <span class="method-start">178 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">parts</span>
-                <span class="method-start">178 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">CycleCountBIN</span>
-                <span class="method-start">179 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">FSLSetup</span>
-                <span class="method-start">179 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">FSLStorage</span>
-                <span class="method-start">179 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=OrderSearch status=SUCCESS method=NetAgentProcess.OrderSearch()[pri:0, instance:Net...)</span>
+                <span class="method-start">49468 ms</span>
+              </div> <!-- configuration-method after -->
               <div class="test-method">
                 <span class="method-name">ASNLog</span>
-                <span class="method-start">181 ms</span>
+                <span class="method-start">49706 ms</span>
               </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">AgentActivityChartReport</span>
-                <span class="method-start">181 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">AgentActivityReport</span>
-                <span class="method-start">181 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">AgentActivityDetailReport</span>
-                <span class="method-start">182 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">ReceiptReport</span>
-                <span class="method-start">182 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">quarantineReport</span>
-                <span class="method-start">182 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">OnHandReport</span>
-                <span class="method-start">183 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.ASNLog() throws java.lang.Exception)</span>
+                <span class="method-start">49706 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=ASNLog status=SUCCESS method=NetAgentProcess.ASNLog()[pri:0, instance:NetAgentSmoke...)</span>
+                <span class="method-start">153133 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.PullReport() throws java.lang.Exception)</span>
+                <span class="method-start">153406 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">PullReport</span>
-                <span class="method-start">183 ms</span>
+                <span class="method-start">153406 ms</span>
               </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">TransactionReport</span>
-                <span class="method-start">183 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">Userlist</span>
-                <span class="method-start">183 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">Userprofile</span>
-                <span class="method-start">183 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">MNXDoc</span>
-                <span class="method-start">184 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">MileageCalc</span>
-                <span class="method-start">184 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">TaskLog</span>
-                <span class="method-start">184 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">UserPreference</span>
-                <span class="method-start">184 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=PullReport status=SUCCESS method=NetAgentProcess.PullReport()[pri:0, instance:NetAg...)</span>
+                <span class="method-start">182749 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-test after">
+                <span class="method-name">Complete</span>
+                <span class="method-start">182996 ms</span>
+              </div> <!-- configuration-test after -->
+              <div class="configuration-suite after">
+                <span class="method-name">SendEmail</span>
+                <span class="method-start">183343 ms</span>
+              </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
     </div> <!-- wrapper -->
   </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
 </html>

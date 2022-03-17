@@ -1,372 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results total="26" passed="0" failed="0" skipped="26">
+<testng-results ignored="25" total="28" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-17T10:42:55Z" name="NASuite" finished-at="2022-03-17T10:42:55Z" duration-ms="23">
+  <suite started-at="2022-03-17T17:39:44 IST" name="NASuite" finished-at="2022-03-17T17:42:45 IST" duration-ms="180758">
     <groups>
     </groups>
-    <test started-at="2022-03-17T10:42:55Z" name="NASmoke" finished-at="2022-03-17T10:42:55Z" duration-ms="23">
+    <test started-at="2022-03-17T17:39:44 IST" name="NASmoke" finished-at="2022-03-17T17:42:45 IST" duration-ms="180758">
       <class name="NetAgentSmoke.NetAgentProcess">
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:54Z" name="beforeMethod" finished-at="2022-03-17T16:12:54Z" duration-ms="0" status="FAIL">
-          <exception class="java.lang.NoClassDefFoundError">
-            <message>
-              <![CDATA[freemarker/template/TemplateModelException]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NoClassDefFoundError: freemarker/template/TemplateModelException
-	at com.relevantcodes.extentreports.ExtentReports.<init>(ExtentReports.java:86)
-	at com.relevantcodes.extentreports.ExtentReports.<init>(ExtentReports.java:375)
-	at NetAgentSmoke.BaseInit.startTest(BaseInit.java:131)
-	at NetAgentSmoke.BaseInit.beforeMethod(BaseInit.java:75)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
-	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:564)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:213)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:277)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
-	at org.testng.TestNG.run(TestNG.java:1057)
-	at org.testng.TestNG.privateMain(TestNG.java:1364)
-	at org.testng.TestNG.main(TestNG.java:1333)
-Caused by: java.lang.ClassNotFoundException: freemarker.template.TemplateModelException
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	... 21 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NoClassDefFoundError -->
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:39:42 IST" name="beforeMethod" finished-at="2022-03-17T17:39:44 IST" duration-ms="2539" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method is-config="true" signature="Login()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="Login" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="Login()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:39:44 IST" name="Login" finished-at="2022-03-17T17:40:12 IST" duration-ms="27355" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:40:12 IST" name="testMethodName" finished-at="2022-03-17T17:40:12 IST" duration-ms="6" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.OrderSearch() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMethodName -->
-        <test-method signature="ContactUs()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="ContactUs" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ContactUs -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="AgentRisk()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="AgentRisk" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgentRisk -->
-        <test-method signature="AgentTSA()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="AgentTSA" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgentTSA -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method signature="replenish()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="replenish" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- replenish -->
-        <test-method signature="OrderSearch()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="OrderSearch" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method signature="OrderSearch()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:40:12 IST" name="OrderSearch" finished-at="2022-03-17T17:40:31 IST" duration-ms="19508" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OrderSearch -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:40:31 IST" name="getResult" finished-at="2022-03-17T17:40:32 IST" duration-ms="236" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=OrderSearch status=SUCCESS method=NetAgentProcess.OrderSearch()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="parts()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="parts" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- parts -->
-        <test-method signature="CycleCount()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="CycleCount" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CycleCount -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="Courier()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="Courier" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Courier -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="FSLSetup()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="FSLSetup" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FSLSetup -->
-        <test-method signature="CycleCountBIN()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="CycleCountBIN" finished-at="2022-03-17T16:12:55Z" duration-ms="1" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CycleCountBIN -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method signature="FSLStorage()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="FSLStorage" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- FSLStorage -->
-        <test-method signature="AgentActivityChartReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="AgentActivityChartReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgentActivityChartReport -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method signature="AgentActivityReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="AgentActivityReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgentActivityReport -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="ASNLog()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="ASNLog" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method signature="ASNLog()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:40:32 IST" name="ASNLog" finished-at="2022-03-17T17:42:15 IST" duration-ms="103423" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ASNLog -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="quarantineReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="quarantineReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quarantineReport -->
-        <test-method signature="AgentActivityDetailReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="AgentActivityDetailReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgentActivityDetailReport -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method signature="ReceiptReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="ReceiptReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ReceiptReport -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:40:32 IST" name="testMethodName" finished-at="2022-03-17T17:40:32 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.ASNLog() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:42:15 IST" name="getResult" finished-at="2022-03-17T17:42:15 IST" duration-ms="273" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ASNLog status=SUCCESS method=NetAgentProcess.ASNLog()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method signature="PullReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="PullReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:42:15 IST" name="testMethodName" finished-at="2022-03-17T17:42:15 IST" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void NetAgentSmoke.NetAgentProcess.PullReport() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethodName -->
+        <test-method signature="PullReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:42:15 IST" name="PullReport" finished-at="2022-03-17T17:42:45 IST" duration-ms="29339" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- PullReport -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="Userprofile()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="Userprofile" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Userprofile -->
-        <test-method signature="TransactionReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="TransactionReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TransactionReport -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:42:45 IST" name="getResult" finished-at="2022-03-17T17:42:45 IST" duration-ms="245" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=PullReport status=SUCCESS method=NetAgentProcess.PullReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method signature="OnHandReport()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="OnHandReport" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- OnHandReport -->
-        <test-method signature="Userlist()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="Userlist" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Userlist -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="MNXDoc()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="MNXDoc" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- MNXDoc -->
-        <test-method signature="MileageCalc()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="MileageCalc" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- MileageCalc -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method signature="UserPreference()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="UserPreference" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- UserPreference -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="getResult" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getResult -->
-        <test-method signature="TaskLog()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="TaskLog" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TaskLog -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="testMethodName" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testMethodName -->
-        <test-method is-config="true" signature="Complete()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="Complete" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="Complete()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:42:45 IST" name="Complete" finished-at="2022-03-17T17:42:45 IST" duration-ms="305" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Complete -->
-        <test-method is-config="true" signature="SendEmail()[pri:0, instance:NetAgentSmoke.NetAgentProcess@24c22fe]" started-at="2022-03-17T16:12:55Z" name="SendEmail" finished-at="2022-03-17T16:12:55Z" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="SendEmail()[pri:0, instance:NetAgentSmoke.NetAgentProcess@2e385cce]" started-at="2022-03-17T17:42:45 IST" name="SendEmail" finished-at="2022-03-17T17:42:47 IST" duration-ms="1472" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SendEmail -->

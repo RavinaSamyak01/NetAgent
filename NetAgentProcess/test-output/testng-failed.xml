@@ -1,37 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite parallel="none" name="Failed suite [NASuite]">
-  <test parallel="none" name="NASmoke(failed)">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [NASuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="NASmoke(failed)">
     <classes>
       <class name="NetAgentSmoke.NetAgentProcess">
         <methods>
-          <include name="ASNLog"/>
-          <include name="AgentActivityDetailReport"/>
-          <include name="CycleCount"/>
-          <include name="MileageCalc"/>
-          <include name="OnHandReport"/>
-          <include name="AgentActivityReport"/>
-          <include name="MNXDoc"/>
-          <include name="parts"/>
-          <include name="ReceiptReport"/>
-          <include name="replenish"/>
+          <include name="OrderSearch"/>
+          <include name="getResult"/>
+          <include name="Complete"/>
           <include name="beforeMethod"/>
           <include name="PullReport"/>
-          <include name="FSLSetup"/>
-          <include name="TaskLog"/>
-          <include name="AgentTSA"/>
-          <include name="TransactionReport"/>
-          <include name="OrderSearch"/>
-          <include name="Userlist"/>
-          <include name="ContactUs"/>
-          <include name="quarantineReport"/>
-          <include name="AgentActivityChartReport"/>
-          <include name="CycleCountBIN"/>
-          <include name="FSLStorage"/>
-          <include name="UserPreference"/>
-          <include name="AgentRisk"/>
-          <include name="Userprofile"/>
-          <include name="Courier"/>
+          <include name="ASNLog"/>
+          <include name="Login"/>
+          <include name="SendEmail"/>
+          <include name="testMethodName"/>
         </methods>
       </class> <!-- NetAgentSmoke.NetAgentProcess -->
     </classes>

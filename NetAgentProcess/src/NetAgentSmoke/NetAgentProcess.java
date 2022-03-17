@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
+import org.apache.commons.collections4.bag.SynchronizedSortedBag;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -685,48 +688,52 @@ public class NetAgentProcess extends BaseInit {
 
 		// --Handling new window- new window ID is not unique so we can not handle it
 
-		// --Click on Print button
-		Driver.findElement(By.linkText("Print")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-		// --Transfer to new window
-		String winHandleBefore = Driver.getWindowHandle();
-		System.out.println(winHandleBefore);
+		try {
+			// --Click on Print button
+			Driver.findElement(By.linkText("Print")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			// --Transfer to new window
+			String winHandleBefore = Driver.getWindowHandle();
+			System.out.println(winHandleBefore);
 
-		for (String winHandle : Driver.getWindowHandles()) {
-			Driver.switchTo().window(winHandle);
+			for (String winHandle : Driver.getWindowHandles()) {
+				Driver.switchTo().window(winHandle);
+				Thread.sleep(2000);
+				System.out.println(winHandle);
+
+			}
+
+			Driver.close();
+
+			// Switch back to original browser (first window)
+			Driver.switchTo().window(winHandleBefore);
 			Thread.sleep(2000);
-			System.out.println(winHandle);
 
+			String pagecntOS = "";
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dx-info")));
+			pagecntOS = Driver.findElement(By.className("dx-info")).getText();
+			System.out.println(pagecntOS);
+			Thread.sleep(2000);
+
+			if (pagecntOS.contains("Page 1 of 1 (0 items)")) {
+				System.out.println(
+						"Status : Order Search is not Working after Search with Date Range.(May be there is no Order.)");
+			} else {
+				System.out.println("Status : Order Search is Working after Search with Date Range.");
+			}
+
+			// --Click on Upload button
+			wait.until(ExpectedConditions.elementToBeClickable(By.id("hrfAct")));
+			Driver.findElement(By.id("hrfAct")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			getScreenshot(Driver, "OrderSearch Document");
+
+			// --Save&Close
+			Driver.findElement(By.id("btnOk")).click();
+		} catch (Exception e) {
+			System.out.println("SPL order is not available");
 		}
-
-		Driver.close();
-
-		// Switch back to original browser (first window)
-		Driver.switchTo().window(winHandleBefore);
-		Thread.sleep(2000);
-
-		String pagecntOS = "";
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dx-info")));
-		pagecntOS = Driver.findElement(By.className("dx-info")).getText();
-		System.out.println(pagecntOS);
-		Thread.sleep(2000);
-
-		if (pagecntOS.contains("Page 1 of 1 (0 items)")) {
-			System.out.println(
-					"Status : Order Search is not Working after Search with Date Range.(May be there is no Order.)");
-		} else {
-			System.out.println("Status : Order Search is Working after Search with Date Range.");
-		}
-
-		// --Click on Upload button
-		wait.until(ExpectedConditions.elementToBeClickable(By.id("hrfAct")));
-		Driver.findElement(By.id("hrfAct")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		getScreenshot(Driver, "OrderSearch Document");
-
-		// --Save&Close
-		Driver.findElement(By.id("btnOk")).click();
 
 		// --Reset button
 		Driver.findElement(By.id("btnReset")).click();
@@ -764,7 +771,7 @@ public class NetAgentProcess extends BaseInit {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dx-info")));
-		pagecntOS = Driver.findElement(By.className("dx-info")).getText();
+		String pagecntOS = Driver.findElement(By.className("dx-info")).getText();
 		System.out.println(pagecntOS);
 
 		if (pagecntOS.contains("Page 1 of 1 (0 items)")) {
@@ -2492,7 +2499,13 @@ public class NetAgentProcess extends BaseInit {
 		Driver.findElement(By.id("txtToEstArrival")).sendKeys(ValiTo);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		try {
+			Driver.findElement(By.id("hlkBackToScreen")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		} catch (Exception e) {
+			System.out.println("There is no data with enetered date");
+		}
 		Driver.findElement(By.id("txtFromEstArrival")).clear();
 		Driver.findElement(By.id("txtToEstArrival")).clear();
 		Driver.findElement(By.id("idbtnRunSearch")).click();
@@ -2502,7 +2515,13 @@ public class NetAgentProcess extends BaseInit {
 		Driver.findElement(By.id("txtAsnToDate")).sendKeys(ValiTo);
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		try {
+			Driver.findElement(By.id("hlkBackToScreen")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+		} catch (Exception e) {
+			System.out.println("There is no data with enetered date");
+		}
 		Driver.findElement(By.id("txtAsnFromDate")).clear();
 		Driver.findElement(By.id("txtAsnToDate")).clear();
 		Driver.findElement(By.id("idbtnRunSearch")).click();
@@ -2943,25 +2962,28 @@ public class NetAgentProcess extends BaseInit {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 		Actions act = new Actions(Driver);
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idReports")));
-		/*
-		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
-		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReports\"]")));
-		 * Driver.findElement(By.id("idReportInventory")).click();
-		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
-		 * Driver.findElement(By.id("idReceipt")).click();
-		 */
-		WebElement Reports = Driver.findElement(By.id("idReports"));
-		act.moveToElement(Reports).build().perform();
-		Thread.sleep(2000);
-		wait.until(
-				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
-		act.moveToElement(Inventory).build().perform();
-		wait.until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
-		Driver.findElement(By.id("idReceipt")).click();
+
+		try {
+			WebElement Reports = Driver.findElement(By.id("idReports"));
+			act.moveToElement(Reports).build().perform();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+			act.moveToElement(Inventory).build().perform();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idReceipt")).click();
+		} catch (Exception e) {
+			Driver.findElement(By.id("idReports")).click();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			Driver.findElement(By.id("idReportInventory")).click();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idReceipt")).click();
+		}
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		/*
 		 * 
@@ -3047,26 +3069,30 @@ public class NetAgentProcess extends BaseInit {
 	@Test
 	public void PullReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
-
-		/*
-		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
-		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReports\"]")));
-		 * Driver.findElement(By.id("idReportInventory")).click();
-		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
-		 */
 		Actions act = new Actions(Driver);
-		WebElement Reports = Driver.findElement(By.id("idReports"));
-		act.moveToElement(Reports).build().perform();
-		Thread.sleep(2000);
-		wait.until(
-				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
-		act.moveToElement(Inventory).build().perform();
-		wait.until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
-		Driver.findElement(By.id("idPull")).click();
+
+		try {
+			WebElement Reports = Driver.findElement(By.id("idReports"));
+			act.moveToElement(Reports).build().perform();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+			act.moveToElement(Inventory).build().perform();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idPull")).click();
+		} catch (Exception e) {
+			Driver.findElement(By.id("idReports")).click();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			Driver.findElement(By.id("idReportInventory")).click();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idPull")).click();
+		}
+
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select FSL
@@ -3075,7 +3101,7 @@ public class NetAgentProcess extends BaseInit {
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();
 		Thread.sleep(2000);
 		Driver.findElement(By.xpath("//*[@id=\"ddlfsl\"]//input[@id=\"idcheckboxInput\"]")).click();
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("btn_ddlfslclass=")));
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();
 
 		// select client
@@ -3145,25 +3171,29 @@ public class NetAgentProcess extends BaseInit {
 	public void TransactionReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 		Actions act = new Actions(Driver);
-		WebElement Reports = Driver.findElement(By.id("idReports"));
-		act.moveToElement(Reports).build().perform();
-		Thread.sleep(2000);
-		wait.until(
-				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
-		act.moveToElement(Inventory).build().perform();
-		wait.until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
-		/*
-		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
-		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReports\"]")));
-		 * Driver.findElement(By.id("idReportInventory")).click();
-		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
-		 */
 
-		Driver.findElement(By.id("idTransaction")).click();
+		try {
+			WebElement Reports = Driver.findElement(By.id("idReports"));
+			act.moveToElement(Reports).build().perform();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+			act.moveToElement(Inventory).build().perform();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idTransaction")).click();
+		} catch (Exception e) {
+			Driver.findElement(By.id("idReports")).click();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			Driver.findElement(By.id("idReportInventory")).click();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idTransaction")).click();
+		}
+
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select FSL
@@ -3275,25 +3305,28 @@ public class NetAgentProcess extends BaseInit {
 	public void OnHandReport() throws Exception {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 		Actions act = new Actions(Driver);
-		WebElement Reports = Driver.findElement(By.id("idReports"));
-		act.moveToElement(Reports).build().perform();
-		Thread.sleep(2000);
-		wait.until(
-				ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
-		WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
-		act.moveToElement(Inventory).build().perform();
-		wait.until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
-		/*
-		 * Driver.findElement(By.id("idReports")).click(); Thread.sleep(2000);
-		 * wait.until( ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReports\"]")));
-		 * Driver.findElement(By.id("idReportInventory")).click();
-		 * wait.until(ExpectedConditions .visibilityOfAllElementsLocatedBy(By.xpath(
-		 * "//*[@aria-labelledby=\"idReportInventory\"]")));
-		 */
 
-		Driver.findElement(By.id("idOn")).click();
+		try {
+			WebElement Reports = Driver.findElement(By.id("idReports"));
+			act.moveToElement(Reports).build().perform();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			WebElement Inventory = Driver.findElement(By.id("idReportInventory"));
+			act.moveToElement(Inventory).build().perform();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idOn")).click();
+		} catch (Exception e) {
+			Driver.findElement(By.id("idReports")).click();
+			Thread.sleep(2000);
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReports\"]")));
+			Driver.findElement(By.id("idReportInventory")).click();
+			wait.until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//*[@aria-labelledby=\"idReportInventory\"]")));
+			Driver.findElement(By.id("idOn")).click();
+		}
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		// select FSL
