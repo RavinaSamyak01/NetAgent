@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -55,137 +54,429 @@ public class OrderProcessing extends BaseInit {
 
 		// --Basic Search
 
-		for (int row1 = 1; row1 < rowNum; row1++) { // --Search with PickUP ID
+		for (int row1 = 1; row1 < rowNum; row1++) {
+			// --Search with PickUP ID
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
 			String PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+			String ServiceID = formatter.formatCellValue(sh0.getRow(row1).getCell(0));
+			System.out.println("Service ID is==" + ServiceID);
 			Driver.findElement(By.id("txtBasicSearch")).clear();
 			Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
 			Driver.findElement(By.id("btnSearch3")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-			try {
-				WebElement PickuPBox = Driver.findElement(By.xpath("//*[contains(@class,'pickupbx')]"));
-				if (PickuPBox.isDisplayed()) {
-					System.out.println("Searched Job is displayed in edit mode");
-					getScreenshot(Driver, "OrderEditor_" + PUID);
+			// try {
+			WebElement PickuPBox = Driver.findElement(By.xpath("//*[contains(@class,'pickupbx')]"));
+			if (PickuPBox.isDisplayed()) {
+				System.out.println("Searched Job is displayed in edit mode");
+				getScreenshot(Driver, "OrderEditor_" + PUID);
 
-					// --current stage of the order
-					String Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
-					System.out.println("Current stage of the order is=" + Orderstage);
+				// --Get current stage of the order
+				String Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+				System.out.println("Current stage of the order is=" + Orderstage);
 
-					// --Memo
-					// memo(PUID);
+				// --Memo
+				// memo(PUID);
 
-					// -Notification
-//					/notification(PUID);
+				// -Notification
+				// notification(PUID);
 
-					// Upload
-					// upload(PUID);
+				// Upload
+				// upload(PUID);
 
-					// Map
-					// map(PUID);
+				// Map
+				// map(PUID);
 
+				Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+
+				if (Orderstage.equalsIgnoreCase("Confirm Pu Alert")) {
 					// --Confirm button
-					/*
-					 * Driver.findElement(By.id("lnkConfPick")).click();
-					 * System.out.println("Clicked on CONFIRM button");
-					 * 
-					 * // --Click on Close button //
-					 * Driver.findElement(By.id("idclosetab")).click();
-					 * wait.until(ExpectedConditions
-					 * .invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-					 * // --Search again
-					 * wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(
-					 * "txtBasicSearch"))); PUID =
-					 * formatter.formatCellValue(sh0.getRow(row1).getCell(1));
-					 * Driver.findElement(By.id("txtBasicSearch")).clear();
-					 * Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
-					 * Driver.findElement(By.id("btnSearch3")).click();
-					 * wait.until(ExpectedConditions
-					 * .invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-					 */
+					Driver.findElement(By.id("lnkConfPick")).click();
+					System.out.println("Clicked on CONFIRM button");
 
+					// --Click on Close button //
+					Driver.findElement(By.id("idclosetab")).click();
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					// --Search again
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+					PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+					Driver.findElement(By.id("txtBasicSearch")).clear();
+					Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
+					Driver.findElement(By.id("btnSearch3")).click();
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				} else if (Orderstage.equalsIgnoreCase("PICKUP")) {
 					// --Pickup
+					Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+					System.out.println("Current stage of the order is=" + Orderstage);
 					// --Enter PickUp Time
 
-					try {
-						WebElement PUPTime = Driver.findElement(By.id("txtActualPickUpTime"));
-						PUPTime.sendKeys(new SimpleDateFormat("hh:mm").format(new java.util.Date()));
-						System.out.println(new SimpleDateFormat("hh:mm").format(new java.util.Date()));
-						Driver.findElement(By.id("lnksave")).click();
-						System.out.println("Clicked on PICKUP button");
-
-					} catch (Exception e) {
-						WebElement ErrorID = Driver.findElement(By.id("errorid"));
-						if (ErrorID.isDisplayed()) {
-							WebElement PUPTime = Driver.findElement(By.id("txtActualPickUpTime"));
-							System.out.println("Message:-" + ErrorID.getText());
-							PUPTime.clear();
-							Date date = new Date();
-							DateFormat dateFormat = new SimpleDateFormat("hh:mm");
-							dateFormat.setTimeZone(TimeZone.getTimeZone("PST"));
-							System.out.println(dateFormat.format(date));
-							PUPTime.sendKeys(dateFormat.format(date));
-							Driver.findElement(By.id("lnksave")).click();
-							System.out.println("Clicked on PICKUP button");
-							wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
-							PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
-							Driver.findElement(By.id("txtBasicSearch")).clear();
-							Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
-							Driver.findElement(By.id("btnSearch3")).click();
-							wait.until(ExpectedConditions
-									.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-						}
-
-						// --Drop @Origin
-						Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
-						System.out.println("Current stage of the order is=" + Orderstage);
-						// --Drop Time
-						try {
-							WebElement DropTime = Driver.findElement(By.id("txtActualDeliveryTme"));
-							DropTime.sendKeys(new SimpleDateFormat("hh:mm").format(new java.util.Date()));
-							System.out.println(new SimpleDateFormat("hh:mm").format(new java.util.Date()));
-							Driver.findElement(By.id("btnsavedelivery")).click();
-							System.out.println("Clicked on Drop button");
-
-						} catch (Exception e1) {
-							ErrorID = Driver.findElement(By.id("errorid"));
-							if (ErrorID.isDisplayed() || ErrorID.getText().contains("The Air Bill is required")) {
-								WebElement DropTime = Driver.findElement(By.id("txtActualPickUpTime"));
-								System.out.println("Message:-" + ErrorID.getText());
-								DropTime.clear();
-								Date date = new Date();
-								DateFormat dateFormat = new SimpleDateFormat("hh:mm");
-								dateFormat.setTimeZone(TimeZone.getTimeZone("PDT"));
-								System.out.println(dateFormat.format(date));
-								DropTime.sendKeys(dateFormat.format(date));
-								
-
-								// --Add Airbill
-								WebElement AirBill = Driver.findElement(By.id("lnkAddAWB"));
-								js.executeScript("arguments[0].scrollIntoView(0);", AirBill);
-								AirBill.click();
-								/*
-								 * Driver.findElement(By.id("btnsavedelivery")).click();
-								 * System.out.println("Clicked on Drop button");
-								 * wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(
-								 * "txtBasicSearch"))); PUID =
-								 * formatter.formatCellValue(sh0.getRow(row1).getCell(1));
-								 * Driver.findElement(By.id("txtBasicSearch")).clear();
-								 * Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
-								 * Driver.findElement(By.id("btnSearch3")).click();
-								 * wait.until(ExpectedConditions
-								 * .invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-								 */
-
-							}
-						}
+					String ZOneID = Driver.findElement(By.id("spanTimezoneId")).getText();
+					System.out.println("ZoneID of is==" + ZOneID);
+					if (ZOneID.equalsIgnoreCase("EDT")) {
+						ZOneID = "America/New_York";
+					} else if (ZOneID.equalsIgnoreCase("CDT")) {
+						ZOneID = "CST";
 
 					}
+
+					WebElement PUPTime = Driver.findElement(By.id("txtActualPickUpTime"));
+					PUPTime.clear();
+					Date date = new Date();
+					DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+					dateFormat.setTimeZone(TimeZone.getTimeZone(ZOneID));
+					System.out.println(dateFormat.format(date));
+					PUPTime.sendKeys(dateFormat.format(date));
+					Driver.findElement(By.id("lnksave")).click();
+					System.out.println("Clicked on PICKUP button");
+					Thread.sleep(2000);
+					try {
+						wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("modal-dialog")));
+						Driver.findElement(By.id("iddataok")).click();
+						System.out.println("Clicked on Yes button");
+
+					} catch (Exception e) {
+						System.out.println("Dialogue is not exist");
+					}
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+					PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+					Driver.findElement(By.id("txtBasicSearch")).clear();
+					Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
+					wait.until(ExpectedConditions.elementToBeClickable(By.id("btnSearch3")));
+					Driver.findElement(By.id("btnSearch3")).click();
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+					ServiceID = formatter.formatCellValue(sh0.getRow(row1).getCell(0));
+					System.out.println("Service ID is==" + ServiceID);
+					if (ServiceID == "LOC") {
+
+						// --Deliver Stage
+						Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+						System.out.println("Current stage of the order is=" + Orderstage);
+
+						// --Deliver Time
+
+						ZOneID = Driver.findElement(By.id("lblactdltz")).getText();
+						System.out.println("ZoneID of is==" + ZOneID);
+						if (ZOneID.equalsIgnoreCase("EDT")) {
+							ZOneID = "America/New_York";
+						} else if (ZOneID.equalsIgnoreCase("CDT")) {
+							ZOneID = "CST";
+
+						}
+
+						WebElement DelTime = Driver.findElement(By.id("txtActualDeliveryTme"));
+						DelTime.clear();
+						date = new Date();
+						dateFormat = new SimpleDateFormat("HH:mm");
+						dateFormat.setTimeZone(TimeZone.getTimeZone(ZOneID));
+						System.out.println(dateFormat.format(date));
+						DelTime.sendKeys(dateFormat.format(date));
+
+						// --Signature
+						Driver.findElement(By.id("txtSignature")).sendKeys("Ravina Prajapati");
+						System.out.println("Entered signature");
+
+						// --Click on Deliver
+						Driver.findElement(By.id("btnsavedelivery")).click();
+						System.out.println("Clicked on Deliver button");
+						try {
+							wait.until(
+									ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("modal-dialog")));
+							Driver.findElement(By.id("iddataok")).click();
+							System.out.println("Clicked on Yes button");
+
+						} catch (Exception e) {
+							System.out.println("Dialogue is not exist");
+						}
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+						PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+						try {
+							WebElement NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+							if (NoData.isDisplayed()) {
+								System.out.println("Job is Delivered successfully");
+							}
+						} catch (Exception e1) {
+							System.out.println("Job is not delivered yet");
+						}
+
+					} else if (ServiceID == "SD") {
+
+						Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+						System.out.println("Current stage of the order is=" + Orderstage);
+
+						// --Drop Time
+
+						ZOneID = Driver.findElement(By.id("lblactdltz")).getText();
+						System.out.println("ZoneID of is==" + ZOneID);
+						if (ZOneID.equalsIgnoreCase("EDT")) {
+							ZOneID = "America/New_York";
+						} else if (ZOneID.equalsIgnoreCase("CDT")) {
+							ZOneID = "CST";
+						}
+
+						WebElement DelTime = Driver.findElement(By.id("txtActualDeliveryTme"));
+						DelTime.clear();
+						date = new Date();
+						dateFormat = new SimpleDateFormat("HH:mm");
+						dateFormat.setTimeZone(TimeZone.getTimeZone(ZOneID));
+						System.out.println(dateFormat.format(date));
+						DelTime.sendKeys(dateFormat.format(date));
+
+						// --Click on Drop
+						WebElement Drop = Driver.findElement(By.id("btnsavedelivery"));
+						Drop.click();
+						System.out.println("Clicked on Deliver button");
+						WebElement ErrorID = Driver.findElement(By.id("errorid"));
+						if (ErrorID.getText().contains("The Air Bill is required")) {
+							System.out.println("Message:-" + ErrorID.getText());
+							// --Add Airbill
+							WebElement AirBill = Driver.findElement(By.id("lnkAddAWB"));
+							js.executeScript("arguments[0].scrollIntoView();", AirBill);
+
+							WebElement AddAirBill = Driver.findElement(By.id("btnAddAWB"));
+							js.executeScript("arguments[0].click();", AddAirBill);
+							wait.until(ExpectedConditions
+									.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"tableairbill\"]/tbody/tr")));
+							System.out.println("AirBill editor is opened");
+
+							/// --Enter AirBill
+							Driver.findElement(By.id("txtAWBNum_0")).sendKeys("11111111");
+							System.out.println("Entered AirBill");
+							/// --Enter Description
+							Driver.findElement(By.id("txtAWBDec_0")).sendKeys("SD Service Automation");
+							System.out.println("Entered Description");
+							/// --Enter NoOFPieces
+							Driver.findElement(By.id("txtNoOfPieces_0")).sendKeys("2");
+							System.out.println("Entered NoOFPieces");
+							/// --Enter Total Weight
+							Driver.findElement(By.id("txtTotalweight_0")).sendKeys("10");
+							System.out.println("Entered Total Weight");
+							// --Track
+							wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Track")));
+							WebElement Track = Driver.findElement(By.linkText("Track"));
+							js.executeScript("arguments[0].click();", Track);
+							System.out.println("Clicked on Track button");
+							// --AIrbill new window
+							String WindowHandlebefore = Driver.getWindowHandle();
+							for (String windHandle : Driver.getWindowHandles()) {
+								Driver.switchTo().window(windHandle);
+								System.out.println("Switched to Airbill window");
+								Thread.sleep(5000);
+								getScreenshot(Driver, "AirBill_" + PUID);
+
+							}
+							Driver.close();
+							System.out.println("Closed Airbill window");
+
+							Driver.switchTo().window(WindowHandlebefore);
+							System.out.println("Switched to main window");
+
+							// --Click on Drop
+							Drop = Driver.findElement(By.id("btnsavedelivery"));
+							Drop = Driver.findElement(By.id("btnsavedelivery"));
+							js.executeScript("window.scrollBy(0,-250)");
+							Thread.sleep(1000);
+							Drop.click();
+							System.out.println("Clicked on Drop button");
+
+							wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+							PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+							try {
+								WebElement NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+								if (NoData.isDisplayed()) {
+									System.out.println("Job is Delivered successfully");
+								}
+							} catch (Exception e1) {
+								System.out.println("Job is not delivered yet");
+							}
+
+						} else {
+							wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+							PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+							try {
+								WebElement NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+								if (NoData.isDisplayed()) {
+									System.out.println("Job is Delivered successfully");
+								}
+							} catch (Exception e1) {
+								System.out.println("Job is not delivered yet");
+							}
+						}
+					} else {
+						System.out.println("Service is not SD or LOC");
+
+					}
+				} else if (Orderstage.equalsIgnoreCase("Deliver")) {
+					if (ServiceID.equalsIgnoreCase("LOC")) {
+
+						// --Deliver Stage
+						Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+						System.out.println("Current stage of the order is=" + Orderstage);
+
+						// --Deliver Time
+						String ZOneID = Driver.findElement(By.id("lblactdltz")).getText();
+						System.out.println("ZoneID of is==" + ZOneID);
+						if (ZOneID.equalsIgnoreCase("EDT")) {
+							ZOneID = "America/New_York";
+						} else if (ZOneID.equalsIgnoreCase("CDT")) {
+							ZOneID = "CST";
+
+						}
+
+						WebElement DelTime = Driver.findElement(By.id("txtActualDeliveryTme"));
+						DelTime.clear();
+						Date date = new Date();
+						DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+						dateFormat.setTimeZone(TimeZone.getTimeZone(ZOneID));
+						System.out.println(dateFormat.format(date));
+						DelTime.sendKeys(dateFormat.format(date));
+
+						// --Signature
+						Driver.findElement(By.id("txtSignature")).sendKeys("Ravina Prajapati");
+						System.out.println("Entered signature");
+
+						// --Click on Deliver
+						Driver.findElement(By.id("btnsavedelivery")).click();
+						System.out.println("Clicked on Deliver button");
+						try {
+							wait.until(
+									ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("modal-dialog")));
+							Driver.findElement(By.id("iddataok")).click();
+							System.out.println("Clicked on Yes button");
+
+						} catch (Exception e) {
+							System.out.println("Dialogue is not exist");
+						}
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+						PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+						try {
+							WebElement NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+							if (NoData.isDisplayed()) {
+								System.out.println("Job is Delivered successfully");
+							}
+						} catch (Exception e1) {
+							System.out.println("Job is not delivered yet");
+						}
+
+					} else {
+						System.out.println("Service is not LOC");
+					}
+				} else if (Orderstage.equalsIgnoreCase("Drop @ Origin")) {
+					Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+					System.out.println("Current stage of the order is=" + Orderstage);
+
+					// --Drop Time
+
+					String ZOneID = Driver.findElement(By.id("lblactdltz")).getText();
+					System.out.println("ZoneID of is==" + ZOneID);
+					if (ZOneID.equalsIgnoreCase("EDT")) {
+						ZOneID = "America/New_York";
+					} else if (ZOneID.equalsIgnoreCase("CDT")) {
+						ZOneID = "CST";
+
+					}
+
+					WebElement DelTime = Driver.findElement(By.id("txtActualDeliveryTme"));
+					DelTime.clear();
+					Date date = new Date();
+					DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+					dateFormat.setTimeZone(TimeZone.getTimeZone(ZOneID));
+					System.out.println(dateFormat.format(date));
+					DelTime.sendKeys(dateFormat.format(date));
+
+					// --Click on Drop
+					WebElement Drop = Driver.findElement(By.id("btnsavedelivery"));
+					Drop.click();
+					System.out.println("Clicked on Drop button");
+					WebElement ErrorID = Driver.findElement(By.id("errorid"));
+					if (ErrorID.getText().contains("The Air Bill is required")) {
+						System.out.println("Message:-" + ErrorID.getText());
+						// --Add Airbill
+						WebElement AirBill = Driver.findElement(By.id("lnkAddAWB"));
+						js.executeScript("arguments[0].scrollIntoView();", AirBill);
+
+						WebElement AddAirBill = Driver.findElement(By.id("btnAddAWB"));
+						js.executeScript("arguments[0].click();", AddAirBill);
+						wait.until(ExpectedConditions
+								.visibilityOfAllElementsLocatedBy(By.xpath("//*[@id=\"tableairbill\"]/tbody/tr")));
+						System.out.println("AirBill editor is opened");
+
+						/// --Enter AirBill
+						Driver.findElement(By.id("txtAWBNum_0")).sendKeys("11111111");
+						System.out.println("Entered AirBill");
+						/// --Enter Description
+						Driver.findElement(By.id("txtAWBDec_0")).sendKeys("SD Service Automation");
+						System.out.println("Entered Description");
+						/// --Enter NoOFPieces
+						Driver.findElement(By.id("txtNoOfPieces_0")).sendKeys("2");
+						System.out.println("Entered NoOFPieces");
+						/// --Enter Total Weight
+						Driver.findElement(By.id("txtTotalweight_0")).sendKeys("10");
+						System.out.println("Entered Total Weight");
+						// --Track
+						wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Track")));
+						WebElement Track = Driver.findElement(By.linkText("Track"));
+						js.executeScript("arguments[0].click();", Track);
+						System.out.println("Clicked on Track button");
+						// --AIrbill new window
+						String WindowHandlebefore = Driver.getWindowHandle();
+						for (String windHandle : Driver.getWindowHandles()) {
+							Driver.switchTo().window(windHandle);
+							System.out.println("Switched to Airbill window");
+							Thread.sleep(5000);
+							getScreenshot(Driver, "AirBill_" + PUID);
+						}
+						Driver.close();
+						System.out.println("Closed Airbill window");
+
+						Driver.switchTo().window(WindowHandlebefore);
+						System.out.println("Switched to main window");
+
+						// --Click on Drop
+						Drop = Driver.findElement(By.id("btnsavedelivery"));
+						js.executeScript("window.scrollBy(0,-250)");
+						Thread.sleep(1000);
+						Drop.click();
+						System.out.println("Clicked on Drop button");
+
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+						PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+						try {
+							WebElement NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+							if (NoData.isDisplayed()) {
+								System.out.println("Job is Delivered successfully");
+							}
+						} catch (Exception e1) {
+							System.out.println("Job is not delivered yet");
+						}
+
+					} else {
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+						PUID = formatter.formatCellValue(sh0.getRow(row1).getCell(1));
+						try {
+							WebElement NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+							if (NoData.isDisplayed()) {
+								System.out.println("Job is Delivered successfully");
+							}
+						} catch (Exception e1) {
+							System.out.println("Job is not delivered yet");
+						}
+					}
+
+				} else {
+					System.out.println("Unknown stage found");
+					Orderstage = Driver.findElement(By.xpath("//strong/span[@class=\"ng-binding\"]")).getText();
+					System.out.println("Current stage of the order is=" + Orderstage);
+
 				}
-			} finally {
-				System.out.println("Search job is not displayed");
 			}
+
+			/*
+			 * } catch (Exception e) { System.out.println("Job is not exist"); }
+			 */
 		}
 
 	}

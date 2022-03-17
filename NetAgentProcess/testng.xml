@@ -4,54 +4,54 @@
 		<classes>
 			<class name="NetAgentSmoke.NetAgentProcess">
 				<methods>
-					<!--<exclude name="Login" /> -->
+					<!--<include name="Login" /> -->
 
 					<!-- Home screens-->
-					<exclude name="ContactUs" />
-					<exclude name="AgentTSA" />
-					<exclude name="AgentRisk" />
+					<include name="ContactUs" />
+					<include name="AgentTSA" />
+					<include name="AgentRisk" />
 
 					<!-- Operations screens-->
-					<exclude name="OrderSearch" />
-					<exclude name="replenish" />
-					<exclude name="CycleCount" />
-					<exclude name="Courier" />
+					<include name="OrderSearch" />
+					<include name="replenish" />
+					<include name="CycleCount" />
+					<include name="Courier" />
 
 					<!-- Inventory screens-->
-					<exclude name="parts" />
-					<exclude name="FSLStorage" />
-					<exclude name="FSLSetup" />
-					<exclude name="CycleCountBIN" />
-					<exclude name="ASNLog" />
+					<include name="parts" />
+					<include name="FSLStorage" />
+					<include name="FSLSetup" />
+					<include name="CycleCountBIN" />
+					<include name="ASNLog" />
 
 					<!-- Reports screens-->
-					<exclude name="AgentActivityReport" />
-					<exclude name="AgentActivityChartReport" />
-					<exclude name="quarantineReport" />
-					<exclude name="AgentActivityDetailReport" />
-					<exclude name="ReceiptReport" />
-					<exclude name="PullReport" />
-					<exclude name="TransactionReport" />
-					<exclude name="OnHandReport" />
+					<include name="AgentActivityReport" />
+					<include name="AgentActivityChartReport" />
+					<include name="quarantineReport" />
+					<include name="AgentActivityDetailReport" />
+					<include name="ReceiptReport" />
+					<include name="PullReport" />
+					<include name="TransactionReport" />
+					<include name="OnHandReport" />
 
 
 					<!-- Admin screens-->
-					<exclude name="Userprofile" />
-					<exclude name="Userlist" />
+					<include name="Userprofile" />
+					<include name="Userlist" />
 
 					<!-- Tools screens-->
-					<!--<exclude name="AgentConsole" />-->
-					<exclude name="MNXDoc" />
-					<exclude name="MileageCalc" />
+					<!--<include name="AgentConsole" />-->
+					<include name="MNXDoc" />
+					<include name="MileageCalc" />
 
 					<!-- Preference screens-->
-					<exclude name="UserPreference" />
+					<include name="UserPreference" />
 
 					<!--OrderProcessing-->
-					<exclude name="TaskLog" />
-					<include name="orderProcessing" />
+					<include name="TaskLog" />
+					<exclude name="orderProcessing" />
 
-					<!--<exclude name="SendEmail" /> -->
+					<!--<include name="SendEmail" /> -->
 				</methods>
 			</class>
 		</classes>
