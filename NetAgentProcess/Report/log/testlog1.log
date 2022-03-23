@@ -653,3 +653,137 @@
 2022-03-17 17:34:51,753 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
 2022-03-17 17:36:49,156 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
 2022-03-17 17:39:52,482 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-17 17:48:06,712 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-17 17:50:21,209 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Parts screen opened.
+2022-03-17 17:50:21,582 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Client selected
+2022-03-17 17:50:24,547 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-17 17:50:24,728 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Tick on Include zero qty checkbox.
+2022-03-17 17:50:25,735 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-17 17:50:25,999 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: UnTick on Include zero qty checkbox.
+2022-03-17 17:50:26,334 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-17 17:50:34,521 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on part and go to part details screen.
+2022-03-17 17:50:39,693 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Return from part details screen.
+2022-03-17 17:50:56,911 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has clicked on Bin dropdown box.
+2022-03-17 17:50:59,126 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has tick All checkbox.
+2022-03-17 17:51:00,332 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click on search button.
+2022-03-17 17:51:00,492 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click Reset button.
+2022-03-17 17:51:08,879 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Go to stock details screen.
+2022-03-17 17:51:10,701 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has performed print label.
+2022-03-17 17:51:37,594 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click reset button.
+2022-03-17 17:51:38,207 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Going to main screen.
+2022-03-17 18:14:38,597 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-17 18:17:39,366 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Parts screen opened.
+2022-03-17 18:17:39,699 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Client selected
+2022-03-17 18:17:42,012 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-17 18:17:42,241 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Tick on Include zero qty checkbox.
+2022-03-17 18:17:47,244 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-17 18:17:47,502 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: UnTick on Include zero qty checkbox.
+2022-03-17 18:17:47,866 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-17 18:17:59,255 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on part and go to part details screen.
+2022-03-17 18:18:10,028 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Return from part details screen.
+2022-03-17 18:18:33,897 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has clicked on Bin dropdown box.
+2022-03-17 18:18:36,140 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has tick All checkbox.
+2022-03-17 18:18:37,500 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click on search button.
+2022-03-17 18:18:37,722 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click Reset button.
+2022-03-17 18:18:46,045 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Go to stock details screen.
+2022-03-17 18:18:47,737 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has performed print label.
+2022-03-17 18:19:13,430 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click reset button.
+2022-03-17 18:19:14,079 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Going to main screen.
+2022-03-21 08:53:08,596 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 08:55:59,928 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Parts screen opened.
+2022-03-21 08:56:00,108 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Client selected
+2022-03-21 08:56:02,107 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-21 08:56:02,220 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Tick on Include zero qty checkbox.
+2022-03-21 08:56:02,918 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-21 08:56:03,110 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: UnTick on Include zero qty checkbox.
+2022-03-21 08:56:03,252 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-21 08:56:10,685 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on part and go to part details screen.
+2022-03-21 08:56:15,781 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Return from part details screen.
+2022-03-21 08:56:28,772 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has clicked on Bin dropdown box.
+2022-03-21 08:56:30,908 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has tick All checkbox.
+2022-03-21 08:56:32,341 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click on search button.
+2022-03-21 08:56:32,434 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click Reset button.
+2022-03-21 08:56:40,049 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Go to stock details screen.
+2022-03-21 08:56:41,458 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has performed print label.
+2022-03-21 08:57:07,173 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click reset button.
+2022-03-21 08:57:07,680 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Going to main screen.
+2022-03-21 09:49:55,812 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 09:52:44,452 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Parts screen opened.
+2022-03-21 09:52:44,652 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Client selected
+2022-03-21 09:52:46,686 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-21 09:52:46,765 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Tick on Include zero qty checkbox.
+2022-03-21 09:52:47,531 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-21 09:52:47,718 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: UnTick on Include zero qty checkbox.
+2022-03-21 09:52:47,920 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-21 09:52:55,540 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on part and go to part details screen.
+2022-03-21 09:53:01,315 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Return from part details screen.
+2022-03-21 09:53:16,464 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has clicked on Bin dropdown box.
+2022-03-21 09:53:18,609 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has tick All checkbox.
+2022-03-21 09:53:20,035 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click on search button.
+2022-03-21 09:53:20,194 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click Reset button.
+2022-03-21 09:53:27,732 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Go to stock details screen.
+2022-03-21 09:53:29,193 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has performed print label.
+2022-03-21 09:53:55,240 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click reset button.
+2022-03-21 09:53:55,821 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Going to main screen.
+2022-03-21 13:01:29,807 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 13:09:45,974 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 13:42:42,693 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 13:45:06,200 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:01:26,100 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:03:25,958 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:31:29,032 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:39:09,332 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:41:14,412 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:49:22,501 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:53:17,980 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 17:58:07,823 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 18:02:29,794 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-21 18:11:28,129 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-22 09:08:38,305 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-22 09:50:07,263 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-22 09:52:57,819 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Parts screen opened.
+2022-03-22 09:52:57,994 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Client selected
+2022-03-22 09:52:59,964 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-22 09:53:00,210 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Tick on Include zero qty checkbox.
+2022-03-22 09:53:00,888 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-22 09:53:01,063 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: UnTick on Include zero qty checkbox.
+2022-03-22 09:53:01,209 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-22 09:53:07,872 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on part and go to part details screen.
+2022-03-22 09:53:12,832 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Return from part details screen.
+2022-03-22 09:53:25,700 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has clicked on Bin dropdown box.
+2022-03-22 09:53:27,840 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has tick All checkbox.
+2022-03-22 09:53:29,258 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click on search button.
+2022-03-22 09:53:29,359 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click Reset button.
+2022-03-22 09:53:36,750 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Go to stock details screen.
+2022-03-22 09:53:38,124 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has performed print label.
+2022-03-22 09:54:04,704 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click reset button.
+2022-03-22 09:54:05,420 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Going to main screen.
+2022-03-22 10:10:24,412 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-22 11:21:47,766 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-22 13:56:07,200 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 09:50:06,541 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 09:52:59,302 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Parts screen opened.
+2022-03-23 09:52:59,478 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Client selected
+2022-03-23 09:53:01,605 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-23 09:53:01,673 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Tick on Include zero qty checkbox.
+2022-03-23 09:53:02,401 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-23 09:53:02,586 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: UnTick on Include zero qty checkbox.
+2022-03-23 09:53:02,737 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on search button.
+2022-03-23 09:53:09,588 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Click on part and go to part details screen.
+2022-03-23 09:53:13,557 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Return from part details screen.
+2022-03-23 09:53:26,627 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has clicked on Bin dropdown box.
+2022-03-23 09:53:28,802 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has tick All checkbox.
+2022-03-23 09:53:30,278 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click on search button.
+2022-03-23 09:53:30,458 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click Reset button.
+2022-03-23 09:53:37,848 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Go to stock details screen.
+2022-03-23 09:53:39,279 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has performed print label.
+2022-03-23 09:54:04,039 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: User has click reset button.
+2022-03-23 09:54:04,685 [main] INFO NetAgentSmoke.NetAgentProcess - Parts Screen: Going to main screen.
+2022-03-23 10:51:19,909 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 10:55:30,770 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 10:56:43,017 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 11:00:06,968 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 11:04:56,953 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 11:24:25,683 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 11:26:52,613 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened
+2022-03-23 11:28:16,228 [main] INFO NetAgentSmoke.NetAgentProcess - Url opened

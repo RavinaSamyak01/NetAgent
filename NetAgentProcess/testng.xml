@@ -49,7 +49,7 @@
 
 					<!--OrderProcessing-->
 					<include name="TaskLog" />
-					<include name="orderProcessing" />
+					<exclude name="orderProcessing" />
 
 					<!--<include name="SendEmail" /> -->
 				</methods>

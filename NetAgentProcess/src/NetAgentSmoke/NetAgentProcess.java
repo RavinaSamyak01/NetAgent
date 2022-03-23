@@ -779,51 +779,51 @@ public class NetAgentProcess extends BaseInit {
 					"Status : Order Search is not Working after Search with Date Range.(May be there is no Order.)");
 		} else {
 			System.out.println("Status : Order Search is Working after Search with Date Range.");
-		}
+			// Click on column title for sorting
+			// --storing all the columns of the table
+			List<WebElement> Columns = Driver.findElements(By.xpath("//td[@role=\"columnheader\"]"));
+			System.out.println("total No. of columns of the table is=" + Columns.size());
 
-		// Click on column title for sorting
-		// --storing all the columns of the table
-		List<WebElement> Columns = Driver.findElements(By.xpath("//td[@role=\"columnheader\"]"));
-		System.out.println("total No. of columns of the table is=" + Columns.size());
+			// --Clicking on all the columns one by one for sorting
+			for (int col = 0; col < Columns.size() - 4; col++) {
+				String ColName = Columns.get(col).getAttribute("aria-label");
+				System.out.println("column name is=" + ColName);
 
-		// --Clicking on all the columns one by one for sorting
-		for (int col = 0; col < Columns.size() - 4; col++) {
-			String ColName = Columns.get(col).getAttribute("aria-label");
-			System.out.println("column name is=" + ColName);
+				// --Check the sorting value before sorting applied
+				String ColSortBefore = Columns.get(col).getAttribute("aria-sort");
+				System.out.println("Sorting for " + ColName + " is==" + ColSortBefore);
 
-			// --Check the sorting value before sorting applied
-			String ColSortBefore = Columns.get(col).getAttribute("aria-sort");
-			System.out.println("Sorting for " + ColName + " is==" + ColSortBefore);
+				// --Clicking on column
+				wait.until(ExpectedConditions.elementToBeClickable(Columns.get(col)));
+				Columns.get(col).click();
+				System.out.println("Clicked on column for sorting");
 
-			// --Clicking on column
-			Columns.get(col).click();
-			System.out.println("Clicked on column for sorting");
+				// --Check the sorting value after sorting applied
+				String ColSortAsc = Columns.get(col).getAttribute("aria-sort");
+				System.out.println("after Sorting value of sort for " + ColName + " is==" + ColSortAsc);
 
-			// --Check the sorting value after sorting applied
-			String ColSortAsc = Columns.get(col).getAttribute("aria-sort");
-			System.out.println("after Sorting value of sort for " + ColName + " is==" + ColSortAsc);
+				// --Checking sorting is applied or not
+				if (ColSortAsc.equals(ColSortBefore)) {
+					System.out.println("Sorting is not applied");
+				} else {
+					System.out.println("Sorting is applied and sorting is applied on " + ColSortAsc + " Order");
+				}
 
-			// --Checking sorting is applied or not
-			if (ColSortAsc.equals(ColSortBefore)) {
-				System.out.println("Sorting is not applied");
-			} else {
-				System.out.println("Sorting is applied and sorting is applied on " + ColSortAsc + " Order");
-			}
+				// --Clicking on column
+				Columns.get(col).click();
+				System.out.println("Clicked on column for sorting");
 
-			// --Clicking on column
-			Columns.get(col).click();
-			System.out.println("Clicked on column for sorting");
+				// --Check the sorting value after sorting applied
+				String ColSortDesc = Columns.get(col).getAttribute("aria-sort");
+				System.out.println("after Sorting value of sort for " + ColName + " is==" + ColSortDesc);
 
-			// --Check the sorting value after sorting applied
-			String ColSortDesc = Columns.get(col).getAttribute("aria-sort");
-			System.out.println("after Sorting value of sort for " + ColName + " is==" + ColSortDesc);
+				// --Checking sorting is applied on desc order or not
+				if (ColSortDesc.equals("descending")) {
+					System.out.println("Sorting is applied and sorting is applied on " + ColSortAsc + " Order");
+				} else {
+					System.out.println("Sorting is not applied");
 
-			// --Checking sorting is applied on desc order or not
-			if (ColSortDesc.equals("descending")) {
-				System.out.println("Sorting is applied and sorting is applied on " + ColSortAsc + " Order");
-			} else {
-				System.out.println("Sorting is not applied");
-
+				}
 			}
 
 		}
@@ -1306,7 +1306,7 @@ public class NetAgentProcess extends BaseInit {
 		// Click on Edit
 		Driver.findElement(By.id("imgUserListEdit_1")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'well-sm')]")));
+		// wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'well-sm')]")));
 
 		// check all editable fields
 		// 1. Login Type
@@ -2497,6 +2497,8 @@ public class NetAgentProcess extends BaseInit {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtFromEstArrival")));
 		Driver.findElement(By.id("txtFromEstArrival")).sendKeys(ValiFrom);
 		Driver.findElement(By.id("txtToEstArrival")).sendKeys(ValiTo);
+
+		Driver.findElement(By.id("txtASN")).clear();
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		try {
