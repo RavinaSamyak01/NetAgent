@@ -18,18 +18,21 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class TaskLog extends BaseInit {
 
+	@Test
 	public static void taskLog()
 			throws IOException, EncryptedDocumentException, InvalidFormatException, InterruptedException {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 		JavascriptExecutor js = (JavascriptExecutor) Driver;
-		// Actions act = new Actions(Driver);
+		Actions act = new Actions(Driver);
 		File src0 = new File(".\\NA_STG.xls");
 		FileInputStream fis0 = new FileInputStream(src0);
 		Workbook workbook = WorkbookFactory.create(fis0);
@@ -172,8 +175,9 @@ public class TaskLog extends BaseInit {
 		Driver.findElement(By.id("txtExpCompFromDate1")).sendKeys(FromDate);
 		// --expected To
 		Driver.findElement(By.id("txtExpCompToDate1")).sendKeys(FromDate);
-		Driver.findElement(By.id("txtServiceId1")).click();
-		Driver.findElement(By.id("btnSearch1")).click();
+		Driver.findElement(By.id("txtCustCode1")).click();
+		WebElement SearchBTn = Driver.findElement(By.id("btnSearch1"));
+		act.moveToElement(SearchBTn).click().perform();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
 		if (NoData.isDisplayed()) {
@@ -190,6 +194,7 @@ public class TaskLog extends BaseInit {
 
 		Driver.findElement(By.id("txtCustCode1")).click();
 		Driver.findElement(By.id("txtCustCode1")).sendKeys("950654");
+		Driver.findElement(By.id("txtCustCode1")).click();
 		Driver.findElement(By.id("btnSearch1")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		try {
@@ -545,13 +550,90 @@ public class TaskLog extends BaseInit {
 		getScreenshot(Driver, "RTETab");
 		TotalJob = Driver.findElement(By.xpath("//*[@ng-bind=\"TotalJob\"]")).getText();
 		System.out.println("Total No of job in RTE Tab is/are==" + TotalJob);
-		// --Search
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearchRTE")));
-		Driver.findElement(By.id("txtBasicSearchRTE")).clear();
-		Driver.findElement(By.id("txtBasicSearchRTE")).sendKeys("");
-		Driver.findElement(By.id("btnRTESearch2")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		for (int col = 0; col < colNum; col++) {
+			// --Search
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearchRTE")));
+			Driver.findElement(By.id("txtBasicSearchRTE")).clear();
+			Driver.findElement(By.id("txtBasicSearchRTE"))
+					.sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(col)));
+			Driver.findElement(By.id("btnRTESearch2")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			TotalJob = Driver.findElement(By.xpath("//*[@ng-bind=\"TotalJob\"]")).getText();
+			System.out.println("Total No of job in RTE Tab is/are==" + TotalJob);
 
+			// --Clear search
+			Driver.findElement(By.id("txtBasicSearchRTE")).clear();
+			Driver.findElement(By.id("btnRTESearch2")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			TotalJob = Driver.findElement(By.xpath("//*[@ng-bind=\"TotalJob\"]")).getText();
+			System.out.println("Total No of job in RTE Tab is/are==" + TotalJob);
+
+			// -_Horizontal scroll
+			WebElement scrollArea = Driver.findElement(By.xpath("//*[@id=\"idRTEList\"]//td[15]"));
+			act.moveToElement(scrollArea).build().perform();
+			// --memo
+			Driver.findElement(By.id("Memo0")).click();
+			System.out.println("Clicked on Memo");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			getScreenshot(Driver, "Memo_" + formatter.formatCellValue(sh0.getRow(2).getCell(col)));
+			// --Enter memo
+			Driver.findElement(By.id("txtMemoNA")).sendKeys("This is RTE job for Automation");
+			System.out.println("Entered memo");
+			// --save memo
+			Driver.findElement(By.id("btnAgentMemoNA")).click();
+			System.out.println("Clicked on Save");
+			// --close
+			close = Driver.findElement(By.id("idanchorclose"));
+			js.executeScript("arguments[0].click()", close);
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			// --Print label
+			// -_Horizontal scroll
+			scrollArea = Driver.findElement(By.xpath("//*[@id=\"idRTEList\"]//td[15]"));
+			act.moveToElement(scrollArea).build().perform();
+			WebElement PLabel = Driver.findElement(By.linkText("Print Label"));
+			act.moveToElement(PLabel).click().perform();
+			System.out.println("Clicked on Print Label");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			// --Print Label new window
+			String WindowHandlebefore = Driver.getWindowHandle();
+			for (String windHandle : Driver.getWindowHandles()) {
+				Driver.switchTo().window(windHandle);
+				System.out.println("Switched to Print Label window");
+				Thread.sleep(5000);
+				getScreenshot(Driver, "PrintLabel_" + formatter.formatCellValue(sh0.getRow(2).getCell(col)));
+
+			}
+			Driver.close();
+			System.out.println("Closed Print Label window");
+
+			Driver.switchTo().window(WindowHandlebefore);
+			System.out.println("Switched to main window");
+
+			// --Print 4*6 label
+			// -_Horizontal scroll
+			scrollArea = Driver.findElement(By.xpath("//*[@id=\"idRTEList\"]//td[15]"));
+			act.moveToElement(scrollArea).build().perform();
+			WebElement P46Label = Driver.findElement(By.linkText("Print 4x6 Label"));
+			act.moveToElement(P46Label).click().perform();
+			System.out.println("Clicked on Print 4x6 Label");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			// --Print Label new window
+			WindowHandlebefore = Driver.getWindowHandle();
+			for (String windHandle : Driver.getWindowHandles()) {
+				Driver.switchTo().window(windHandle);
+				System.out.println("Switched to Print 4x6 Label window");
+				Thread.sleep(5000);
+				getScreenshot(Driver, "Print46Label_" + formatter.formatCellValue(sh0.getRow(2).getCell(col)));
+
+			}
+			Driver.close();
+			System.out.println("Closed Print 4x6 Label window");
+
+			Driver.switchTo().window(WindowHandlebefore);
+			System.out.println("Switched to main window");
+
+		}
 	}
 
 }

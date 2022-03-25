@@ -84,8 +84,10 @@ public class BaseInit {
 		options.addArguments("--proxy-bypass-list=*");
 		options.addArguments("--disable-extensions");
 		options.addArguments("--no-sandbox");
+		options.addArguments("--start-maximized");
+
 		//options.addArguments("--headless");
-		options.addArguments("window-size=1366x788");
+		//options.addArguments("window-size=1366x788");
 		capabilities.setPlatform(Platform.ANY);
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		Driver = new ChromeDriver(options);
@@ -98,15 +100,15 @@ public class BaseInit {
 		System.out.println("window size==" + Driver.manage().window().getSize());
 
 		// Set new size
-		Dimension newDimension = new Dimension(1366, 788);
-		Driver.manage().window().setSize(newDimension);
-
-		// Getting
-		Dimension newSetDimension = Driver.manage().window().getSize();
-		int newHeight = newSetDimension.getHeight();
-		int newWidth = newSetDimension.getWidth();
-		System.out.println("Current height: " + newHeight);
-		System.out.println("Current width: " + newWidth);
+		/*
+		 * Dimension newDimension = new Dimension(1366, 788);
+		 * Driver.manage().window().setSize(newDimension);
+		 * 
+		 * // Getting Dimension newSetDimension = Driver.manage().window().getSize();
+		 * int newHeight = newSetDimension.getHeight(); int newWidth =
+		 * newSetDimension.getWidth(); System.out.println("Current height: " +
+		 * newHeight); System.out.println("Current width: " + newWidth)
+		 */;
 
 	}
 

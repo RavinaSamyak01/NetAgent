@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -16,7 +17,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
@@ -28,7 +32,7 @@ public class OrderProcessing extends BaseInit {
 			throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
 		WebDriverWait wait = new WebDriverWait(Driver, 50);
 		JavascriptExecutor js = (JavascriptExecutor) Driver;
-		// Actions act = new Actions(Driver);
+		Actions act = new Actions(Driver);
 		File src0 = new File(".\\NA_STG.xls");
 		FileInputStream fis0 = new FileInputStream(src0);
 		Workbook workbook = WorkbookFactory.create(fis0);
@@ -1272,12 +1276,187 @@ public class OrderProcessing extends BaseInit {
 					}
 
 				}
+			} else if (ServiceID.contains("Replenish")) {
+				// --Click on Inventory tab
+				Driver.findElement(By.id("inventory")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("WO")));
+				getScreenshot(Driver, "InventoryTab");
+				String TotalJob = Driver.findElement(By.xpath("//*[@ng-bind=\"TotalJob\"]")).getText();
+				System.out.println("Total No of job in Inventory Tab is/are==" + TotalJob);
+				// --Search
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+				Driver.findElement(By.id("txtBasicSearch")).clear();
+				Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
+				Driver.findElement(By.id("btnSearch2")).click();
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				try {
+					WebElement NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+					if (NoData.isDisplayed()) {
+						System.out.println("Record is not available with search parameters");
+					}
+				} catch (Exception NoData) {
+					System.out.println("Record is available with search parameters");
+					// --click on record
+					wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("idparttable")));
+					String Orderstage = Driver.findElement(By.xpath("//h3[contains(@class,'panel-title')]")).getText();
+					System.out.println("Current stage of the order is=" + Orderstage);
+					getScreenshot(Driver, Orderstage + PUID);
+					// --Click on Update
+					Driver.findElement(By.id("idupdateicon")).click();
+					System.out.println("Clicked on the Update");
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					try {
+						wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("fslavailableloclist")));
+						System.out.println("Alert is displayed for create sub ASN");
+						// --ALert
+						// --Close the pop up
+						Driver.findElement(By.id("btnCancel")).click();
+						System.out.println("Click on Close PopUp");
+					} catch (Exception e) {
+						System.out.println("Alert is not displayed for create sub ASN");
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("errorid")));
+						String ValMsg = Driver.findElement(By.id("errorid")).getText();
+						System.out.println("Validation Msg==" + ValMsg);
+					}
+					// --Click on Save
+					Driver.findElement(By.id("idsaveicon")).click();
+					System.out.println("Clicked on the Save");
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+					// --table
+					WebElement parttable = Driver.findElement(By.xpath("//*[@id=\"parttable\"]/tbody"));
+					List<WebElement> Partrow = parttable.findElements(By.tagName("tr"));
+					System.out.println("total No of rows in part table are==" + Partrow.size());
+
+					for (int part = 0; part < Partrow.size(); part++) {
+						// --Find SerialNo column
+						try {
+							WebElement SerialNo = Partrow.get(part).findElement(By.id("txtSerialNo"));
+							act.moveToElement(SerialNo).build().perform();
+							wait.until(ExpectedConditions.elementToBeClickable(SerialNo));
+							SerialNo.clear();
+							SerialNo.sendKeys("SerialNo" + part);
+							System.out.println("Enetered serial Number in " + part + " part");
+
+							// --Enter Accepted Quantity
+							WebElement AccQty = Partrow.get(part).findElement(By.id("txtReceivedQty"));
+							act.moveToElement(AccQty).build().perform();
+							wait.until(ExpectedConditions.elementToBeClickable(AccQty));
+							AccQty.clear();
+							AccQty.sendKeys("1");
+							AccQty.sendKeys(Keys.TAB);
+							System.out.println("Enetered Accepted Quantity in " + part + " part");
+							// --Click on Save
+							wait.until(ExpectedConditions.elementToBeClickable(By.id("idsaveicon")));
+							WebElement Save = Driver.findElement(By.id("idsaveicon"));
+							act.moveToElement(Save).click().perform();
+							System.out.println("Clicked on the Save");
+							wait.until(ExpectedConditions
+									.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+						} catch (Exception staleelement) {
+							try {
+								WebElement parttable1 = Driver.findElement(By.xpath("//*[@id=\"parttable\"]/tbody"));
+								List<WebElement> Partrow1 = parttable1.findElements(By.tagName("tr"));
+								System.out.println("total No of rows in part table are==" + Partrow.size());
+								for (int partR = part; partR < Partrow1.size();) {
+									WebElement SerialNo = Partrow1.get(partR).findElement(By.id("txtSerialNo"));
+									act.moveToElement(SerialNo).build().perform();
+									wait.until(ExpectedConditions.elementToBeClickable(SerialNo));
+									SerialNo.clear();
+									SerialNo.sendKeys("SerialNo" + part);
+									System.out.println("Enetered serial Number in " + part + " part");
+
+									// --Enter Accepted Quantity
+									WebElement AccQty = Partrow1.get(partR).findElement(By.id("txtReceivedQty"));
+									act.moveToElement(AccQty).build().perform();
+									wait.until(ExpectedConditions.elementToBeClickable(AccQty));
+									AccQty.clear();
+									AccQty.sendKeys("1");
+									AccQty.sendKeys(Keys.TAB);
+									System.out.println("Enetered Accepted Quantity in " + part + " part");
+									// --Click on Save
+									wait.until(ExpectedConditions.elementToBeClickable(By.id("idsaveicon")));
+									WebElement Save = Driver.findElement(By.id("idsaveicon"));
+									act.moveToElement(Save).click().perform();
+									System.out.println("Clicked on the Save");
+									wait.until(ExpectedConditions
+											.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+									break;
+								}
+							} catch (Exception StaleElement) {
+								WebElement parttable1 = Driver.findElement(By.xpath("//*[@id=\"parttable\"]/tbody"));
+								List<WebElement> Partrow1 = parttable1.findElements(By.tagName("tr"));
+								System.out.println("total No of rows in part table are==" + Partrow.size());
+								for (int partRw = part; partRw < Partrow1.size();) {
+									WebElement SerialNo = Partrow1.get(partRw).findElement(By.id("txtSerialNo"));
+									act.moveToElement(SerialNo).build().perform();
+									wait.until(ExpectedConditions.elementToBeClickable(SerialNo));
+									SerialNo.clear();
+									SerialNo.sendKeys("SerialNo" + part);
+									System.out.println("Entered serial Number in " + part + " part");
+
+									// --Enter Accepted Quantity
+									WebElement AccQty = Partrow1.get(partRw).findElement(By.id("txtReceivedQty"));
+									act.moveToElement(AccQty).build().perform();
+									wait.until(ExpectedConditions.elementToBeClickable(AccQty));
+									AccQty.clear();
+									AccQty.sendKeys("1");
+									AccQty.sendKeys(Keys.TAB);
+									System.out.println("Enetered Accepted Quantity in " + part + " part");
+									// --Click on Save
+									wait.until(ExpectedConditions.elementToBeClickable(By.id("idsaveicon")));
+									WebElement Save = Driver.findElement(By.id("idsaveicon"));
+									act.moveToElement(Save).click().perform();
+									System.out.println("Clicked on the Save");
+									wait.until(ExpectedConditions
+											.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+									break;
+								}
+							}
+						}
+					}
+					// --Click on Update
+
+					wait.until(ExpectedConditions.elementToBeClickable(By.id("idupdateicon")));
+					WebElement update = Driver.findElement(By.id("idupdateicon"));
+					act.moveToElement(update).click().perform();
+					System.out.println("Clicked on the update");
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+					try {
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
+						String SuccMsg = Driver.findElement(By.id("successid")).getText();
+						System.out.println("Success Message==" + SuccMsg);
+					} catch (Exception sMsg) {
+						System.out.println(" Data is not Saved Successfully");
+					}
+
+				}
 			} else {
 				System.out.println("Unknown Service found");
 
 			}
 		}
 
+	}
+
+	public static boolean retryingFindClick(WebElement webElement) {
+		boolean result = false;
+		int attempts = 0;
+		while (attempts < 2) {
+			try {
+				webElement.click();
+				result = true;
+				break;
+			} catch (StaleElementReferenceException e) {
+			}
+			attempts++;
+		}
+		return result;
 	}
 
 	public static void memo(String PID) throws IOException, InterruptedException {
