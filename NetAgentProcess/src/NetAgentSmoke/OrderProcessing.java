@@ -1431,11 +1431,72 @@ public class OrderProcessing extends BaseInit {
 						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
 						String SuccMsg = Driver.findElement(By.id("successid")).getText();
 						System.out.println("Success Message==" + SuccMsg);
+
+						// --Binless label
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idBinlessLabelGenerate")));
+						Driver.findElement(By.id("idBinlessLabelGenerate")).click();
+						System.out.println("Clicked on BinLess Label");
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("errorid")));
+						String ErrMsg = Driver.findElement(By.id("errorid")).getText();
+						System.out.println("Error Message==" + ErrMsg);
+
+						// --Print Label
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idLabelGenerate")));
+						Driver.findElement(By.id("idLabelGenerate")).click();
+						System.out.println("Clicked on Print Label");
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+						// --Handle Print label window
+						String WindowHandlebefore = Driver.getWindowHandle();
+						for (String windHandle : Driver.getWindowHandles()) {
+							Driver.switchTo().window(windHandle);
+							System.out.println("Switched to Prit Label window");
+							Thread.sleep(5000);
+							getScreenshot(Driver, "PrintLabel_" + PUID);
+
+						}
+						Driver.close();
+						System.out.println("Closed Print Label window");
+
+						Driver.switchTo().window(WindowHandlebefore);
+						System.out.println("Switched to main window");
+
+						// --Close button
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idiconclose")));
+						Driver.findElement(By.id("idiconclose")).click();
+						System.out.println("Clicked on Close button");
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
 					} catch (Exception sMsg) {
 						System.out.println(" Data is not Saved Successfully");
-					}
+						// --Close button
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idiconclose")));
+						Driver.findElement(By.id("idiconclose")).click();
+						System.out.println("Clicked on Close button");
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
+					}
+					// --Search
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtBasicSearch")));
+					Driver.findElement(By.id("txtBasicSearch")).clear();
+					Driver.findElement(By.id("txtBasicSearch")).sendKeys(PUID);
+					Driver.findElement(By.id("btnSearch2")).click();
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					try {
+						WebElement NoData1 = Driver.findElement(By.className("dx-datagrid-nodata"));
+						if (NoData1.isDisplayed()) {
+							System.out.println("Record is not available with search parameters");
+						}
+					} catch (Exception Data) {
+						System.out.println("Record is available with search parameters");
+					}
 				}
+
 			} else {
 				System.out.println("Unknown Service found");
 

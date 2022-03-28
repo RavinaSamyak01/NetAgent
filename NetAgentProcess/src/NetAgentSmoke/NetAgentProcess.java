@@ -794,8 +794,9 @@ public class NetAgentProcess extends BaseInit {
 				System.out.println("Sorting for " + ColName + " is==" + ColSortBefore);
 
 				// --Clicking on column
-				wait.until(ExpectedConditions.elementToBeClickable(Columns.get(col)));
-				Columns.get(col).click();
+				WebElement Cols = Columns.get(col);
+				wait.until(ExpectedConditions.elementToBeClickable(Cols));
+				Cols.click();
 				System.out.println("Clicked on column for sorting");
 
 				// --Check the sorting value after sorting applied
@@ -2499,6 +2500,7 @@ public class NetAgentProcess extends BaseInit {
 		Driver.findElement(By.id("txtToEstArrival")).sendKeys(ValiTo);
 
 		Driver.findElement(By.id("txtASN")).clear();
+		wait.until(ExpectedConditions.elementToBeClickable(By.id("idbtnRunSearch")));
 		Driver.findElement(By.id("idbtnRunSearch")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		try {
@@ -3334,6 +3336,8 @@ public class NetAgentProcess extends BaseInit {
 		// select FSL
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();
 		Thread.sleep(2000);
+		wait.until(ExpectedConditions
+				.elementToBeClickable(By.xpath("//*[@id=\"ddlfsl\"]//input[@id=\"idcheckboxInput\"]")));
 		Driver.findElement(By.xpath("//*[@id=\"ddlfsl\"]//input[@id=\"idcheckboxInput\"]")).click();
 		Thread.sleep(2000);
 		Driver.findElement(By.id("btn_ddlfslclass=")).click();

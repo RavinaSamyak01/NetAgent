@@ -90,25 +90,33 @@ public class TaskLog extends BaseInit {
 
 		// --Search by Order Type
 		for (int OType = 1; OType < 3; OType++) {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			Select Ordertype = new Select(Driver.findElement(By.id("cmbOrderType1")));
 			Ordertype.selectByIndex(OType);
 			Driver.findElement(By.id("btnSearch1")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			try {
-				WebElement PickuPBox = Driver.findElement(By.xpath("//*[contains(@class,'pickupbx')]"));
-				if (PickuPBox.isDisplayed()) {
+				WebElement Stage = Driver.findElement(By.xpath("//h3[@class=\"panel-title\"]"));
+				if (Stage.isDisplayed()) {
 					System.out.println("Searched Job is displayed in edit mode");
-					// --Click on Close button
-					Driver.findElement(By.id("idclosetab")).click();
-					wait.until(ExpectedConditions
-							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					try {
+						// --Click on Close button
+						Driver.findElement(By.id("idclosetab")).click();
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					} catch (Exception close) {
+						Driver.findElement(By.id("idiconclose")).click();
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					}
 					// --Go to Advance Tab
 					Driver.findElement(By.id("AdvancedASNSearch")).click();
 					wait.until(ExpectedConditions
 							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 					wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("AdvancesSearch")));
 				}
+
 			} catch (Exception e) {
 				System.out.println("Data is not exist related search parameters");
 
@@ -323,6 +331,7 @@ public class TaskLog extends BaseInit {
 		// --Quarantine Window
 		Driver.findElement(By.linkText("Quarantine")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		Thread.sleep(2000);
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("idAddQuarantinePopup")));
 		getScreenshot(Driver, "QuarantineWindow");
 
@@ -383,7 +392,7 @@ public class TaskLog extends BaseInit {
 		// --Enter Doc name
 		Driver.findElement(By.id("txtDocName")).sendKeys("AutoDocument");
 		Driver.findElement(By.id("btnSelectFile")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		String Fpath = "C:\\Users\\rprajapati\\git\\NetAgent\\NetAgentProcess\\Job Upload Doc STG.xls";
 		WebElement InFile = Driver.findElement(By.id("inputfile"));

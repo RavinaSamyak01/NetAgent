@@ -1,118 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-03-25T16:54:57 IST" name="Default suite" finished-at="2022-03-25T16:56:22 IST" duration-ms="84095">
+  <suite started-at="2022-03-28T17:28:30 IST" name="Default suite" finished-at="2022-03-28T17:36:10 IST" duration-ms="459292">
     <groups>
     </groups>
-    <test started-at="2022-03-25T16:54:57 IST" name="Default test" finished-at="2022-03-25T16:56:22 IST" duration-ms="84095">
-      <class name="NetAgentSmoke.OrderProcessing">
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a]" started-at="2022-03-25T16:54:55 IST" name="beforeMethod" finished-at="2022-03-25T16:54:57 IST" duration-ms="2381" status="PASS">
+    <test started-at="2022-03-28T17:28:30 IST" name="Default test" finished-at="2022-03-28T17:36:10 IST" duration-ms="459292">
+      <class name="NetAgentSmoke.TaskLog">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d]" started-at="2022-03-28T17:28:28 IST" name="beforeMethod" finished-at="2022-03-28T17:28:30 IST" duration-ms="2573" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method is-config="true" signature="Login()[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a]" started-at="2022-03-25T16:54:57 IST" name="Login" finished-at="2022-03-25T16:55:16 IST" duration-ms="18190" status="PASS">
+        <test-method is-config="true" signature="Login()[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d]" started-at="2022-03-28T17:28:31 IST" name="Login" finished-at="2022-03-28T17:28:54 IST" duration-ms="23423" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a]" started-at="2022-03-25T16:55:16 IST" name="testMethodName" finished-at="2022-03-25T16:55:16 IST" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="testMethodName(java.lang.reflect.Method)[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d]" started-at="2022-03-28T17:28:54 IST" name="testMethodName" finished-at="2022-03-28T17:28:54 IST" duration-ms="5" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public static void NetAgentSmoke.OrderProcessing.orderProcess() throws org.apache.poi.EncryptedDocumentException,org.apache.poi.openxml4j.exceptions.InvalidFormatException,java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public static void NetAgentSmoke.TaskLog.taskLog() throws java.io.IOException,org.apache.poi.EncryptedDocumentException,org.apache.poi.openxml4j.exceptions.InvalidFormatException,java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMethodName -->
-        <test-method signature="orderProcess()[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a]" started-at="2022-03-25T16:55:16 IST" name="orderProcess" finished-at="2022-03-25T16:56:21 IST" duration-ms="65092" status="FAIL">
-          <exception class="org.openqa.selenium.ElementClickInterceptedException">
-            <message>
-              <![CDATA[element click intercepted: Element <i class="sprite icon-save" id="idsaveicon" title="Save"></i> is not clickable at point (25, 124). Other element would receive the click: <li ng-hide="aftersave">...</li>
-  (Session info: chrome=99.0.4844.82)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:48'
-System info: host: 'SIPL92', ip: '10.212.130.127', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\RPRAJA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57416}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: f37eee685ac0172c3aab03ceb8b1ec8f]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <i class="sprite icon-save" id="idsaveicon" title="Save"></i> is not clickable at point (25, 124). Other element would receive the click: <li ng-hide="aftersave">...</li>
-  (Session info: chrome=99.0.4844.82)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:25:48'
-System info: host: 'SIPL92', ip: '10.212.130.127', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.82, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\RPRAJA~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:57416}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: f37eee685ac0172c3aab03ceb8b1ec8f
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
-at NetAgentSmoke.OrderProcessing.orderProcess(OrderProcessing.java:1403)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
+        <test-method signature="taskLog()[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d]" started-at="2022-03-28T17:28:54 IST" name="taskLog" finished-at="2022-03-28T17:36:09 IST" duration-ms="435305" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- orderProcess -->
-        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a]" started-at="2022-03-25T16:56:21 IST" name="getResult" finished-at="2022-03-25T16:56:21 IST" duration-ms="457" status="PASS">
+        </test-method> <!-- taskLog -->
+        <test-method is-config="true" signature="getResult(org.testng.ITestResult)[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d]" started-at="2022-03-28T17:36:09 IST" name="getResult" finished-at="2022-03-28T17:36:09 IST" duration-ms="139" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=orderProcess status=FAILURE method=OrderProcessing.orderProcess()[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a] output={null}]]]>
+                <![CDATA[[TestResult name=taskLog status=SUCCESS method=TaskLog.taskLog()[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method is-config="true" signature="Complete()[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a]" started-at="2022-03-25T16:56:21 IST" name="Complete" finished-at="2022-03-25T16:56:22 IST" duration-ms="277" status="PASS">
+        <test-method is-config="true" signature="Complete()[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d]" started-at="2022-03-28T17:36:09 IST" name="Complete" finished-at="2022-03-28T17:36:10 IST" duration-ms="387" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Complete -->
-        <test-method is-config="true" signature="SendEmail()[pri:0, instance:NetAgentSmoke.OrderProcessing@791f145a]" started-at="2022-03-25T16:56:22 IST" name="SendEmail" finished-at="2022-03-25T16:56:23 IST" duration-ms="1052" status="PASS">
+        <test-method is-config="true" signature="SendEmail()[pri:0, instance:NetAgentSmoke.TaskLog@5824a83d]" started-at="2022-03-28T17:36:10 IST" name="SendEmail" finished-at="2022-03-28T17:36:13 IST" duration-ms="3539" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SendEmail -->
-      </class> <!-- NetAgentSmoke.OrderProcessing -->
+      </class> <!-- NetAgentSmoke.TaskLog -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

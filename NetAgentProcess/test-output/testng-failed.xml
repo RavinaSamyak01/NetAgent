@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="NetAgentSmoke.OrderProcessing">
+      <class name="NetAgentSmoke.TaskLog">
         <methods>
           <include name="getResult"/>
           <include name="Complete"/>
-          <include name="orderProcess"/>
           <include name="beforeMethod"/>
           <include name="Login"/>
           <include name="SendEmail"/>
           <include name="testMethodName"/>
+          <include name="taskLog"/>
         </methods>
-      </class> <!-- NetAgentSmoke.OrderProcessing -->
+      </class> <!-- NetAgentSmoke.TaskLog -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

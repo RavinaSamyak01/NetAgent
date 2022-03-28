@@ -343,7 +343,7 @@ public class BaseInit {
 		msg.append("*** This is automated generated email and send through automation script ***" + "\n");
 		msg.append("Process URL : " + baseUrl);
 
-		String subject = "Automation: NetAgent Portal";
+		String subject = "Selenium Automation Script: Staging NetAgent Portal";
 		String File = ".\\Report\\ExtentReport\\ExtentReportResults.html";
 
 		try {
