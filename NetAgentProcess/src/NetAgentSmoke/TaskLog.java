@@ -437,7 +437,6 @@ public class TaskLog extends BaseInit {
 		getScreenshot(Driver, "AdvanceSearch_Refresh");
 
 		// --MERGE RTE Tab
-
 		Driver.findElement(By.id("btnMerge3")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("ngdialog-message")));
@@ -459,8 +458,23 @@ public class TaskLog extends BaseInit {
 		Thread.sleep(2000);
 
 		// --Merge RTE with Selection of Job
-		// --Search by Service
+		// --Search by PU DRV Conf LOC Job
+		// --Next task
+		Select Nexttask = new Select(Driver.findElement(By.id("idddlnexttask")));
+		Thread.sleep(2000);
+		Nexttask.selectByVisibleText("PU DRV CONF");
+		System.out.println("Selected PU DRV CONF stage");
+
+		// --Enter Service
+		Driver.findElement(By.id("txtServiceId1")).clear();
 		Driver.findElement(By.id("txtServiceId1")).sendKeys("LOC");
+		System.out.println("Entered Service");
+
+		// --Enter Customer
+		Driver.findElement(By.id("txtCustCode1")).clear();
+		Driver.findElement(By.id("txtCustCode1")).sendKeys("LOC");
+		System.out.println("Entered Customer");
+
 		Driver.findElement(By.id("btnSearch1")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
@@ -469,10 +483,6 @@ public class TaskLog extends BaseInit {
 		} else {
 			System.out.println("Data is present related search parameter");
 
-			// --Descending the 1st column
-			Driver.findElement(By.xpath("//*[@aria-label=\"Task & Timing Column\"]")).click();
-			Thread.sleep(2000);
-
 			try {
 				// --select 1st row
 				Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//tr[1]//div")).click();
@@ -480,18 +490,28 @@ public class TaskLog extends BaseInit {
 						.getAttribute("aria-checked");
 				Thread.sleep(2000);
 				Assert.assertEquals(FstRow, "true");
-				Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//tr[2]//div")).click();
-				String SndRow = Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//tr[2]//div"))
-						.getAttribute("aria-checked");
-				Thread.sleep(2000);
-				Assert.assertEquals(SndRow, "true");
+
 				// --Merge RTE
 				Driver.findElement(By.id("btnMerge3")).click();
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("ngdialog-message")));
 
+				// --Route List
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("drpRouteList")));
+				Select RList = new Select(Driver.findElement(By.id("drpRouteList")));
+				Thread.sleep(2000);
+				RList.selectByIndex(0);
+				System.out.println("Selected RW List");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
 				// --Merge Button
-				// Driver.findElement(By.id("btnsave")).click();
+				Driver.findElement(By.id("btnsave")).click();
+				System.out.println("Clicked on Merge button");
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lblSuccessMsg")));
+				
+				String SuccMsg=Driver.findElement(By.id("lblSuccessMsg")).getText();
+				System.out.println("Success message="+SuccMsg+"\n");
 
 				// Cancel button
 				Driver.findElement(By.id("btnCancel")).click();
