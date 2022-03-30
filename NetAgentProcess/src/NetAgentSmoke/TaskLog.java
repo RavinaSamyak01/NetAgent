@@ -71,9 +71,15 @@ public class TaskLog extends BaseInit {
 					System.out.println("Searched Job is displayed in edit mode");
 					getScreenshot(Driver, "OrderEditor_" + col);
 					// --Click on Close button
-					Driver.findElement(By.id("idclosetab")).click();
-					wait.until(ExpectedConditions
-							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					try {
+						Driver.findElement(By.id("idclosetab")).click();
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					} catch (Exception close) {
+						Driver.findElement(By.id("idcloseicon")).click();
+						wait.until(ExpectedConditions
+								.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					}
 				}
 			} catch (Exception e) {
 
@@ -459,10 +465,22 @@ public class TaskLog extends BaseInit {
 
 		// --Merge RTE with Selection of Job
 		// --Search by PU DRV Conf LOC Job
+		
+		//--Deselect OrderType
+		Select Ordertype = new Select(Driver.findElement(By.id("cmbOrderType1")));
+		Ordertype.selectByVisibleText("(select)");
+		System.out.println("Deselected OrderType");
+		
+		//---Remove PickUp
+		Driver.findElement(By.id("txtPickup1")).clear();
+		System.out.println("Cleared Pickup");
+		
 		// --Next task
-		Select Nexttask = new Select(Driver.findElement(By.id("idddlnexttask")));
+		Driver.findElement(By.id("idddlnexttask")).click();
 		Thread.sleep(2000);
-		Nexttask.selectByVisibleText("PU DRV CONF");
+		Driver.findElement(By.xpath("//label[contains(text(),' PU DRV CONF')]")).click();
+		Thread.sleep(2000);
+		Driver.findElement(By.id("idddlnexttask")).click();
 		System.out.println("Selected PU DRV CONF stage");
 
 		// --Enter Service
@@ -472,7 +490,7 @@ public class TaskLog extends BaseInit {
 
 		// --Enter Customer
 		Driver.findElement(By.id("txtCustCode1")).clear();
-		Driver.findElement(By.id("txtCustCode1")).sendKeys("LOC");
+		Driver.findElement(By.id("txtCustCode1")).sendKeys("950655");
 		System.out.println("Entered Customer");
 
 		Driver.findElement(By.id("btnSearch1")).click();
@@ -499,8 +517,8 @@ public class TaskLog extends BaseInit {
 				// --Route List
 				wait.until(ExpectedConditions.elementToBeClickable(By.id("drpRouteList")));
 				Select RList = new Select(Driver.findElement(By.id("drpRouteList")));
-				Thread.sleep(2000);
-				RList.selectByIndex(0);
+				RList.selectByIndex(1);
+				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				System.out.println("Selected RW List");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
@@ -509,9 +527,9 @@ public class TaskLog extends BaseInit {
 				System.out.println("Clicked on Merge button");
 				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lblSuccessMsg")));
-				
-				String SuccMsg=Driver.findElement(By.id("lblSuccessMsg")).getText();
-				System.out.println("Success message="+SuccMsg+"\n");
+
+				String SuccMsg = Driver.findElement(By.id("lblSuccessMsg")).getText();
+				System.out.println("Success message=" + SuccMsg + "\n");
 
 				// Cancel button
 				Driver.findElement(By.id("btnCancel")).click();
