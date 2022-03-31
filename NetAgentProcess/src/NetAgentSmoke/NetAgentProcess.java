@@ -2315,23 +2315,23 @@ public class NetAgentProcess extends BaseInit {
 
 	@Test
 	public void ASNLog() throws Exception {
-		WebDriverWait wait = new WebDriverWait(Driver, 50);
-		Actions act = new Actions(Driver);
-
-		// --Inventory
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idInventory")));
-		Driver.findElement(By.id("idInventory")).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
-
-		// --ASN
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idASN")));
-		Driver.findElement(By.id("idASN")).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-
-		File src0 = new File(".\\NA_STG.xls");
-		FileInputStream fis0 = new FileInputStream(src0);
-		Workbook workbook = WorkbookFactory.create(fis0);
-		Sheet sh0 = workbook.getSheet("Sheet1");
+			WebDriverWait wait = new WebDriverWait(Driver, 50);
+			Actions act = new Actions(Driver);
+	
+			// --Inventory
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idInventory")));
+			Driver.findElement(By.id("idInventory")).click();
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
+	
+			// --ASN
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idASN")));
+			Driver.findElement(By.id("idASN")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+	
+			File src0 = new File(".\\NA_STG.xls");
+			FileInputStream fis0 = new FileInputStream(src0);
+			Workbook workbook = WorkbookFactory.create(fis0);
+			Sheet sh0 = workbook.getSheet("Sheet1");
 		// int rcount = sh0.getLastRowNum();
 
 		DataFormatter formatter = new DataFormatter();

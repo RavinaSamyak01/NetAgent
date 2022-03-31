@@ -17,6 +17,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -247,37 +248,179 @@ public class TaskLog extends BaseInit {
 
 		}
 
-		// --Search by ASN Type
+		// --Search by ASN Type--PutAway
+		// --Deselect OrderType
+		Select Ordertype = new Select(Driver.findElement(By.id("cmbOrderType1")));
+		Ordertype.selectByVisibleText("(select)");
+		System.out.println("Deselected OrderType");
+
+		// ---Remove PickUp
+		Driver.findElement(By.id("txtPickup1")).clear();
+		System.out.println("Cleared Pickup");
+
+		// --Remove Service
+		Driver.findElement(By.id("txtServiceId1")).clear();
+		System.out.println("Cleared Service");
+
+		// --Remove Customer
+		Driver.findElement(By.id("txtCustCode1")).clear();
+		System.out.println("Cleared Customer");
+
+		//// --Remove PickUp
+		Driver.findElement(By.id("txtPickup1")).clear();
+		System.out.println("Cleared PickUp");
+
 		Driver.findElement(By.id("cmbASNType1")).click();
 		Thread.sleep(2000);
 		// -Select All
-		Driver.findElement(By.id("chkAllcmbASNType1")).click();
+		Driver.findElement(By.xpath("//label[contains(text(),' Replenishment')]")).click();
 		Thread.sleep(2000);
-		if (Driver.findElement(By.id("chkAllcmbASNType1")).isSelected()) {
-			System.out.println("Select All checkbox is checked");
-		} else {
-			System.out.println("Select All checkbox is not checked");
-		} // --Click on Search
+		Driver.findElement(By.id("cmbASNType1")).click();
+		System.out.println("Selected ASN Type=Replenishment");
+		// --Click on Search
 		Driver.findElement(By.id("btnSearch1")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+		try {
+			if (NoData.isDisplayed()) {
+				NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
 
-		NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
-		if (NoData.isDisplayed()) {
-			System.out.println("Data is not present related search parameter");
-		} else {
+				System.out.println("Data is not present related search parameter");
+			}
+		} catch (Exception Nodata) {
 			System.out.println("Data is present related search parameter");
+			String Orderstage = Driver.findElement(By.xpath("//h3[contains(@class,'panel-title')]")).getText();
+			System.out.println("Current stage of the order is=" + Orderstage);
+			getScreenshot(Driver, "ReplenishMent_PutAway");
+
+			// --Click on Receive to PutAway
+			Driver.findElement(By.linkText("RECEIVE TO PUTAWAY")).click();
+			System.out.println("Clicked on RECEIVE TO PUTAWAY");
+			// --Enter Accepted Quantity
+			// --table
+			WebElement parttable = Driver.findElement(By.xpath("//*[@id=\"parttable\"]/tbody"));
+			List<WebElement> Partrow = parttable.findElements(By.tagName("tr"));
+			System.out.println("total No of rows in part table are==" + Partrow.size());
+
+			for (int part = 0; part < Partrow.size(); part++) {
+				// --Find SerialNo column
+				try {
+					WebElement SerialNo = Partrow.get(part).findElement(By.id("txtSerialNo"));
+					act.moveToElement(SerialNo).build().perform();
+					wait.until(ExpectedConditions.elementToBeClickable(SerialNo));
+					SerialNo.clear();
+					SerialNo.sendKeys("SerialNo" + part);
+					System.out.println("Enetered serial Number in " + part + " part");
+
+					// --Enter Accepted Quantity
+					WebElement AccQty = Partrow.get(part).findElement(By.id("txtReceivedQty"));
+					act.moveToElement(AccQty).build().perform();
+					wait.until(ExpectedConditions.elementToBeClickable(AccQty));
+					AccQty.clear();
+					AccQty.sendKeys("1");
+					AccQty.sendKeys(Keys.TAB);
+					System.out.println("Enetered Accepted Quantity in " + part + " part");
+					// --Click on Save
+					wait.until(ExpectedConditions.elementToBeClickable(By.id("idsaveicon")));
+					WebElement Save = Driver.findElement(By.id("idsaveicon"));
+					act.moveToElement(Save).click().perform();
+					System.out.println("Clicked on the Save");
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				} catch (Exception staleelement) {
+					try {
+						WebElement parttable1 = Driver.findElement(By.xpath("//*[@id=\"parttable\"]/tbody"));
+						List<WebElement> Partrow1 = parttable1.findElements(By.tagName("tr"));
+						System.out.println("total No of rows in part table are==" + Partrow.size());
+						for (int partR = part; partR < Partrow1.size();) {
+							WebElement SerialNo = Partrow1.get(partR).findElement(By.id("txtSerialNo"));
+							act.moveToElement(SerialNo).build().perform();
+							wait.until(ExpectedConditions.elementToBeClickable(SerialNo));
+							SerialNo.clear();
+							SerialNo.sendKeys("SerialNo" + part);
+							System.out.println("Enetered serial Number in " + part + " part");
+
+							// --Enter Accepted Quantity
+							WebElement AccQty = Partrow1.get(partR).findElement(By.id("txtReceivedQty"));
+							act.moveToElement(AccQty).build().perform();
+							wait.until(ExpectedConditions.elementToBeClickable(AccQty));
+							AccQty.clear();
+							AccQty.sendKeys("1");
+							AccQty.sendKeys(Keys.TAB);
+							System.out.println("Enetered Accepted Quantity in " + part + " part");
+							// --Click on Save
+							wait.until(ExpectedConditions.elementToBeClickable(By.id("idsaveicon")));
+							WebElement Save = Driver.findElement(By.id("idsaveicon"));
+							act.moveToElement(Save).click().perform();
+							System.out.println("Clicked on the Save");
+							wait.until(ExpectedConditions
+									.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+							break;
+						}
+					} catch (Exception StaleElement) {
+						WebElement parttable1 = Driver.findElement(By.xpath("//*[@id=\"parttable\"]/tbody"));
+						List<WebElement> Partrow1 = parttable1.findElements(By.tagName("tr"));
+						System.out.println("total No of rows in part table are==" + Partrow.size());
+						for (int partRw = part; partRw < Partrow1.size();) {
+							WebElement SerialNo = Partrow1.get(partRw).findElement(By.id("txtSerialNo"));
+							act.moveToElement(SerialNo).build().perform();
+							wait.until(ExpectedConditions.elementToBeClickable(SerialNo));
+							SerialNo.clear();
+							SerialNo.sendKeys("SerialNo" + part);
+							System.out.println("Entered serial Number in " + part + " part");
+
+							// --Enter Accepted Quantity
+							WebElement AccQty = Partrow1.get(partRw).findElement(By.id("txtReceivedQty"));
+							act.moveToElement(AccQty).build().perform();
+							wait.until(ExpectedConditions.elementToBeClickable(AccQty));
+							AccQty.clear();
+							AccQty.sendKeys("1");
+							AccQty.sendKeys(Keys.TAB);
+							System.out.println("Enetered Accepted Quantity in " + part + " part");
+							// --Click on Save
+							wait.until(ExpectedConditions.elementToBeClickable(By.id("idsaveicon")));
+							WebElement Save = Driver.findElement(By.id("idsaveicon"));
+							act.moveToElement(Save).click().perform();
+							System.out.println("Clicked on the Save");
+							wait.until(ExpectedConditions
+									.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+							break;
+						}
+					}
+				}
+			}
+
+			// --Click on Update
+			wait.until(ExpectedConditions.elementToBeClickable(By.id("idupdateicon")));
+			WebElement update = Driver.findElement(By.id("idupdateicon"));
+			act.moveToElement(update).click().perform();
+			System.out.println("Clicked on the update");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("successid")));
+			String SuccMsg = Driver.findElement(By.id("successid")).getText();
+			System.out.println("Success Message==" + SuccMsg);
+
+			// --Close button
+			WebElement Close = Driver.findElement(By.id("idiconclose"));
+			act.moveToElement(Close).click().perform();
+			System.out.println("Clicked on the Close");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+			// --Go to Advance Tab
+			Driver.findElement(By.id("AdvancedASNSearch")).click();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+			wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("AdvancesSearch")));
+
 		}
 
-		// Unselect All
+		// Deselect ASN Type
 		Driver.findElement(By.id("cmbASNType1")).click();
 		Thread.sleep(2000);
-		Driver.findElement(By.id("chkAllcmbASNType1")).click();
+		// -Select All
+		Driver.findElement(By.xpath("//label[contains(text(),' Replenishment')]")).click();
 		Thread.sleep(2000);
-		if (Driver.findElement(By.id("chkAllcmbASNType1")).isSelected()) {
-			System.out.println("Select All checkbox is checked");
-		} else {
-			System.out.println("Select All checkbox is not checked");
-		}
+		Driver.findElement(By.id("cmbASNType1")).click();
+		System.out.println("Deselected ASN Type");
 
 		/*
 		 * // --Search by Carrier
@@ -467,7 +610,7 @@ public class TaskLog extends BaseInit {
 		// --Search by PU DRV Conf LOC Job
 
 		// --Deselect OrderType
-		Select Ordertype = new Select(Driver.findElement(By.id("cmbOrderType1")));
+		Ordertype = new Select(Driver.findElement(By.id("cmbOrderType1")));
 		Ordertype.selectByVisibleText("(select)");
 		System.out.println("Deselected OrderType");
 
@@ -571,14 +714,21 @@ public class TaskLog extends BaseInit {
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 			try {
-				WebElement PickuPBox = Driver.findElement(By.xpath("//*[contains(@class,'pickupbx')]"));
-				if (PickuPBox.isDisplayed()) {
-					System.out.println("Searched Job is displayed in edit mode");
-					// --Click on Close button
+				String Orderstage = Driver.findElement(By.xpath("//h3[contains(@class,'panel-title')]")).getText();
+				System.out.println("Current stage of the order is=" + Orderstage);
+				System.out.println("Searched Job is displayed in edit mode");
+
+				// --Click on Close button
+				try {
 					Driver.findElement(By.id("idclosetab")).click();
 					wait.until(ExpectedConditions
 							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+				} catch (Exception close1) {
+					Driver.findElement(By.id("idcloseicon")).click();
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 				}
+
 			} catch (Exception e) {
 				System.out.println("There is no job exist with the entered value");
 			}
