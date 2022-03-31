@@ -397,9 +397,9 @@ public class TaskLog extends BaseInit {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtDocName")));
 		// --Enter Doc name
 		Driver.findElement(By.id("txtDocName")).sendKeys("AutoDocument");
-		Driver.findElement(By.id("btnSelectFile")).click();
-		Thread.sleep(5000);
-
+		WebElement UploadFile = Driver.findElement(By.id("btnSelectFile"));
+		act.moveToElement(UploadFile).click().perform();
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@ng-form=\"userForm\"]")));
 		String Fpath = "C:\\Users\\rprajapati\\git\\NetAgent\\NetAgentProcess\\Job Upload Doc STG.xls";
 		WebElement InFile = Driver.findElement(By.id("inputfile"));
 		InFile.sendKeys(Fpath);
@@ -465,16 +465,16 @@ public class TaskLog extends BaseInit {
 
 		// --Merge RTE with Selection of Job
 		// --Search by PU DRV Conf LOC Job
-		
-		//--Deselect OrderType
+
+		// --Deselect OrderType
 		Select Ordertype = new Select(Driver.findElement(By.id("cmbOrderType1")));
 		Ordertype.selectByVisibleText("(select)");
 		System.out.println("Deselected OrderType");
-		
-		//---Remove PickUp
+
+		// ---Remove PickUp
 		Driver.findElement(By.id("txtPickup1")).clear();
 		System.out.println("Cleared Pickup");
-		
+
 		// --Next task
 		Driver.findElement(By.id("idddlnexttask")).click();
 		Thread.sleep(2000);
@@ -495,51 +495,62 @@ public class TaskLog extends BaseInit {
 
 		Driver.findElement(By.id("btnSearch1")).click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-		NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
-		if (NoData.isDisplayed()) {
-			System.out.println("Data is not present related search parameter");
-		} else {
-			System.out.println("Data is present related search parameter");
+		try {
+			NoData = Driver.findElement(By.className("dx-datagrid-nodata"));
+			if (NoData.isDisplayed()) {
+				System.out.println("Data is not present related search parameter");
+			} else {
+				System.out.println("Data is present related search parameter");
 
-			try {
-				// --select 1st row
-				Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//tr[1]//div")).click();
-				String FstRow = Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//tr[1]//div"))
-						.getAttribute("aria-checked");
-				Thread.sleep(2000);
-				Assert.assertEquals(FstRow, "true");
+				try {
+					// --select 1st row
+					Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//tr[1]//div")).click();
+					String FstRow = Driver.findElement(By.xpath("//*[@class=\"dx-datagrid-content\"]//tr[1]//div"))
+							.getAttribute("aria-checked");
+					Thread.sleep(2000);
+					Assert.assertEquals(FstRow, "true");
 
-				// --Merge RTE
-				Driver.findElement(By.id("btnMerge3")).click();
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-				wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("ngdialog-message")));
+					// --Merge RTE
+					Driver.findElement(By.id("btnMerge3")).click();
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("ngdialog-message")));
 
-				// --Route List
-				wait.until(ExpectedConditions.elementToBeClickable(By.id("drpRouteList")));
-				Select RList = new Select(Driver.findElement(By.id("drpRouteList")));
-				RList.selectByIndex(1);
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-				System.out.println("Selected RW List");
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					// --Route List
+					wait.until(ExpectedConditions.elementToBeClickable(By.id("drpRouteList")));
+					Select RList = new Select(Driver.findElement(By.id("drpRouteList")));
+					RList.selectByIndex(1);
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					System.out.println("Selected RW List");
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
-				// --Merge Button
-				Driver.findElement(By.id("btnsave")).click();
-				System.out.println("Clicked on Merge button");
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lblSuccessMsg")));
+					// --Merge Button
+					Driver.findElement(By.id("btnsave")).click();
+					System.out.println("Clicked on Merge button");
+					wait.until(ExpectedConditions
+							.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lblSuccessMsg")));
 
-				String SuccMsg = Driver.findElement(By.id("lblSuccessMsg")).getText();
-				System.out.println("Success message=" + SuccMsg + "\n");
+					String SuccMsg = Driver.findElement(By.id("lblSuccessMsg")).getText();
+					System.out.println("Success message=" + SuccMsg + "\n");
 
-				// Cancel button
-				Driver.findElement(By.id("btnCancel")).click();
-				Thread.sleep(2000);
-			} catch (Exception e) {
-				System.out.println("Warning message is displayed");
-				MergeClose = Driver.findElement(By.className("ngdialog-close"));
-				js.executeScript("arguments[0].click()", MergeClose);
-				Thread.sleep(2000);
+					// Cancel button
+					Driver.findElement(By.id("btnCancel")).click();
+					Thread.sleep(2000);
+				} catch (Exception e) {
+					System.out.println("Warning message is displayed");
+					MergeClose = Driver.findElement(By.className("ngdialog-close"));
+					js.executeScript("arguments[0].click()", MergeClose);
+					Thread.sleep(2000);
+				}
 			}
+		} catch (Exception editor) {
+			System.out.println("There is only 1 record with search parameters");
+			Driver.findElement(By.id("iconclose")).click();
+			System.out.println("Clicked on Close button");
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 
 		}
 

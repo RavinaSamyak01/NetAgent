@@ -2,12 +2,10 @@
 
 <html>
   <head>
-  <meta charset='utf-8'>
   <title>TestNG reports</title>
 
-    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
-    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
-    <script type="text/javascript" src="jquery.min.js"></script>
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -24,9 +22,8 @@
   <body>
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
-      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,8 +36,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+            <a href="#" panel-name="suite-NASuite" class="navigator-link">
+              <span class="suite-name border-failed">NASuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,37 +47,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\rprajapati\AppData\Local\Temp\testng-eclipse-1572423660\testng-customsuite.xml</span>
+                  <a href="#" panel-name="test-xml-NASuite" class="navigator-link ">
+                    <span>C:\Users\rprajapati\git\NetAgent\NetAgentProcess\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="testlist-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="testlist-NASuite" class="navigator-link ">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="group-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="group-NASuite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="times-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="times-NASuite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="reporter-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="reporter-NASuite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="ignored-methods-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="ignored-methods-NASuite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="chronological-Default_suite" class="navigator-link ">
+                  <a href="#" panel-name="chronological-NASuite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -93,21 +90,155 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">26 methods, 3 failed,   23 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-NASuite" class="hide-methods failed suite-NASuite"> (hide)</a> <!-- hide-methods failed suite-NASuite -->
+                      <a href="#" panel-name="suite-NASuite" class="show-methods failed suite-NASuite"> (show)</a> <!-- show-methods failed suite-NASuite -->
+                    </span>
+                    <div class="method-list-content failed suite-NASuite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ASNLog">ASNLog</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="OrderSearch">OrderSearch</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="TaskLog">TaskLog</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-NASuite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-NASuite" class="hide-methods passed suite-NASuite"> (hide)</a> <!-- hide-methods passed suite-NASuite -->
+                      <a href="#" panel-name="suite-NASuite" class="show-methods passed suite-NASuite"> (show)</a> <!-- show-methods passed suite-NASuite -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content passed suite-NASuite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="NetAgentSmoke.OrderProcessing" class="method navigator-link" hash-for-method="orderProcess">orderProcess</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentActivityChartReport">AgentActivityChartReport</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentActivityDetailReport">AgentActivityDetailReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentActivityReport">AgentActivityReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentRisk">AgentRisk</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="AgentTSA">AgentTSA</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ContactUs">ContactUs</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="Courier">Courier</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="CycleCount">CycleCount</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="CycleCountBIN">CycleCountBIN</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="FSLSetup">FSLSetup</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="FSLStorage">FSLStorage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="MNXDoc">MNXDoc</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="MileageCalc">MileageCalc</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="OnHandReport">OnHandReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="PullReport">PullReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="ReceiptReport">ReceiptReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="TransactionReport">TransactionReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="UserPreference">UserPreference</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="Userlist">Userlist</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="Userprofile">Userprofile</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="parts">parts</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="quarantineReport">quarantineReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-NASuite" title="NetAgentSmoke.NetAgentProcess" class="method navigator-link" hash-for-method="replenish">replenish</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-NASuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -118,142 +249,821 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+        <div panel-name="suite-NASuite" class="panel NASuite">
+          <div class="suite-NASuite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">NetAgentSmoke.OrderProcessing</span>
+              <img src="failed.png"/>
+              <span class="class-name">NetAgentSmoke.NetAgentProcess</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="orderProcess">
-                  </a> <!-- orderProcess -->
-                  <span class="method-name">orderProcess</span>
+                  <a name="ASNLog">
+                  </a> <!-- ASNLog -->
+                  <span class="method-name">ASNLog</span>
+                  <div class="stack-trace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;button class=&quot;btn btn-primary pull-right&quot; id=&quot;idbtnRunSearch&quot; style=&quot;margin-left:10px;&quot; ng-click=&quot;GetASNSearchListList(SearchASNDtl,asnsearchform.$valid,true)&quot;&gt;...&lt;/button&gt; is not clickable at point (632, 291). Other element would receive the click: &lt;td data-date=&quot;12&quot; data-month=&quot;2&quot; data-year=&quot;2022&quot; class=&quot;xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend&quot; title=&quot;&quot;&gt;...&lt;/td&gt;
+  (Session info: chrome=100.0.4896.60)
+Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
+System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.91&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.13&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.60, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\WINDOWS\TEMP\scoped_dir3...}, goog:chromeOptions: {debuggerAddress: localhost:52150}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: cec7ff6da602c9bca8ea50563f4d378c
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at NetAgentSmoke.NetAgentProcess.ASNLog(NetAgentProcess.java:2504)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="OrderSearch">
+                  </a> <!-- OrderSearch -->
+                  <span class="method-name">OrderSearch</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (cec7ff6da602c9bca8ea50563f4d378c)] -&gt; xpath: //td[@role=&quot;columnheader&quot;]] (tried for 50 second(s) with 500 milliseconds interval)
+Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
+System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.91&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.13&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.60, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\WINDOWS\TEMP\scoped_dir3...}, goog:chromeOptions: {debuggerAddress: localhost:52150}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: cec7ff6da602c9bca8ea50563f4d378c
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:81)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:271)
+	at NetAgentSmoke.NetAgentProcess.OrderSearch(NetAgentProcess.java:798)
+... Removed 23 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="TaskLog">
+                  </a> <!-- TaskLog -->
+                  <span class="method-name">TaskLog</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#operation&quot;}
+  (Session info: chrome=100.0.4896.60)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.13.0&apos;, revision: &apos;2f0d292&apos;, time: &apos;2018-06-25T15:32:14.902Z&apos;
+System info: host: &apos;SIPL92&apos;, ip: &apos;10.212.130.91&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.13&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.60, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\WINDOWS\TEMP\scoped_dir3...}, goog:chromeOptions: {debuggerAddress: localhost:52150}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: cec7ff6da602c9bca8ea50563f4d378c
+*** Element info: {Using=id, value=operation}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:368)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+	at NetAgentSmoke.TaskLog.taskLog(TaskLog.java:554)
+	at NetAgentSmoke.NetAgentProcess.TaskLog(NetAgentProcess.java:3907)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
-        </div> <!-- panel Default_suite -->
-        <div panel-name="test-xml-Default_suite" class="panel">
+          </div> <!-- suite-NASuite-class-failed -->
+          <div class="suite-NASuite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">NetAgentSmoke.NetAgentProcess</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="AgentActivityChartReport">
+                  </a> <!-- AgentActivityChartReport -->
+                  <span class="method-name">AgentActivityChartReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="AgentActivityDetailReport">
+                  </a> <!-- AgentActivityDetailReport -->
+                  <span class="method-name">AgentActivityDetailReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="AgentActivityReport">
+                  </a> <!-- AgentActivityReport -->
+                  <span class="method-name">AgentActivityReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="AgentRisk">
+                  </a> <!-- AgentRisk -->
+                  <span class="method-name">AgentRisk</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="AgentTSA">
+                  </a> <!-- AgentTSA -->
+                  <span class="method-name">AgentTSA</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="ContactUs">
+                  </a> <!-- ContactUs -->
+                  <span class="method-name">ContactUs</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Courier">
+                  </a> <!-- Courier -->
+                  <span class="method-name">Courier</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="CycleCount">
+                  </a> <!-- CycleCount -->
+                  <span class="method-name">CycleCount</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="CycleCountBIN">
+                  </a> <!-- CycleCountBIN -->
+                  <span class="method-name">CycleCountBIN</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="FSLSetup">
+                  </a> <!-- FSLSetup -->
+                  <span class="method-name">FSLSetup</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="FSLStorage">
+                  </a> <!-- FSLStorage -->
+                  <span class="method-name">FSLStorage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="MNXDoc">
+                  </a> <!-- MNXDoc -->
+                  <span class="method-name">MNXDoc</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="MileageCalc">
+                  </a> <!-- MileageCalc -->
+                  <span class="method-name">MileageCalc</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="OnHandReport">
+                  </a> <!-- OnHandReport -->
+                  <span class="method-name">OnHandReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="PullReport">
+                  </a> <!-- PullReport -->
+                  <span class="method-name">PullReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="ReceiptReport">
+                  </a> <!-- ReceiptReport -->
+                  <span class="method-name">ReceiptReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="TransactionReport">
+                  </a> <!-- TransactionReport -->
+                  <span class="method-name">TransactionReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="UserPreference">
+                  </a> <!-- UserPreference -->
+                  <span class="method-name">UserPreference</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Userlist">
+                  </a> <!-- Userlist -->
+                  <span class="method-name">Userlist</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="Userprofile">
+                  </a> <!-- Userprofile -->
+                  <span class="method-name">Userprofile</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="parts">
+                  </a> <!-- parts -->
+                  <span class="method-name">parts</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="quarantineReport">
+                  </a> <!-- quarantineReport -->
+                  <span class="method-name">quarantineReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="replenish">
+                  </a> <!-- replenish -->
+                  <span class="method-name">replenish</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-NASuite-class-passed -->
+        </div> <!-- panel NASuite -->
+        <div panel-name="test-xml-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\rprajapati\AppData\Local\Temp\testng-eclipse-1572423660\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\rprajapati\git\NetAgent\NetAgentProcess\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite parallel=&quot;none&quot; name=&quot;NASuite&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;NASmoke&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;NetAgentSmoke.OrderProcessing&quot;/&gt;
+      &lt;class name=&quot;NetAgentSmoke.NetAgentProcess&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;ContactUs&quot;/&gt;
+          &lt;include name=&quot;AgentTSA&quot;/&gt;
+          &lt;include name=&quot;AgentRisk&quot;/&gt;
+          &lt;include name=&quot;OrderSearch&quot;/&gt;
+          &lt;include name=&quot;replenish&quot;/&gt;
+          &lt;include name=&quot;CycleCount&quot;/&gt;
+          &lt;include name=&quot;Courier&quot;/&gt;
+          &lt;include name=&quot;parts&quot;/&gt;
+          &lt;include name=&quot;FSLStorage&quot;/&gt;
+          &lt;include name=&quot;FSLSetup&quot;/&gt;
+          &lt;include name=&quot;CycleCountBIN&quot;/&gt;
+          &lt;include name=&quot;ASNLog&quot;/&gt;
+          &lt;include name=&quot;AgentActivityReport&quot;/&gt;
+          &lt;include name=&quot;AgentActivityChartReport&quot;/&gt;
+          &lt;include name=&quot;quarantineReport&quot;/&gt;
+          &lt;include name=&quot;AgentActivityDetailReport&quot;/&gt;
+          &lt;include name=&quot;ReceiptReport&quot;/&gt;
+          &lt;include name=&quot;PullReport&quot;/&gt;
+          &lt;include name=&quot;TransactionReport&quot;/&gt;
+          &lt;include name=&quot;OnHandReport&quot;/&gt;
+          &lt;include name=&quot;Userprofile&quot;/&gt;
+          &lt;include name=&quot;Userlist&quot;/&gt;
+          &lt;include name=&quot;MNXDoc&quot;/&gt;
+          &lt;include name=&quot;MileageCalc&quot;/&gt;
+          &lt;include name=&quot;UserPreference&quot;/&gt;
+          &lt;include name=&quot;TaskLog&quot;/&gt;
+          &lt;exclude name=&quot;orderProcessing&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- NetAgentSmoke.NetAgentProcess --&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Default test --&gt;
-&lt;/suite&gt; &lt;!-- Default suite --&gt;
+  &lt;/test&gt; &lt;!-- NASmoke --&gt;
+&lt;/suite&gt; &lt;!-- NASuite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-Default_suite" class="panel">
+        <div panel-name="testlist-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for Default suite</span>
+            <span class="header-content">Tests for NASuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Default test (1 class)</span>
+                <span class="test-name">NASmoke (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-Default_suite" class="panel">
+        <div panel-name="group-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for Default suite</span>
+            <span class="header-content">Groups for NASuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-Default_suite" class="panel">
+        <div panel-name="times-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for Default suite</span>
+            <span class="header-content">Times for NASuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_Default_suite');
-function tableData_Default_suite() {
+suiteTableInitFunctions.push('tableData_NASuite');
+function tableData_NASuite() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(26);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'orderProcess')
-data.setCell(0, 2, 'NetAgentSmoke.OrderProcessing')
-data.setCell(0, 3, 70884);
-window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+data.setCell(0, 1, 'TaskLog')
+data.setCell(0, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(0, 3, 208375);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'parts')
+data.setCell(1, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(1, 3, 72582);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'OrderSearch')
+data.setCell(2, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(2, 3, 67612);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'FSLSetup')
+data.setCell(3, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(3, 3, 63851);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'ASNLog')
+data.setCell(4, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(4, 3, 47903);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'AgentActivityReport')
+data.setCell(5, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(5, 3, 38766);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'Userlist')
+data.setCell(6, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(6, 3, 30606);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'replenish')
+data.setCell(7, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(7, 3, 30282);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'TransactionReport')
+data.setCell(8, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(8, 3, 29837);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'AgentRisk')
+data.setCell(9, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(9, 3, 23737);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'ReceiptReport')
+data.setCell(10, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(10, 3, 22497);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'OnHandReport')
+data.setCell(11, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(11, 3, 22071);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'PullReport')
+data.setCell(12, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(12, 3, 21323);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'AgentActivityChartReport')
+data.setCell(13, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(13, 3, 13696);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'CycleCountBIN')
+data.setCell(14, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(14, 3, 12862);
+data.setCell(15, 0, 15)
+data.setCell(15, 1, 'UserPreference')
+data.setCell(15, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(15, 3, 12496);
+data.setCell(16, 0, 16)
+data.setCell(16, 1, 'AgentActivityDetailReport')
+data.setCell(16, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(16, 3, 11871);
+data.setCell(17, 0, 17)
+data.setCell(17, 1, 'MileageCalc')
+data.setCell(17, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(17, 3, 10464);
+data.setCell(18, 0, 18)
+data.setCell(18, 1, 'MNXDoc')
+data.setCell(18, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(18, 3, 9842);
+data.setCell(19, 0, 19)
+data.setCell(19, 1, 'quarantineReport')
+data.setCell(19, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(19, 3, 9478);
+data.setCell(20, 0, 20)
+data.setCell(20, 1, 'AgentTSA')
+data.setCell(20, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(20, 3, 9087);
+data.setCell(21, 0, 21)
+data.setCell(21, 1, 'Courier')
+data.setCell(21, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(21, 3, 7358);
+data.setCell(22, 0, 22)
+data.setCell(22, 1, 'Userprofile')
+data.setCell(22, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(22, 3, 6048);
+data.setCell(23, 0, 23)
+data.setCell(23, 1, 'FSLStorage')
+data.setCell(23, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(23, 3, 5422);
+data.setCell(24, 0, 24)
+data.setCell(24, 1, 'ContactUs')
+data.setCell(24, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(24, 3, 4561);
+data.setCell(25, 0, 25)
+data.setCell(25, 1, 'CycleCount')
+data.setCell(25, 2, 'NetAgentSmoke.NetAgentProcess')
+data.setCell(25, 3, 3407);
+window.suiteTableData['NASuite']= { tableData: data, tableDiv: 'times-div-NASuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
-              <div id="times-div-Default_suite">
-              </div> <!-- times-div-Default_suite -->
+              <span class="suite-total-time">Total running time: 13 minutes</span>
+              <div id="times-div-NASuite">
+              </div> <!-- times-div-NASuite -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-Default_suite" class="panel">
+        <div panel-name="reporter-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for Default suite</span>
+            <span class="header-content">Reporter output for NASuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-Default_suite" class="panel">
+        <div panel-name="ignored-methods-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">2 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">NetAgentSmoke.NetAgentProcess</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">AgentConsole</span>
+                <br/>
+                <span class="ignored-method-name">orderProcessing</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-Default_suite" class="panel">
+        <div panel-name="chronological-NASuite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">NetAgentSmoke.OrderProcessing</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">NetAgentSmoke.NetAgentProcess</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">beforeMethod</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-test before">
                 <span class="method-name">Login</span>
-                <span class="method-start">1695 ms</span>
+                <span class="method-start">2364 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-method before">
-                <span class="method-name">testMethodName(public static void NetAgentSmoke.OrderProcessing.orderProcess() throws org.apache.poi.EncryptedDocum...)</span>
-                <span class="method-start">21401 ms</span>
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.ContactUs() throws java.lang.Exception)</span>
+                <span class="method-start">28998 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">orderProcess</span>
-                <span class="method-start">21405 ms</span>
+                <span class="method-name">ContactUs</span>
+                <span class="method-start">29000 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">getResult([TestResult name=orderProcess status=SUCCESS method=OrderProcessing.orderProcess()[pri:0, instance:N...)</span>
-                <span class="method-start">92293 ms</span>
+                <span class="method-name">getResult([TestResult name=ContactUs status=SUCCESS method=NetAgentProcess.ContactUs()[pri:0, instance:NetAgen...)</span>
+                <span class="method-start">33561 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.AgentTSA() throws java.lang.Exception)</span>
+                <span class="method-start">33630 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">AgentTSA</span>
+                <span class="method-start">33631 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=AgentTSA status=SUCCESS method=NetAgentProcess.AgentTSA()[pri:0, instance:NetAgentS...)</span>
+                <span class="method-start">42718 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.AgentRisk() throws java.lang.Exception)</span>
+                <span class="method-start">42797 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">AgentRisk</span>
+                <span class="method-start">42797 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=AgentRisk status=SUCCESS method=NetAgentProcess.AgentRisk()[pri:0, instance:NetAgen...)</span>
+                <span class="method-start">66534 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.OrderSearch() throws java.lang.Exception)</span>
+                <span class="method-start">66617 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">OrderSearch</span>
+                <span class="method-start">66617 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=OrderSearch status=FAILURE method=NetAgentProcess.OrderSearch()[pri:0, instance:Net...)</span>
+                <span class="method-start">134229 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.replenish() throws java.lang.Exception)</span>
+                <span class="method-start">134305 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">replenish</span>
+                <span class="method-start">134305 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=replenish status=SUCCESS method=NetAgentProcess.replenish()[pri:0, instance:NetAgen...)</span>
+                <span class="method-start">164587 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.CycleCount() throws java.lang.Exception)</span>
+                <span class="method-start">164666 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">CycleCount</span>
+                <span class="method-start">164666 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=CycleCount status=SUCCESS method=NetAgentProcess.CycleCount()[pri:0, instance:NetAg...)</span>
+                <span class="method-start">168073 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.Courier() throws java.lang.Exception)</span>
+                <span class="method-start">168180 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Courier</span>
+                <span class="method-start">168180 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=Courier status=SUCCESS method=NetAgentProcess.Courier()[pri:0, instance:NetAgentSmo...)</span>
+                <span class="method-start">175538 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.parts() throws java.lang.Exception)</span>
+                <span class="method-start">175613 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">parts</span>
+                <span class="method-start">175613 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=parts status=SUCCESS method=NetAgentProcess.parts()[pri:0, instance:NetAgentSmoke.N...)</span>
+                <span class="method-start">248195 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.FSLStorage() throws java.lang.Exception)</span>
+                <span class="method-start">248277 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">FSLStorage</span>
+                <span class="method-start">248277 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=FSLStorage status=SUCCESS method=NetAgentProcess.FSLStorage()[pri:0, instance:NetAg...)</span>
+                <span class="method-start">253699 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.FSLSetup() throws java.lang.Exception)</span>
+                <span class="method-start">253772 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">FSLSetup</span>
+                <span class="method-start">253772 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=FSLSetup status=SUCCESS method=NetAgentProcess.FSLSetup()[pri:0, instance:NetAgentS...)</span>
+                <span class="method-start">317623 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.CycleCountBIN() throws java.lang.Exception)</span>
+                <span class="method-start">317721 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">CycleCountBIN</span>
+                <span class="method-start">317722 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=CycleCountBIN status=SUCCESS method=NetAgentProcess.CycleCountBIN()[pri:0, instance...)</span>
+                <span class="method-start">330584 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.ASNLog() throws java.lang.Exception)</span>
+                <span class="method-start">330701 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">ASNLog</span>
+                <span class="method-start">330701 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=ASNLog status=FAILURE method=NetAgentProcess.ASNLog()[pri:0, instance:NetAgentSmoke...)</span>
+                <span class="method-start">378605 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.AgentActivityReport() throws java.lang.Exception)</span>
+                <span class="method-start">378850 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">AgentActivityReport</span>
+                <span class="method-start">378850 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=AgentActivityReport status=SUCCESS method=NetAgentProcess.AgentActivityReport()[pri...)</span>
+                <span class="method-start">417617 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.AgentActivityChartReport() throws java.lang.Exception)</span>
+                <span class="method-start">417805 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">AgentActivityChartReport</span>
+                <span class="method-start">417805 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=AgentActivityChartReport status=SUCCESS method=NetAgentProcess.AgentActivityChartRe...)</span>
+                <span class="method-start">431502 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.quarantineReport() throws java.lang.Exception)</span>
+                <span class="method-start">431745 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">quarantineReport</span>
+                <span class="method-start">431746 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=quarantineReport status=SUCCESS method=NetAgentProcess.quarantineReport()[pri:0, in...)</span>
+                <span class="method-start">441224 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.AgentActivityDetailReport() throws java.lang.Exception)</span>
+                <span class="method-start">441360 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">AgentActivityDetailReport</span>
+                <span class="method-start">441362 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=AgentActivityDetailReport status=SUCCESS method=NetAgentProcess.AgentActivityDetail...)</span>
+                <span class="method-start">453233 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.ReceiptReport() throws java.lang.Exception)</span>
+                <span class="method-start">453404 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">ReceiptReport</span>
+                <span class="method-start">453405 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=ReceiptReport status=SUCCESS method=NetAgentProcess.ReceiptReport()[pri:0, instance...)</span>
+                <span class="method-start">475902 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.PullReport() throws java.lang.Exception)</span>
+                <span class="method-start">476047 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">PullReport</span>
+                <span class="method-start">476047 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=PullReport status=SUCCESS method=NetAgentProcess.PullReport()[pri:0, instance:NetAg...)</span>
+                <span class="method-start">497370 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.TransactionReport() throws java.lang.Exception)</span>
+                <span class="method-start">497484 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">TransactionReport</span>
+                <span class="method-start">497484 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=TransactionReport status=SUCCESS method=NetAgentProcess.TransactionReport()[pri:0, ...)</span>
+                <span class="method-start">527321 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.OnHandReport() throws java.lang.Exception)</span>
+                <span class="method-start">527521 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">OnHandReport</span>
+                <span class="method-start">527522 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=OnHandReport status=SUCCESS method=NetAgentProcess.OnHandReport()[pri:0, instance:N...)</span>
+                <span class="method-start">549593 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.Userprofile() throws java.lang.Exception)</span>
+                <span class="method-start">549821 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Userprofile</span>
+                <span class="method-start">549821 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=Userprofile status=SUCCESS method=NetAgentProcess.Userprofile()[pri:0, instance:Net...)</span>
+                <span class="method-start">555869 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.Userlist() throws java.lang.Exception)</span>
+                <span class="method-start">555994 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">Userlist</span>
+                <span class="method-start">555994 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=Userlist status=SUCCESS method=NetAgentProcess.Userlist()[pri:0, instance:NetAgentS...)</span>
+                <span class="method-start">586601 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.MNXDoc() throws java.lang.Exception)</span>
+                <span class="method-start">586783 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">MNXDoc</span>
+                <span class="method-start">586784 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=MNXDoc status=SUCCESS method=NetAgentProcess.MNXDoc()[pri:0, instance:NetAgentSmoke...)</span>
+                <span class="method-start">596626 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.MileageCalc() throws java.lang.Exception)</span>
+                <span class="method-start">596861 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">MileageCalc</span>
+                <span class="method-start">596861 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=MileageCalc status=SUCCESS method=NetAgentProcess.MileageCalc()[pri:0, instance:Net...)</span>
+                <span class="method-start">607325 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public void NetAgentSmoke.NetAgentProcess.UserPreference() throws java.lang.Exception)</span>
+                <span class="method-start">607440 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">UserPreference</span>
+                <span class="method-start">607440 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=UserPreference status=SUCCESS method=NetAgentProcess.UserPreference()[pri:0, instan...)</span>
+                <span class="method-start">619936 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">testMethodName(public static void NetAgentSmoke.NetAgentProcess.TaskLog() throws org.apache.poi.EncryptedDocumentEx...)</span>
+                <span class="method-start">620051 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">TaskLog</span>
+                <span class="method-start">620051 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">getResult([TestResult name=TaskLog status=FAILURE method=NetAgentProcess.TaskLog()[pri:0, instance:NetAgentSmo...)</span>
+                <span class="method-start">828426 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-test after">
                 <span class="method-name">Complete</span>
-                <span class="method-start">92489 ms</span>
+                <span class="method-start">828622 ms</span>
               </div> <!-- configuration-test after -->
               <div class="configuration-suite after">
                 <span class="method-name">SendEmail</span>
-                <span class="method-start">92688 ms</span>
+                <span class="method-start">829601 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
     </div> <!-- wrapper -->
   </body>
-<script type="text/javascript" src="testng-reports2.js"></script>
 </html>
