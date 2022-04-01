@@ -764,6 +764,7 @@ public class TaskLog extends BaseInit {
 			Driver.findElement(By.id("txtBasicSearchRTE")).clear();
 			Driver.findElement(By.id("txtBasicSearchRTE"))
 					.sendKeys(formatter.formatCellValue(sh0.getRow(2).getCell(col)));
+			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnRTESearch2")));
 			Driver.findElement(By.id("btnRTESearch2")).click();
 			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 			TotalJob = Driver.findElement(By.xpath("//*[@ng-bind=\"TotalJob\"]")).getText();
