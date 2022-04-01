@@ -11,7 +11,6 @@
           <include name="beforeMethod"/>
           <include name="getResult"/>
           <include name="SendEmail"/>
-          <include name="TaskLog"/>
           <include name="Login"/>
           <include name="testMethodName"/>
         </methods>

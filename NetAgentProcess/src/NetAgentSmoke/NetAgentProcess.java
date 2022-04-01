@@ -10,9 +10,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
-import org.apache.commons.collections4.bag.SynchronizedSortedBag;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -786,6 +783,7 @@ public class NetAgentProcess extends BaseInit {
 
 			// --Clicking on all the columns one by one for sorting
 			for (int col = 0; col < Columns.size() - 4; col++) {
+				WebElement Cols = Columns.get(col);
 				String ColName = Columns.get(col).getAttribute("aria-label");
 				System.out.println("column name is=" + ColName);
 
@@ -794,7 +792,7 @@ public class NetAgentProcess extends BaseInit {
 				System.out.println("Sorting for " + ColName + " is==" + ColSortBefore);
 
 				// --Clicking on column
-				WebElement Cols = Columns.get(col);
+				Cols = Columns.get(col);
 				wait.until(ExpectedConditions.elementToBeClickable(Cols));
 				Cols.click();
 				System.out.println("Clicked on column for sorting");
@@ -2315,23 +2313,23 @@ public class NetAgentProcess extends BaseInit {
 
 	@Test
 	public void ASNLog() throws Exception {
-			WebDriverWait wait = new WebDriverWait(Driver, 50);
-			Actions act = new Actions(Driver);
-	
-			// --Inventory
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idInventory")));
-			Driver.findElement(By.id("idInventory")).click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
-	
-			// --ASN
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idASN")));
-			Driver.findElement(By.id("idASN")).click();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
-	
-			File src0 = new File(".\\NA_STG.xls");
-			FileInputStream fis0 = new FileInputStream(src0);
-			Workbook workbook = WorkbookFactory.create(fis0);
-			Sheet sh0 = workbook.getSheet("Sheet1");
+		WebDriverWait wait = new WebDriverWait(Driver, 50);
+		Actions act = new Actions(Driver);
+
+		// --Inventory
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idInventory")));
+		Driver.findElement(By.id("idInventory")).click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-labelledby=\"idInventory\"]")));
+
+		// --ASN
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("idASN")));
+		Driver.findElement(By.id("idASN")).click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
+
+		File src0 = new File(".\\NA_STG.xls");
+		FileInputStream fis0 = new FileInputStream(src0);
+		Workbook workbook = WorkbookFactory.create(fis0);
+		Sheet sh0 = workbook.getSheet("Sheet1");
 		// int rcount = sh0.getLastRowNum();
 
 		DataFormatter formatter = new DataFormatter();
@@ -2501,7 +2499,9 @@ public class NetAgentProcess extends BaseInit {
 
 		Driver.findElement(By.id("txtASN")).clear();
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("idbtnRunSearch")));
-		Driver.findElement(By.id("idbtnRunSearch")).click();
+		WebElement RSearch = Driver.findElement(By.id("idbtnRunSearch"));
+		act.moveToElement(RSearch).build().perform();
+		RSearch.click();
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@class=\"ajax-loadernew\"]")));
 		try {
 			Driver.findElement(By.id("hlkBackToScreen")).click();
@@ -3913,4 +3913,9 @@ public class NetAgentProcess extends BaseInit {
 		OrderProcessing.orderProcess();
 	}
 
+	@Test
+	public static void putaway()
+			throws EncryptedDocumentException, InvalidFormatException, IOException, InterruptedException {
+		PutAway.putAway();
+	}
 }

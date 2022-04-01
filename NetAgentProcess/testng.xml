@@ -22,6 +22,7 @@
 					<include name="FSLStorage" />
 					<include name="FSLSetup" />
 					<include name="CycleCountBIN" />
+					<include name="PutAway" />
 					<include name="ASNLog" />
 
 					<!-- Reports screens-->
@@ -47,9 +48,10 @@
 					<!-- Preference screens-->
 					<include name="UserPreference" />
 
-					<!--OrderProcessing-->
+					<!--TaskLog-->
 					<include name="TaskLog" />
-					<exclude name="orderProcessing" />
+					<include name="orderProcessing" />
+
 
 					<!--<include name="SendEmail" /> -->
 				</methods>
